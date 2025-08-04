@@ -87,6 +87,7 @@
     font-family: inter;
     line-height:50px;
     text-align: center;
+    color: #E5AB07;
 }
 
 .banner .banner-content h2 {
@@ -95,6 +96,7 @@
     text-transform: uppercase;
     font-family: inter;
     line-height:90px;
+    color: #E5AB07;;
 }
 
 .banner .banner-content p {
@@ -102,6 +104,7 @@
     font-weight: 500;
     text-transform: uppercase;
     font-family: inter;
+    color: #E5AB07;
     margin: auto;
 }
 
@@ -273,6 +276,27 @@
         font-size: 14px;
         font-weight: 500;
         width: 80%;
+        
+    }
+}
+
+@media (max-width: 500px) {
+    .banner .banner-content h1 {
+    font-size: 55px;
+    font-weight: 800;
+    line-height:40px;
+    }
+
+    .banner .banner-content h2 {
+        font-size: 30px;
+        font-weight: 500;
+        line-height:40px;
+    }
+
+    .banner .banner-content p {
+        font-size: 10px;
+        font-weight: 500;
+        width: 70%;
         
     }
 }
