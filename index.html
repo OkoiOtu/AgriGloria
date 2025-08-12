@@ -30,17 +30,28 @@
     </header>
 
     <section class="banner">
-        <video autoplay muted loop playsinline class="banner-video">
-            <source src="videos/banner.mp4" type="video/mp4" />
+        <div class="video-slider">
+            <video class="video-slide active" autoplay muted playsinline>
+            <source src="videos/banner1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
-        </video>
+            </video>
+            <video class="video-slide" muted playsinline>
+            <source src="videos/banner2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
+            <video class="video-slide" muted playsinline>
+            <source src="videos/banner3.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
+        </div>
+
         <div class="banner-content">
-            <h1>Agrigloria <h2></h2></h1>
-            <h2>farms & Holdings</h2>
+            <div><img class="agri" src="images/AgriGloria.png" alt="Agrigloria"></div>
+            <h2>Farms & Holdings</h2>
             <p>Committed to raising healthy livestock for a stronger, sustainable future.</p>
-            <!-- <a href="#contact" class="banner-btn">Contact Us</a> -->
         </div>
     </section>
+
 
     <div class="dialog-overlay" id="custom-dialog">
         <div class="dialog-box">
