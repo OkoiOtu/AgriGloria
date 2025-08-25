@@ -177,13 +177,9 @@ html {
 
 /* Animal Setion */
 .animal-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100vh;
-  padding: 30px;
   font-family: 'Courier New', Courier, monospace;
   background-color: #D7BC98;
+  overflow: hidden;
 }
 
 .animal-section h2 {
@@ -191,27 +187,26 @@ html {
   font-size: 2.5em;
   font-weight: 900;
   text-align: center;
+  padding: 100px 0 0 0;
 }
 
 .animals {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  gap: 30px;
+  padding-top: 30px;
+  margin: 100px 80px;
 }
 
 .animal {
   position: relative;
   background: #BA8323;
   border-radius: 10px;
-  flex: 1;
-  max-width: 350px;
-  padding: 50px 15px 40px; 
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
+  padding: 50px 15px; 
+
   text-align: center;
+  width: 100%;
   box-shadow: 5px 5px 10px black;
   transition: all 0.3s ease-in-out;
 }
@@ -261,7 +256,6 @@ html {
 .animal p {
   flex: 1;
   margin: 10px 0;
-  text-align: left;
   font-size: 1rem;
   line-height: 20px;
 }
@@ -291,8 +285,7 @@ html {
 .aboutus {
     background-color: #4B2E16;
     color: #fff;
-    height: auto;
-    height: auto;
+    height: 90vh;
     padding: 50px;
     align-content: center;
     overflow: hidden;
@@ -333,7 +326,7 @@ html {
 }
 
 .cards > div {
-    flex: 0 0 calc(33.333% - 10px); /* 3 columns minus gap space */
+    flex: 0 0 calc(33.333% - 10px);
     box-sizing: border-box;
 }
 
@@ -375,6 +368,7 @@ html {
   height: 100vh;
   margin: 0;
   background-color: #D7BC98;
+  overflow: hidden;
   
 }
 
@@ -385,68 +379,149 @@ html {
   padding: 50px 0;
 }
 
-.container-gallery {
-font-family: 'Muli', sans-serif;
+.container-card {
+  font-family: 'Muli', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  width: 100%;
-  background-color: #D7BC98;
+  height: 70vh;
+  margin: 0 30px;
+  position: relative;
+}
+
+.container-card button {
+  border: none;
+  outline: none;
 }
 
 .ex-cards {
   display: flex;
-  width: 80vw;
-  overflow: hidden;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 80%;
+  height: 70vh;
+  margin: 0 35px;
+}
+
+.ex-cards::-webkit-scrollbar {
+  display: none;
 }
 
 .panel {
-  background-size: auto 100%;
+  flex: 0 0 90px;
+  width: 90px;
+  margin: 10px;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 80vh;
-  border-radius: 50px;
+  border-radius: 20px;
   color: #fff;
   cursor: pointer;
-  flex: 0.5;
-  margin: 10px;
   position: relative;
-  transition: flex 0.7s ease;
+  transition: transform 0.7s ease, flex 0.7s ease;
+  border-radius: 10px;
 }
 
 .panel h3 {
-  font-size: 14px;
+  font-size: 1rem;
   position: absolute;
   bottom: 20px;
   left: 20px;
   margin: 0;
   opacity: 0;
-  text-shadow: black 0 0 10px;
-}
-
-.panel h3 a {
-  color: yellow;
-  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 10px black;
 }
 
 .panel.active {
-  flex: 5;
+  flex: 0 0 500px;
+  width: 500px;
+
 }
 
 .panel.active h3 {
   opacity: 1;
-  transition: opacity 0.3s ease-in 0.4s;
+  transition: opacity 0.8s ease-in 0.4s;
+  color: #fff;
 }
 
-@media (max-width: 600px) {
-  .container-gallery {
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.arrow.left {
+  left: 30px;
+}  
+
+.arrow.right {
+  right: 30px;
+}
+
+@media (max-width: 1200px) {
+  .container {
     width: 100vw;
   }
 
-  .panel:nth-of-type(4),.panel:nth-of-type(5),.panel:nth-of-type(6),.panel:nth-of-type(7),.panel:nth-of-type(8) {
-    display: none;
+  .panel {
+    flex: 0 0 30px;
+    width: 20px;
+    margin: 5px;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.7s ease, flex 0.7s ease;
   }
+
+  .panel.active {
+    flex: 0 0 400px;
+    width: 400px;
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+  .ex-cards {
+    margin: 0 15px;
+  }
+
+  .panel {
+    flex: 0 0 100%;
+    min-width: 100%;
+    margin: 2px;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.7s ease, flex 0.7s ease;
+  }
+
+  .panel.active {
+    flex: 0 0 250px;
+    width:250px;
+    }
+
 }
 /* Gallery Section End */
 
@@ -502,121 +577,32 @@ font-family: 'Muli', sans-serif;
 /* Responsive: hide nav and show icon on small screens */
 
 /* Horizontal layout for Our Animals */
-@media (max-width: 950px) {
-  .animal-section {
-    text-align: start;
-    padding: 30px 0 50px 0;
-    height: auto;
-  }
+  @media (max-width: 1000px) {
 
     .animals {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: start;
-    gap: 45px;
+      display: block;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    .animal {
+      margin: 80px 10px;
+      padding: 50px 15px;
+    }
   }
-
-  .animal-section h2 {
-    text-align: center;
-    margin: 50px 0 50px 0;
-  }
-
-  .animal {
-    margin:10px;
-    text-align: left;
-    border-radius: 18px;
-    max-width: 70%;
-    max-height: 200px;
-  }
-
-  .animal:hover {
-    background-color:  #39250A;
-    color: white;
-  }
-
-  .animal h3 {
-    margin: -30px 0 0 0;
-  }
-
-  .animal p {
-    flex: 1;
-    text-align: start;
-    padding: 0 0 10px 0;
-    margin: 15px 0;
-    font-size: 1rem;
-    line-height: 20px;
-  }
-
-  .animal {
-    --icon-size: 200px;
-    --overhang: 44px;
-  }
-
-  .animal {
-    margin: 0 0 45px 0;
-    padding-right: calc(var(--icon-size)/2 + var(--overhang) + 30px);
-  }
-
-    .animal-icon {
-    top: 50%;
-    left: auto;
-    right: calc(var(--overhang) * -1);
-    transform: translateY(-50%);
-    width: 200px;
-    height: 235px;
-    font-size: calc(var(--icon-size) * .55);
-    background: #D7BC98;
-    box-shadow:
-      0 0 0 4px #fff,
-      0 0 0 2px var(--ring-2),
-      0 10px 22px rgba(0,0,0,.16);
-  }
-
-
-}
 
 /* Horizontal layout for Our Animals */
-@media (max-width: 600px) {
+@media (max-width: 750px) {
+
+  .animals {
+    margin: 0 auto;
+  } 
 
   .animal {
-    padding: 50px 15px 40px;
-    margin: 20px 0;
+    min-width: 60%;
+    margin: 80px 0;
+    padding: 50px 15px;
   }
-
-  .animal:hover {
-    background-color:  #39250A;
-    color: white;
-  }
-
-  .animal h3 {
-    font-size: 1.5em;
-    font-weight: 900;
-    font-family: Inter;
-    margin: 20px 0 0 0;
-  }
-
-  .animal p {
-    width: 100%;
-    margin: 0 0 10px 0;
-  }
-
-  .animal-icon {
-    position: absolute;
-    top: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #D7BC98;
-    display: flex;
-    font-size: 80px;
-    align-items: center;
-    justify-content: center;
-  }
-  
 }
 /* Responsive section End */
 
