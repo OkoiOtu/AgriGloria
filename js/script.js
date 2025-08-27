@@ -17,8 +17,8 @@ menuIcon.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const navItems = document.querySelectorAll('.links a');
-  const dialog = document.getElementById('custom-dialog');
-  const closeDialog = document.getElementById('close-dialog');
+  // const dialog = document.getElementById('custom-dialog');
+  // const closeDialog = document.getElementById('close-dialog');
 
   // Set Home as active on load
   navItems.forEach(link => {
@@ -32,9 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
   navItems.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-
+      if (window.location.pathname !== '/index.html') {
+        console.log(e.target.href)
+        window.location.href = '/' + e.target.getAttribute('href');
+      }
       // Add show class for fade-in
-      dialog.classList.add('show');
+      // dialog.classList.add('show');
+
 
       // Set clicked link as active
       navItems.forEach(l => l.classList.remove('active'));
@@ -58,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Close dialog with fade-out
-  closeDialog.addEventListener('click', () => {
-    dialog.classList.remove('show');
-  });
+  // closeDialog.addEventListener('click', () => {
+  //   dialog.classList.remove('show');
+  // });
 });
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -17,7 +17,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Header Section Start */
+/* HEADER SECTION START */
 .nav {
   position: fixed;
   display: flex;
@@ -58,30 +58,102 @@ html {
   font-family: Inter;
 }
 
-.links a:hover {
+.links .cart {
+  border: 1px solid #E5AB07;
+  border-radius: 5px;
+  padding: 5px;
+  color: #E5AB07;
+  transition: all 0.3s ease-in-out;
+}
+
+.links .cart:hover {
+  border: 1px solid #ffff00;
+  border-radius: 5px;
+  color: #ffff00;
+}
+
+.links .link:hover {
   color: #f1c658;
   border-bottom: 3px solid #f1c658;
   border-radius: 5px;
 }
 
-.links a.active {
+.links .link.active {
   color: #f1c658;
   border-bottom: 3px solid #f1c658;
   border-radius: 5px;
 }
-/* Header Section End */
 
-/* Banner Section Start */
+/* Responsive Header */
+@media (max-width: 1000px) {
+  .nav {
+    padding: 10px 50px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #003C0E;
+    color: #fff;
+    position: absolute;
+    top: 70px; /* below header */
+    right: 20px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  .agri {
+    width: 70%;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .links .link {
+    padding: 5px;
+  }
+
+  .links .link:hover {
+    color: #E5AB07;
+    border-bottom: 3px solid #E5AB07;
+    border-radius: 5px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .links .cart {
+  border: 1px solid #E5AB07;
+  border-radius: 5px;
+  padding: 5px;
+  color: #E5AB07;
+  transition: all 0.3s ease-in-out;
+}
+}
+/* HEADER SECTION END */
+
+/* BANNER SECTION START */
 .banner {
   position: relative;
-  height: 100vh; /* Full screen height */
+  height: 100vh;
   display: flex;
-  justify-content: center; /* Horizontal center */
-  align-items: center; /* Vertical center */
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: white;
   overflow: hidden;
 }
+
 .banner-video {
   position: absolute;
   top: 0;
@@ -136,11 +208,11 @@ html {
 }
 
 .agri {
-  width: 50%;
+  width: 60%;
 }
 
 .banner .banner-content p {
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: inter;
   color: #f1c658;
   margin: 10px auto;
@@ -161,50 +233,82 @@ html {
   position: relative;
   z-index: 2;
 }
-/* Banner Section End */
 
 .banner-btn {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background-color: green;
-  color: white;
-  text-decoration: none;
+  padding: 14px 30px;
+  background-color: #39250A;
+  color: #BA8323;
   font-weight: bold;
   border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
-/* Banner Section End */
 
-/* Animal Setion */
+.banner-btn:hover {
+  color: #fff;
+}
+
+/* Responsive Banner */
+@media (max-width: 1000px) {
+  .agri {
+    width: 70%;
+  }
+  .banner .banner-content p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .agri {
+    width: 100%;
+  }
+
+  .banner .banner-content p {
+    font-size: 1rem;
+  }
+}
+/* BANNER SECTION END */
+
+/* OUR ANIMAL & CROPS SECTION START */
 .animal-section {
   font-family: 'Courier New', Courier, monospace;
   background-color: #D7BC98;
   overflow: hidden;
+  padding-top: 60px;
 }
 
 .animal-section h2 {
   color: #39250A;
-  font-size: 2.5em;
+  font-size: 3em;
   font-weight: 900;
   text-align: center;
-  padding: 100px 0 0 0;
+  margin: 50px 0 0 0;
+}
+
+.animal-section .small {
+  font-size: 1.3rem;
+  text-align: center;
 }
 
 .animals {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 2rem;
   padding-top: 30px;
-  margin: 100px 80px;
+  margin: 100px 40px 30px 40px; 
 }
 
 .animal {
   position: relative;
   background: #BA8323;
   border-radius: 10px;
+  margin-bottom: 90px;
   padding: 50px 15px; 
-
   text-align: center;
   width: 100%;
   box-shadow: 5px 5px 10px black;
@@ -253,7 +357,7 @@ html {
   margin: 20px 0 0 0;
 }
 
-.animal p {
+.animal-section .animals .animal p {
   flex: 1;
   margin: 10px 0;
   font-size: 1rem;
@@ -279,9 +383,35 @@ html {
   border: 2px solid #fff;
 }
 
-/* Banner Section End */
+/* Responsive Layout for Our Animals & crops */
+@media (max-width: 1000px) {
 
-/* About Us Section Start */
+  .animals {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+}
+
+@media (max-width: 700px) {
+
+  .animals {
+    padding-top: 0;
+    margin-top: 90px; 
+  }
+
+  .animals {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  } 
+
+  .animal {
+    width: 90%;
+    margin: 40px auto;
+  }
+}
+/* OUR ANIMAL & CROPS SECTION END */
+
+/* ABOUT US SECTION START */
 .aboutus {
     background-color: #4B2E16;
     color: #fff;
@@ -294,35 +424,36 @@ html {
 .aboutus h2 {
   color: #D4A76A;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 50px;
+  font-size: 3rem;
+  margin: 50px;
 }
 
 .contents {
   display: flex;
+  align-items: center;
   padding: 50px 0;
-  gap: 10px;
 }
 
 .content {
   flex: 1;
   background-color: #39250A;
   padding: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .note h3 {
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 15px;
   color: #fff;
 }
 
 .note p {
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: #dcdcdc;
-  margin-bottom: 20px; 
+  text-align: justify;
 }
 
 .cards > div {
@@ -350,33 +481,192 @@ html {
   border-radius: 5px;
 }
 
+/* Rsponsive About Us */
 @media screen and (max-width: 900px) {
+
+  .aboutus {
+    padding: 70px 10px;
+  }
   .contents {
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .cards {
     grid-template-columns: repeat(2, auto);
   }
 }
-/* About us Section End */
+/* ABOUT US SECTION END */
 
-/* Gallery Section Start */
+/* PRICING SECTION START */
+.pricing-section {
+  padding: 50px 20px;
+  background-color: #D4A76A;
+}
+
+.pricing-section h2{
+  font-size: 3em;
+  font-weight: 900;
+  text-align: center;
+  margin: 50px;
+}
+
+.pricing-section .container-pricing {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 1rem;
+}
+
+.container-pricing .unit-item .item:hover {
+  background-color: #39250A;
+}
+
+.container-pricing .unit-item .item:hover .item-name,
+.container-pricing .unit-item .item:hover .price,
+.container-pricing .unit-item .item:hover .price span {
+  color: #D7BC98;
+}
+
+.container-pricing .unit-item .item {
+  margin: 20px;
+  background-color: #BA8323;
+  border-radius: 10px;
+  padding: 15px;
+  color: #D7BC98;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.container-pricing .item-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: cover;
+  background-repeat: no-repeat;
+}
+
+.container-pricing .item .item-name {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  color: #39250A;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-pricing .item .price {
+  margin-top: 10px;
+  font-size: 2rem;
+  color: #39250A;
+  transition: all 0.3s ease-in-out;
+}
+
+.price span {
+  font-size: 1.5rem;
+  font-weight: 0;
+  color: #39250A;
+  transition: all 0.3s ease-in-out;
+}
+
+.more-product {
+  text-align: center;
+}
+
+.more-product a {
+  display: inline-block;
+  padding: 14px 30px;
+  background-color: #BA8323;
+  color: #39250A ;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.more-product a:hover {
+  background-color: #39250A;
+  color: #BA8323 ;
+}
+
+/* .basket {
+  color: #BA8323;
+  transition: all 0.2s ease-in-out;
+} */
+
+/* .basket:hover {
+  color: #f1c658;
+} */
+
+/* .quantity {
+  margin: 10px 0 0 0;
+  padding: 5px 10px;
+  font-size: 1rem;
+  color: #39250A;
+  background-color: #BA8323;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+} */
+
+.quantity-available{
+  color: #E5AB07;
+  font-weight: none;
+  font-size: 1rem;
+}
+
+/* Responsive Pricing Section */
+
+@media (max-width: 1300px) {
+  .pricing-section .container-pricing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .pricing-section .container-pricing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 630px) {
+  .pricing-section .container-pricing {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .container-pricing .item {
+    margin: 0;
+  }
+}
+
+/* PRICING SECTION END */
+
+/* GALLERY SECTION START */
 .gallery {
   font-family: 'Muli', sans-serif;
-  height: 100vh;
   margin: 0;
   background-color: #D7BC98;
   overflow: hidden;
-  
+  padding: 60px 0 60px 0;
 }
 
 .gallery h2 {
-  font-size: 2.5em;
   color: #39250A;
   text-align: center;
   padding: 50px 0;
+  font-size: 3em;
+  font-weight: 900;
 }
 
 .container-card {
@@ -409,8 +699,8 @@ html {
 }
 
 .panel {
-  flex: 0 0 50px;
-  width: 50px;
+  flex: 0 0 100px;
+  width: 100px;
   margin: 10px;
   background-color: #39250A;
   background-size: cover;
@@ -436,8 +726,8 @@ html {
 }
 
 .panel.active {
-  flex: 0 0 700px;
-  width: 700px;
+  flex: 0 0 650px;
+  width: 650px;
 
 }
 
@@ -520,88 +810,11 @@ html {
     }
 
 }
-/* Gallery Section End */
+/* GALLERY SECTION END */
 
-/* @Media Responsive section Start */
-  /* Responsive: hide nav and show icon on small screens */
-@media (max-width: 1000px) {
-  .nav {
-    padding: 10px 50px;
-  }
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #003C0E;
-    color: #fff;
-    position: absolute;
-    top: 70px; /* below header */
-    right: 20px;
-    width: 200px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-  }
 
-  .agri {
-    width: 70%;
-  }
 
-  .nav-links.show {
-    display: flex;
-  }
-
-  .links a {
-    padding: 5px;
-  }
-
-  .links a:hover {
-    color: #E5AB07;
-    border-bottom: 3px solid #E5AB07;
-    border-radius: 5px;
-  }
-
-  .menu-icon {
-    display: block;
-  }
-
-  .links {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-/* Responsive: hide nav and show icon on small screens */
-
-/* Horizontal layout for Our Animals */
-  @media (max-width: 1000px) {
-
-    .animals {
-      display: block;
-      width: 60%;
-      margin: 0 auto;
-    }
-
-    .animal {
-      margin: 80px 10px;
-      padding: 50px 15px;
-    }
-  }
-
-/* Horizontal layout for Our Animals */
-@media (max-width: 750px) {
-
-  .animals {
-    width: 90%;
-    margin: 0 auto;
-  } 
-
-  .animal {
-    min-width: 60%;
-    margin: 80px 0;
-    padding: 50px 15px;
-  }
-}
 /* Responsive section End */
 
 /* Dialog Box Start */

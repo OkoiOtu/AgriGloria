@@ -12,7 +12,7 @@
      <div id="home"></div>
     <header class="nav">
         <div class="logo">
-            <a href="#"><img src="images/Logo.png" alt="Agrigloria Farms & Holdings Logo" width="50" /></a>
+            <a href="index.html"><img src="images/Logo.png" alt="Agrigloria Farms & Holdings Logo" width="50" /></a>
         </div>
 
         <div class="menu-icon" id="menu-icon">
@@ -22,64 +22,67 @@
 
         <nav class="nav-links" id="nav-links">
             <ul class="links">
-                <li><a href="#home" data-link="home" class="active">Home</a></li>
-                <li><a href="#ouranimals" data-link="animals">Our Animals</a></li>
-                <li><a href="#about" data-link="about">About Us</a></li>
-                <li><a href="#gallery" data-link="gallery">Gallery</a></li>
-                <li><a href="#princing" data-link="pricing">Pricing</a></li>
-                <li><a href="#contact" data-link="contact">Contact Us</a></li>
+                <li><a class="link" href="#home" data-link="home">Home</a></li>
+                <li><a class="link" href="#ouranimals" data-link="animals">Our Animals</a></li>
+                <li><a class="link" href="#about" data-link="about">About Us</a></li>
+                <li><a class="link" href="#pricing" data-link="pricing">Products</a></li>
+                <li><a class="link" href="#gallery" data-link="gallery">Gallery</a></li>
+                <li><a class="link" href="#contact" data-link="contact">Contact Us</a></li>
+                <li><a class="cart" href="#" data-link="contact">Basket <span>(0)</span></a></li>
             </ul>
         </nav>
     </header>
-    
     <!-- Header Ends -->
 
     <!-- Banner Section Start -->
-    <section class="banner">        <div class="video-slider">
+    <section class="banner">
+        <div class="video-slider">
             <video class="video-slide active" autoplay muted playsinline>
-            <source src="videos/Banner1.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/Banner1.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
             <video class="video-slide" muted playsinline>
-            <source src="videos/Banner2.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/Banner2.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
             <video class="video-slide" muted playsinline>
-            <source src="videos/banner3.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/banner3.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
             <video class="video-slide" muted playsinline>
-            <source src="videos/banner4.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/banner4.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
             <video class="video-slide" muted playsinline>
-            <source src="videos/banner5.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/banner5.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
             <video class="video-slide" muted playsinline>
-            <source src="videos/banner6.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/banner6.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
             <video class="video-slide" muted playsinline>
-            <source src="videos/banner7.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/banner7.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
             <video class="video-slide" muted playsinline>
-            <source src="videos/banner8.webm" type="video/webm" />
-            Your browser does not support the video tag.
+                <source src="videos/banner8.webm" type="video/webm" />
+                Your browser does not support the video tag.
             </video>
         </div>
 
         <div class="banner-content">
             <div><img class="agri" src="images/AgriGloria.png" alt="Agrigloria"></div>
             <p>Committed to raising healthy livestock for a stronger, sustainable future.</p>
+            <!-- <button id="about" class="banner-btn">About Us</button> -->
         </div>
     </section>
     <!-- banner Section End -->
 
     <!-- About Our Animals Section Start -->
     <section class="animal-section" id="ouranimals">
-        <h2>Our Animals</h2>
+        <h2>Our Products</h2>
+        <p class="small">Below are your list of products</p>
         <div class="animals">
 
             <div class="animal">
@@ -99,6 +102,27 @@
             <div class=" animal">
                 <div class="animal-icon">🐌</div>
                 <h3>Snails</h3>
+                <p>Our snails are raised in carefully maintained, clean, and natural environments that promote steady and healthy growth. By replicating their natural habitat, we ensure they thrive under optimal conditions, free from unnecessary stress.</p>
+                <div class="more">More...</div>
+            </div>
+
+            <div class="animal">
+                <div class="animal-icon">🦈</div>
+                <h3>Fishes</h3>
+                <p>Our chickens are raised in open, stress-free coops where they enjoy plenty of space, fresh air, and natural feed. We do not compromise on their health and welfare, ensuring that they grow strong and healthy in the most sustainable way possible.</p>
+                <div class="more">More...</div>
+            </div>
+
+            <div class="animal">
+                <div class="animal-icon">🐐</div>
+                <h3>Goats</h3>
+                <p>Our pigs are nurtured with carefully balanced, high-quality feed and given the space to roam freely, promoting their natural growth and wellbeing. By prioritizing their health, comfort, and environment, we ensure they develop strong and healthy, free from unnecessary stress.</p>
+                <div class="more">More...</div>
+            </div>
+
+            <div class=" animal">
+                <div class="animal-icon">🌾</div>
+                <h3>Crops</h3>
                 <p>Our snails are raised in carefully maintained, clean, and natural environments that promote steady and healthy growth. By replicating their natural habitat, we ensure they thrive under optimal conditions, free from unnecessary stress.</p>
                 <div class="more">More...</div>
             </div>
@@ -134,20 +158,131 @@
     </section>
     <!-- About About Us Section Ends -->
 
+    <section class="pricing-section" id="pricing">
+        <h2>Products</h2>
+
+        <div class="container-pricing">
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item1.jpg);"></div>
+                    <div class="item-name">
+                        <h4>Life Chicken</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦25,000 <span>/one</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item2.jpg);"></div>
+                    <div class="item-name">
+                        <h4>Life Pig</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦60,000 <span>/one</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+            
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item3.jpg);"></div>
+                    <div class="item-name">
+                        <h4>Raw Full Chicken</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦35,000 <span>/one</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+            
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item4.jpg);"></div>
+                    <div class="item-name">
+                        <h4>One Month Old Chick</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦3,000 <span>/one</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item5.jpg);"></div>
+                    <div class="item-name">
+                        <h4>Snail</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦3,500 <span>/one</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item6.jpg);"></div>
+                    <div class="item-name">
+                        <h4>Roaster</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦15,500 <span>/one</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item7.jpg);"></div>
+                    <div class="item-name">
+                        <h4>Hen</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦13,000 <span>/one</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+
+            <a class="unit-item" href="">
+                <div class="item">
+                    <div class="item-image" style="background-image: url(images/item8.jpg);"></div>
+                    <div class="item-name">
+                        <h4>Raw Cassava</h4>
+                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                    </div>
+                    <h3 class="price" >₦60,000 <span>/Acre</span></h3>
+                    <!-- <label for="quantity">Quantity</label>
+                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
+                    <span class="quantity-available">Out of stock</span>
+                </div>
+            </a>
+        </div>
+        <div class="more-product"><a href="pricing.html">More...</a></div>
+    </section>
+
     <!-- Gallery Section Start -->
     <section class="gallery" id="gallery">
         <h2>Gallery</h2>
         <div class="container-card">
             <button class="arrow left">◀</button>
             <div class="ex-cards">
-
-                <div class="panel active" style="background-image: url(gallery/A_Brown_Chicken_in_Close_up_Shot.jpg);">
-                    <h3>A Brown Chicken in Close up Shot</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Assorted_Farm_Fresh_Eggs_Close_Up.jpg);">
-                    <h3>Assorted Farm Fresh Eggs Close Up</h3>
-                </div>
 
                 <div class="panel" style="background-image: url(gallery/Black_and_White_Pig_Feeding_Her_Piglets.jpg);">
                     <h3>Black and White Pig Feeding Her Piglets</h3>
@@ -157,27 +292,24 @@
                     <h3>Black Pig at Fence</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Brown_Egg_on_Black_Surface.jpg);">
-                    <h3>Brown Egg on Black Surface</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Brown_Eggs.jpg);">
-                    <h3>Brown Eggs</h3>
-                </div>
-
                 <div class="panel" style="background-image: url(gallery/Brown_Eggs_on_Brown_Wooden_Bowl_on_Beige_Knit_Textile.jpg);">
                     <h3>Brown Eggs on Brown Wooden Bowl on Beige Knit Textile</h3>
                 </div>
+
                 <div class="panel" style="background-image: url(gallery/Brown_Hen_Near_White_Egg_on_Nest.jpg);">
                     <h3>Brown Hen Near White Egg on Nest</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Brown_Snail.jpg);">
-                    <h3>Brown Snail</h3>
+                <div class="panel" style="background-image: url(gallery/Bunch_of_Grey_Fish.jpg);">
+                    <h3>Bunch of Grey Fish</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Brown_Snail_on_Green_Grass.jpg);">
-                    <h3>Brown Snail on Green Grass</h3>
+                <div class="panel" style="background-image: url(gallery/Cassava_Crops_in_Close_Up_Photography.jpg);">
+                    <h3>Cassava Crops in Close Up Photography</h3>
+                </div>
+
+                <div class="panel" style="background-image: url(gallery/Chickens_in_a_Coop.jpg);">
+                    <h3>Chickens in a Coop</h3>
                 </div>
 
                 <div class="panel" style="background-image: url(gallery/Brown_Snail_on_Tree_Trunk.jpg);">
@@ -188,9 +320,6 @@
                     <h3>Brown Snails on Green Plant</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Chickens_in_a_Coop.jpg);">
-                    <h3>Chickens in a Coop</h3>
-                </div>
 
                 <div class="panel" style="background-image: url(gallery/Chickens_in_an_Ecuadorian_Henhouse.jpg);">
                     <h3>Chickens in an Ecuadorian Henhouse</h3>
@@ -199,130 +328,76 @@
                 <div class="panel" style="background-image: url(gallery/Chickens_in_Barn_with_Rustic_Atmosphere.jpg);">
                     <h3>Chickens in Barn with Rustic Atmosphere</h3>
                 </div>
+
                 <div class="panel" style="background-image: url(gallery/Close_Photo_of_Pig.jpg);">
                     <h3>Close Photo of Pig</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Close_up_of_Chickens.jpg);">
-                    <h3>Close up of Chickens</h3>
+                <div class="panel" style="background-image: url(gallery/Close_Up_Photo_of_a_Goat_Head.jpg);">
+                    <h3>Close Up Photo of a Goat Head</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Close_up_of_Piglets_in_a_Farm_Pen.jpg);">
-                    <h3>Close up of Piglets in a Farm Pen</h3>
+                <div class="panel" style="background-image: url(gallery/Fresh_Ginger_Root_Close_up_in_Market_Setting.jpg);">
+                    <h3>Fresh Ginger Root Close up in Market Setting</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Close_up_of_Snail.jpg);">
-                    <h3>Close up of Snail</h3>
+                <div class="panel" style="background-image: url(gallery/Hot_Pepper.jpg);">
+                    <h3>Hot Pepper</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Close_up_of_Snail_on_Ground.jpg);">
-                    <h3>Close up of Snail on Ground</h3>
+                <div class="panel" style="background-image: url(gallery/Pile_of_Fish.jpg);">
+                    <h3>Pile of Fish</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Close_up_of_White_Chickens_in_Ecuador_Farm.jpg);">
-                    <h3>Close up of White Chickens in Ecuador Farm</h3>
+                <div class="panel" style="background-image: url(gallery/Ginger_on_Gray_Surface.jpg);">
+                    <h3>Ginger on Gray Surface</h3>
                 </div>
 
                 <div class="panel" style="background-image: url(gallery/Close_Up_Photo_of_a_Snail.jpg);">
                     <h3>Close Up Shot of a Snail</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Close_up_Shot.jpg);">
-                    <h3>Close up Shot</h3>
+                <div class="panel" style="background-image: url(gallery/Pile_of_Fresh_Ginger_in_Close_Up_Photography.jpg);">
+                    <h3>Pile of Fresh Ginger in Close Up_Photography</h3>
                 </div>
                 <div class="panel" style="background-image: url(gallery/Close_Up_Shot_of_a_Broiler_Chicken.jpg);">
                     <h3>Close Up Shot of a Broiler Chicken</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Close_Up_Shot_of_a_Snail.jpg);">
-                    <h3>Close Up Shot of a Snail</h3>
+                <div class="panel" style="background-image: url(gallery/Red_and_yellow_chillies.jpg);">
+                    <h3>Red and Yellow Chillies</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Domestic_Pigs_in_a_Bavarian_Farm_Pigsty.jpg);">
-                    <h3>Domestic Pigs in a Bavarian Farm Pigsty</h3>
+                <div class="panel" style="background-image: url(gallery/Selective_Focus_Beige_and_Brown_Goat.jpg);">
+                    <h3>Selective Focus Beige and Brown Goat</h3>
                 </div>
 
                 <div class="panel" style="background-image: url(gallery/Eggs_in_Bowl.jpg);">
                     <h3>Eggs in Bowl</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Flock_of_Hens_on_Green_Field.jpg);">
-                    <h3>Flock of Hens on Green Field</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Hens_and_Roosters_on_a_Farm.jpg);">
-                    <h3>Hens and Roosters on a Farm</h3>
-                </div>
-
                 <div class="panel" style="background-image: url(gallery/Organic_brown_chicken_eggs_on_table_in_daylight.jpg);">
                     <h3>Organic brown chicken eggs on table in daylight</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Pig_Face.jpg);">
-                    <h3>Pig Face</h3>
                 </div>
 
                 <div class="panel" style="background-image: url(gallery/Piglets_at_Farm.jpg);">
                     <h3>Piglets at Farm</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Piglets_Lying_on_their_Mother.jpg);">
-                    <h3>Piglets Lying on their Mother</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Pigs_behind_Fence.jpg);">
-                    <h3>Pigs behind Fence</h3>
-                </div>
-
                 <div class="panel" style="background-image: url(gallery/Groups_of_Pigs_in_Pigpen.jpg);">
                     <h3>Groups of Pigs in Pigpen</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Selective_Focus_Photo_of_a_Black_Pig_Lying_on_the_Ground.jpg);">
-                    <h3>Selective Focus Photo of a Black Pig Lying on the Ground</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Selective_Focus_Photo_of_Three_Eggs_on_Tray.jpg);">
-                    <h3>Selective Focus Photo of Three Eggs on Tray</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Set_of_white_and_brown_chicken_eggs_in_container.jpg);">
-                    <h3>Set of white and brown chicken eggs in container</h3>
-                </div>
-                <div class="panel" style="background-image: url(gallery/Shallow_Focus_Photography_of_Brown_and_White_Snail_on_Moss.jpg);">
-                    <h3>Shallow Focus Photography of Brown and White Snail on Moss</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Shallow_Focus_Photography_of_Yellow_Chick.jpg);">
-                    <h3>Shallow Focus Photography of Yellow Chick</h3>
                 </div>
 
                 <div class="panel" style="background-image: url(gallery/Six_Brown_Eggs_With_Tray.jpg);">
                     <h3>Six Brown Eggs With Tray</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Sleeping_Pig_Relaxing_Against_Wooden_Fence.jpg);">
-                    <h3>Sleeping Pig Relaxing Against Wooden Fence</h3>
-                </div>
-
                 <div class="panel" style="background-image: url(gallery/Snail_in_Grass.jpg);">
                     <h3>Snail in Grass</h3>
                 </div>
 
-                <div class="panel" style="background-image: url(gallery/Snail_no_Lush_Mossy_Log_in_Forest_Setting.jpg);">
-                    <h3>Snail no Lush Mossy Log in Forest Setting</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Snail_on_Soil.jpg);">
-                    <h3>Snail on Soil</h3>
-                </div>
-
                 <div class="panel" style="background-image: url(gallery/Sow_and_Piglets_Resting_in_Barn.jpg);">
                     <h3>Sow and Piglets Resting in Barn</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Spotted_pig_grazing_on_grass_in_daytime.jpg);">
-                    <h3>Spotted pig grazing on grass in daytime</h3>
                 </div>
 
                 <div class="panel" style="background-image: url(gallery/Two_Brown_Hen_and_One_Red_Rooster.jpg);">
@@ -336,22 +411,18 @@
                 <div class="panel" style="background-image: url(gallery/Variety_of_Farm_Fresh_Eggs_in_Natural_Colors.jpg);">
                     <h3>Variety of Farm Fresh Eggs in Natural Colors</h3>
                 </div>
-
-                <div class="panel" style="background-image: url(gallery/White_Pig.jpg);">
-                    <h3>White Pig</h3>
-                </div>
         
             </div>
             <button class="arrow right">▶</button>
         </div>
     </section> 
 
-    <div class="dialog-overlay" id="custom-dialog">
+    <!-- <div class="dialog-overlay" id="custom-dialog">
         <div class="dialog-box">
             <p>Welcome to AgriGloria Farms & Holdings. This site is still under development.</p>
             <button id="close-dialog">OK</button>
         </div>
-    </div>
+    </div> -->
 
 
 
