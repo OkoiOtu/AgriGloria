@@ -1,63 +1,64 @@
-// nav.js
+// =====================
+// Toggle Mobile Nav
+// =====================
+const menuIcon = document.getElementById('menu-icon');
+const navLinks = document.getElementById('nav-links');
+const menuImg = document.getElementById('menu-icon-img');
+let isMenuOpen = false;
 
+if (menuIcon && navLinks && menuImg) {
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    isMenuOpen = !isMenuOpen;
+
+    // Change icon
+    menuImg.src = isMenuOpen ? 'images/close.png' : 'images/Tray_Icon.png';
+    menuImg.alt = isMenuOpen ? 'Close Menu' : 'Open Menu';
+  });
+}
+
+// =====================
+// Active Link Handling
+// =====================
 document.addEventListener("DOMContentLoaded", () => {
   const navItems = document.querySelectorAll(".links a");
-  const isIndex = window.location.pathname.includes("index.html") || window.location.pathname === "/";
 
-  if (!isIndex) {
-    // If not on index.html (e.g. pricing.html), set Pricing as active
-    navItems.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes("pricing.html")) {
-        link.classList.add("active");
-      }
-    });
-    return; // stop here, no scroll spy needed
-  }
+  // Check current page
+  const path = window.location.pathname;
+  const isPricingPage = path.includes("pricing.html");
 
-  // === SCROLL SPY for index.html ===
-  const sections = document.querySelectorAll("section[id]");
-  const setActiveLink = () => {
-    let scrollY = window.scrollY + 200;
-    let activeSet = false;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const id = section.getAttribute("id");
-
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        navItems.forEach(link => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${id}`) {
-            link.classList.add("active");
-          }
-        });
-        activeSet = true;
-      }
-    });
-
-    // If at very top, force Home active
-    if (!activeSet && window.scrollY < 100) {
-      navItems.forEach(link => link.classList.remove("active"));
-      document.querySelector('.links a[href="#home"]').classList.add("active");
-    }
-  };
-
-  window.addEventListener("scroll", setActiveLink);
-  setActiveLink();
-});
-
-
-// Ensure correct active link on standalone pages like pricing.html
-document.addEventListener("DOMContentLoaded", () => {
-  const navItems = document.querySelectorAll(".links a");
-  const currentPath = window.location.pathname;
-
-  // If on pricing.html, set Products active
-  if (currentPath.includes("pricing.html")) {
+  if (isPricingPage) {
+    // Always highlight Pricing on pricing.html
     navItems.forEach(l => l.classList.remove("active"));
-    const pricingLink = document.querySelector('.links a[href="pricing.html"]');
+    const pricingLink = Array.from(navItems).find(link =>
+      link.getAttribute("href").includes("pricing.html")
+    );
     if (pricingLink) pricingLink.classList.add("active");
+  } else {
+    // Scroll Spy for index.html
+    const sections = document.querySelectorAll("section[id]");
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    function setActiveLink() {
+      let current = "home"; // default to home
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - headerHeight - 50;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navItems.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}` || link.getAttribute("href") === `index.html#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    setActiveLink();
+    window.addEventListener("scroll", setActiveLink);
   }
 });
