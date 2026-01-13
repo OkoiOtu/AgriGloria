@@ -4,431 +4,884 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Agrigloria Farms & Holdings</title>
 </head>
 <body>
 
     <!-- Header Starts -->
-     <div id="home"></div>
-    <header class="nav">
-        <div class="logo">
-            <a href="index.html"><img src="images/Logo.png" alt="Agrigloria Farms & Holdings Logo" width="50" /></a>
+    <div id="home"></div>
+    <header class="nav-header">
+        <div class="top-bar">
+            <div class="address-bar">
+                <span><i class="material-icons">location_on</i> 02 Ayaebam Village, Akamkpa, Cross River, Nigeria.</span>
+                <a href=""><span><i class="material-icons">email</i> info@agrigloria.com</span></a>
+                <span><i class="material-icons">access_time</i> Mon-Sat: 8:00AM - 6:00PM</span>
+            </div>
+            <div class="social-media-bar">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-tiktok"></i></a>
+                <div class="slash">|</div>
+                <a href=""><i class="fas fa-user"></i> Login</a>
+            </div>
         </div>
-
-        <div class="menu-icon" id="menu-icon">
-            <img src="images/Tray_Icon.png" alt="Menu" id="menu-icon-img" width="30" />
-            <img src="images/close.png" alt="close menu" id="close-icon-img" width="30" style="display: none;" />
+        <div class="sticky">
+            <div class="nav-bar">
+                <div class="logo">
+                    <a href="index.html"><img src="images/AgriGloria_logo.png" alt="Agrigloria Farms & Holdings Logo" width="120" /></a>
+                </div>
+                <div class="nav-components">
+                    <div class="nav">      
+                        <nav class="nav-links" id="nav-links">
+                            <ul class="links">
+                                <li><a class="link" href="#home" data-link="home">Home</a></li>
+                                <li><a class="link" href="#ouranimals" data-link="animals">Our Animals</a></li>
+                                <li><a class="link" href="#about" data-link="about">About Us</a></li>
+                                <li><a class="link" href="#pricing" data-link="pricing">Products</a></li>
+                                <li><a class="link" href="#gallery" data-link="gallery">Gallery</a></li>
+                                <li><a class="link" href="#contact" data-link="contact">Contact Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+    
+                    <div class="questions">
+                        <span><i class="material-icons">phone</i></span>
+                        <div class="question">
+                            <p>Have Questions?</p>
+                            <a href="">+234 803 123 4567</a>
+                        </div>
+                    </div>
+    
+                    <form class="search">
+                        <input class="searcher" type="text" placeholder="Search..." />
+    
+                        <button type="button" class="search-icon">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
+    
+                    <div class="cart">
+                        <a href=""><i class="material-icons">shopping_cart<span>(0)</span></i></a>
+                    </div>
+    
+                    <div class="menu-icon" id="menu-icon">
+                        <i class="material-icons" id="menu-icon-img">menu</i>
+                        <i class="material-icons" id="close-icon-img" style="display: none;">close</i>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <nav class="nav-links" id="nav-links">
-            <ul class="links">
-                <li><a class="link " href="#home" data-link="home">Home</a></li>
-                <li><a class="link" href="#ouranimals" data-link="animals">Our Animals</a></li>
-                <li><a class="link" href="#about" data-link="about">About Us</a></li>
-                <li><a class="link" href="#pricing" data-link="pricing">Products</a></li>
-                <li><a class="link" href="#gallery" data-link="gallery">Gallery</a></li>
-                <li><a class="link" href="#contact" data-link="contact">Contact Us</a></li>
-                <li><a class="cart" href="" data-link="contact">Basket <span>(0)</span></a></li>
-            </ul>
-        </nav>
     </header>
+    
     <!-- Header Ends -->
 
     <!-- Banner Section Start -->
     <section class="banner">
         <div class="video-slider">
-            <video class="video-slide active" autoplay muted playsinline>
-                <source src="videos/Banner1.webm" type="video/webm" />
-                Your browser does not support the video tag.
-            </video>
-            <video class="video-slide" muted playsinline>
-                <source src="videos/Banner2.webm" type="video/webm" />
-                Your browser does not support the video tag.
-            </video>
-            <video class="video-slide" muted playsinline>
-            <source src="videos/Banner3.webm" type="video/webm" />
-            Your browser does not support the video tag.
-            </video>
-            <video class="video-slide" muted playsinline>
-            <source src="videos/Banner4.webm" type="video/webm" />
-            Your browser does not support the video tag.
-            </video>
-            <video class="video-slide" muted playsinline>
-            <source src="videos/Banner5.webm" type="video/webm" />
-            Your browser does not support the video tag.
-            </video>
-            <video class="video-slide" muted playsinline>
-            <source src="videos/Banner6.webm" type="video/webm" />
-            Your browser does not support the video tag.
-            </video>
-            <video class="video-slide" muted playsinline>
-            <source src="videos/Banner7.webm" type="video/webm" />
-            Your browser does not support the video tag.
-            </video>
-            <video class="video-slide" muted playsinline>
-            <source src="videos/Banner8.webm" type="video/webm" />
-            Your browser does not support the video tag.
-            </video>
+            <!-- Video 1 (no quote needed here anymore) -->
+            <div class="video-slide active">
+                <video autoplay muted playsinline>
+                    <source src="videos/Banner1.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <!-- Video 2 -->
+            <div class="video-slide">
+                <video muted playsinline>
+                    <source src="videos/Banner2.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <!-- Continue for other videos (remove h1 from each) -->
+            <div class="video-slide">
+                <video muted playsinline>
+                    <source src="videos/Banner3.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <!-- Add remaining videos... -->
         </div>
 
         <div class="banner-content">
-            <div><img class="agri" src="images/AgriGloria.png" alt="Agrigloria"></div>
-            <p>Committed to raising healthy livestock for a stronger, sustainable future.</p>
-            <!-- <button id="about" class="banner-btn">About Us</button> -->
+            <div class="content">
+                <div><img class="agri" src="images/AgriGloria.png" alt="Agrigloria" width="600"></div>
+                <!-- The h1 will be inserted here by JavaScript -->
+                <a href="#products" class="banner-btn">View our Products</a>
+            </div>
         </div>
     </section>
     <!-- banner Section End -->
 
-    <!-- About Our Animals Section Start -->
-    <section class="animal-section" id="ouranimals">
-        <h2>Our Products</h2>
-        <p class="small">Below are your list of products</p>
-        <div class="animals">
-
-            <div class="animal">
-                <div class="animal-icon">🐓</div>
-                <h3>Chickens</h3>
-                <p>Our chickens are raised in open, stress-free coops where they enjoy plenty of space, fresh air, and natural feed. We do not compromise on their health and welfare, ensuring that they grow strong and healthy in the most sustainable way possible.</p>
-                <div class="more">More...</div>
+    <!-- Our Animals Section Start -->
+    <section id="our-animals" class="animals-section">
+        <div class="section-header">
+            <div class="logo-container">
+                <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo" class="farm-logo" width="130">
             </div>
-
-            <div class="animal">
-                <div class="animal-icon">🐖</div>
-                <h3>Pigs</h3>
-                <p>Our pigs are nurtured with carefully balanced, high-quality feed and given the space to roam freely, promoting their natural growth and wellbeing. By prioritizing their health, comfort, and environment, we ensure they develop strong and healthy, free from unnecessary stress.</p>
-                <div class="more">More...</div>
-            </div>
-
-            <div class=" animal">
-                <div class="animal-icon">🐌</div>
-                <h3>Snails</h3>
-                <p>Our snails are raised in carefully maintained, clean, and natural environments that promote steady and healthy growth. By replicating their natural habitat, we ensure they thrive under optimal conditions, free from unnecessary stress.</p>
-                <div class="more">More...</div>
-            </div>
-
-            <div class="animal">
-                <div class="animal-icon">🦈</div>
-                <h3>Fishes</h3>
-                <p>Our fishes are cultivated in clean, well-maintained ponds that mirror natural aquatic conditions. With fresh water, balanced nutrition, and regular monitoring, they grow strong and healthy. We ensure they thrive in stress-free environments, producing fresh, high-quality fish for your table.</p>
-                <div class="more">More...</div>
-            </div>
-
-            <div class="animal">
-                <div class="animal-icon">🐐</div>
-                <h3>Goats</h3>
-                <p>Our goats are raised in open, natural pastures where they graze freely on nutritious feed and forage. With plenty of space, fresh air, and careful attention to their wellbeing, they grow hardy and healthy. This sustainable approach ensures quality meat and milk while preserving animal welfare.</p>
-                <div class="more">More...</div>
-            </div>
-
-            <div class=" animal">
-                <div class="animal-icon">🌾</div>
-                <h3>Crops</h3>
-                <span>(Cassava, Ginger, Garlic, Fresh Pepper, Vegetables)</span>
-                <p>Our crops are cultivated with care on fertile land, using sustainable farming practices that enrich the soil and protect the environment. From cassava and ginger to garlic, peppers, and fresh vegetables, we nurture every plant naturally, ensuring they are wholesome, chemical-safe, and packed with flavor and nutrition.</p>
-                <div class="more">More...</div>
-            </div>
-
+            <h2 class="section-title">Our Premium Livestock</h2>
+            <p class="section-subtitle">Healthy, well-cared animals raised with sustainable practices</p>
         </div>
-    </section>
-    <!-- About Our Animals Section End -->
-
-    <!-- About About Us Section Start -->
-    <section class="aboutus" id="about">
-        <h2>About Us</h2>
-        <div class="contents">
-            <div class="content">
-                <article class="note">
-                    <h3>AgriGloria Farms & Holdings</h3>
-                    <p>Naturally Raised: Our chickens grow in open, stress-free coops, ensuring freshness, flavour, and quality in every bit. AgriGloria Farms & Holdings is a forward-thinking agricultural enterprise committed to providing high-quality livestock and farm products to meet the growingdemand for healthy and sustainable food. Founded with passion for farming excellence and community development, we specialize in the rearing of pigs, chickens, and snails, and we also supply farms-fresh eggs.</p>
-
-                    <p>Our operations are built on the values of integrity, quality, and sustainability. Every animal in our care is raised in a clean, well-managed environment that promotes healthy growth and minimizes stress. We prioritize the use of proper feeding techniques, modern farming practices, and ethical standards to ensure that our livestock and products meet the highest quality standards.</p>
-                </article>
-            </div>
-            <div class="cards">
-                <div><img src="images/card1.jpg" width="200" alt=""></div>
-                <div><img src="images/card2.jpg" width="200" alt=""></div>
-                <div><img src="images/card3.jpg" width="200" alt=""></div>
-                <div><img src="images/card4.jpg" width="200" alt=""></div>
-                <div><img src="images/card5.jpg" width="200" alt=""></div>
-                <div><img src="images/card6.jpg" width="200" alt=""></div>
-                <div><img src="images/card7.jpg" width="200" alt=""></div>
-                <div><img src="images/card8.jpg" width="200" alt=""></div>
-                <div><img src="images/card9.jpg" width="200" alt=""></div>
-            </div>
-        </div>
-    </section>
-    <!-- About About Us Section Ends -->
-
-     <!-- Pricing Section -->
-
-    <section class="pricing-section" id="pricing">
-        <h2>Products</h2>
-
-        <div class="container-pricing">
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item1.jpg);"></div>
-                    <div class="item-name">
-                        <h4>Life Chicken</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
-                    </div>
-                    <h3 class="price" >₦25,000 <span>/one</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
+        
+        <div class="animals-container">
+            <!-- Layer Chickens -->
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="https://media.istockphoto.com/id/1224822987/photo/egg-production-and-chick-production-laying-hens.webp?a=1&b=1&s=612x612&w=0&k=20&c=bVKLqqF16RSg4w_TZaRxNj8nouWZXpKLXtmyT2NMuGs=" alt="Layer Chickens" loading="lazy">
+                    <div class="animal-badge">Egg Production</div>
                 </div>
-            </a>
-
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item2.jpg);"></div>
-                    <div class="item-name">
-                        <h4>Life Pig</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
+                <div class="animal-content">
+                    <h3 class="animal-name">Layer Chickens</h3>
+                    <p class="animal-description">
+                        High-quality laying hens producing fresh, nutritious eggs daily. 
+                        Raised in spacious, hygienic coops with optimal conditions.
+                    </p>
+                    <ul class="animal-features">
+                        <li><i class="fas fa-check-circle"></i> High egg yield</li>
+                        <li><i class="fas fa-check-circle"></i> Antibiotic-free</li>
+                        <li><i class="fas fa-check-circle"></i> Free-range options</li>
+                    </ul>
+                    <div class="animal-cta">
+                        <a href="#contact" class="btn-inquire">Inquire Now</a>
+                        <a href="#gallery" class="btn-gallery">View Gallery</a>
                     </div>
-                    <h3 class="price" >₦60,000 <span>/one</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
                 </div>
-            </a>
+            </div>
             
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item3.jpg);"></div>
-                    <div class="item-name">
-                        <h4>Raw Full Chicken</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
-                    </div>
-                    <h3 class="price" >₦35,000 <span>/one</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
+            <!-- Pigs -->
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="https://plus.unsplash.com/premium_photo-1661964177355-d2554306923e?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pigs" loading="lazy">
+                    <div class="animal-badge">Pork Production</div>
                 </div>
-            </a>
+                <div class="animal-content">
+                    <h3 class="animal-name">Pigs</h3>
+                    <p class="animal-description">
+                        Quality pig breeds raised for premium pork. Following ethical 
+                        farming practices with proper nutrition and care.
+                    </p>
+                    <ul class="animal-features">
+                        <li><i class="fas fa-check-circle"></i> Various breeds available</li>
+                        <li><i class="fas fa-check-circle"></i> Disease-resistant stock</li>
+                        <li><i class="fas fa-check-circle"></i> Bulk purchase options</li>
+                    </ul>
+                    <div class="animal-cta">
+                        <a href="#contact" class="btn-inquire">Inquire Now</a>
+                        <a href="#gallery" class="btn-gallery">View Gallery</a>
+                    </div>
+                </div>
+            </div>
             
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item4.jpg);"></div>
-                    <div class="item-name">
-                        <h4>One Month Old Chick</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
-                    </div>
-                    <h3 class="price" >₦3,000 <span>/one</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
+            <!-- Snails -->
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="https://images.unsplash.com/photo-1680894262593-f7b8b7544984?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Snails" loading="lazy">
+                    <div class="animal-badge">Heliculture</div>
                 </div>
-            </a>
+                <div class="animal-content">
+                    <h3 class="animal-name">Snails</h3>
+                    <p class="animal-description">
+                        Premium edible snails (Heliculture) raised in controlled environments. 
+                        A nutritious and sustainable protein source.
+                    </p>
+                    <ul class="animal-features">
+                        <li><i class="fas fa-check-circle"></i> High protein content</li>
+                        <li><i class="fas fa-check-circle"></i> Low cholesterol</li>
+                        <li><i class="fas fa-check-circle"></i> Export quality</li>
+                    </ul>
+                    <div class="animal-cta">
+                        <a href="#contact" class="btn-inquire">Inquire Now</a>
+                        <a href="#gallery" class="btn-gallery">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fishes -->
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="https://t4.ftcdn.net/jpg/04/23/11/35/240_F_423113544_vfNZpfjKOSOB86sLQZJ1rBoZuosQNAn9.jpg" alt="Fishes" loading="lazy">
+                    <div class="animal-badge">Aquaculture</div>
+                </div>
+                <div class="animal-content">
+                    <h3 class="animal-name">Fishes</h3>
+                    <p class="animal-description">
+                        Freshwater fish farming with species like Catfish and Tilapia. 
+                        Clean water systems ensuring healthy growth and quality.
+                    </p>
+                    <ul class="animal-features">
+                        <li><i class="fas fa-check-circle"></i> Multiple species</li>
+                        <li><i class="fas fa-check-circle"></i> Live fish delivery</li>
+                        <li><i class="fas fa-check-circle"></i> Processing available</li>
+                    </ul>
+                    <div class="animal-cta">
+                        <a href="#contact" class="btn-inquire">Inquire Now</a>
+                        <a href="#gallery" class="btn-gallery">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Goats -->
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="https://images.unsplash.com/photo-1593750187970-84858a2aaf5e?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Goats" loading="lazy">
+                    <div class="animal-badge">Dairy & Meat</div>
+                </div>
+                <div class="animal-content">
+                    <h3 class="animal-name">Goats</h3>
+                    <p class="animal-description">
+                        Healthy goats for both meat and dairy production. Raised on natural 
+                        forage with proper veterinary care and nutrition.
+                    </p>
+                    <ul class="animal-features">
+                        <li><i class="fas fa-check-circle"></i> Dual-purpose breeds</li>
+                        <li><i class="fas fa-check-circle"></i> Healthy breeding stock</li>
+                        <li><i class="fas fa-check-circle"></i> Wholesale available</li>
+                    </ul>
+                    <div class="animal-cta">
+                        <a href="#contact" class="btn-inquire">Inquire Now</a>
+                        <a href="#gallery" class="btn-gallery">View Gallery</a>
+                    </div>
+                </div>
+            </div>
 
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item5.jpg);"></div>
-                    <div class="item-name">
-                        <h4>Snail</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
-                    </div>
-                    <h3 class="price" >₦3,500 <span>/one</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
+            <!-- Broiler Chickens -->
+            <div class="animal-card">
+                <div class="animal-image">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1ywLKAyVVMYS9FyuROQObh8MwK7v219acCTbaKbcBImtHnXA84KXM6cXt6YhWuxBjnrw18hWpWrD646xeRYDKDDApL1SM0onkor5fxYD3FTZVt1Sicg8s53wB1pOdo4yVg11ji_uwZd0EzOY71yRiLlvptDGTb6WYeCphAp_mDT7zh_m_bMHKHeS3/s600/Broiler%20Poultry%20Farming.jpg" alt="Broiler Chickens" loading="lazy">
+                    <div class="animal-badge">Meat Production</div>
                 </div>
-            </a>
+                <div class="animal-content">
+                    <h3 class="animal-name">Broiler Chickens</h3>
+                    <p class="animal-description">
+                        Premium quality meat chickens raised for tender, flavorful poultry. 
+                        Grown with optimal nutrition and care for healthy development.
+                    </p>
+                    <ul class="animal-features">
+                        <li><i class="fas fa-check-circle"></i> Fast-growing breeds</li>
+                        <li><i class="fas fa-check-circle"></i> Tender, juicy meat</li>
+                        <li><i class="fas fa-check-circle"></i> Antibiotic-free rearing</li>
+                    </ul>
+                    <div class="animal-cta">
+                        <a href="#contact" class="btn-inquire">Inquire Now</a>
+                        <a href="#gallery" class="btn-gallery">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item6.jpg);"></div>
-                    <div class="item-name">
-                        <h4>Roaster</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
-                    </div>
-                    <h3 class="price" >₦15,500 <span>/one</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
-                </div>
-            </a>
-
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item7.jpg);"></div>
-                    <div class="item-name">
-                        <h4>Hen</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
-                    </div>
-                    <h3 class="price" >₦13,000 <span>/one</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
-                </div>
-            </a>
-
-            <a class="unit-item" href="">
-                <div class="item">
-                    <div class="item-image" style="background-image: url(images/item8.jpg);"></div>
-                    <div class="item-name">
-                        <h4>Raw Cassava</h4>
-                        <!-- <a class="basket" href="">Add to Basket</a> -->
-                    </div>
-                    <h3 class="price" >₦60,000 <span>/Acre</span></h3>
-                    <!-- <label for="quantity">Quantity</label>
-                    <input class="quantity" type="number" min="1" max="50" value="1"> -->
-                    <span class="quantity-available">Out of stock</span>
-                </div>
+        <div class="section-footer">
+            <p class="availability-note">
+                <i class="fas fa-info-circle"></i> All livestock available for bulk orders. 
+                Contact us for pricing, delivery, and custom requirements.
+            </p>
+            <a href="#contact" class="btn-contact-all">
+                <i class="fas fa-phone-alt"></i> Contact for All Livestock
             </a>
         </div>
-        <div class="more-product"><a href="pricing.html">More...</a></div>
     </section>
+    <!-- Our Animals Section End -->
+
+    <!-- Why Choose Us Section Start -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="logo-container">
+                    <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo"  class="farm-logo" width="130">
+                </div>
+                <h2 class="section-title">Why Choose AgriGloria?</h2>
+                <p class="section-subtitle">Excellence in every aspect of farming and animal husbandry</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Sustainable Farming</h3>
+                    <p class="feature-description">
+                        We practice eco-friendly farming methods that protect the environment 
+                        while producing high-quality livestock and crops.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Quality Assurance</h3>
+                    <p class="feature-description">
+                        Rigorous quality checks at every stage ensure our animals are healthy, 
+                        well-cared for, and meet the highest standards.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="feature-title">Animal Welfare</h3>
+                    <p class="feature-description">
+                        Our animals receive proper veterinary care, nutrition, and spacious 
+                        living conditions for optimal health and wellbeing.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="feature-title">Reliable Delivery</h3>
+                    <p class="feature-description">
+                        Timely delivery across Cross River State and beyond with proper 
+                        handling to ensure livestock arrive healthy and stress-free.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="feature-title">Expert Knowledge</h3>
+                    <p class="feature-description">
+                        Our team consists of experienced farmers and agricultural experts 
+                        with decades of combined experience in animal husbandry.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="feature-title">Customer Support</h3>
+                    <p class="feature-description">
+                        Dedicated support from inquiry to after-sales. We provide guidance 
+                        on animal care and maintenance for your success.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Stats Counter -->
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="0">0</div>
+                    <div class="stat-label">Satisfied Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="0">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-label">Livestock Types</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="24">0</div>
+                    <div class="stat-label">/7 Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Us Section End -->
+
+    <!-- About Us Section Start -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="logo-container">
+                    <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo"  class="farm-logo" width="130">
+                </div>
+                <h2 class="section-title">About AgriGloria Farms</h2>
+                <p class="section-subtitle">Our journey in sustainable farming and animal husbandry</p>
+            </div>
+            
+            <div class="about-content">
+                <!-- Mission & Vision -->
+                <div class="mission-vision">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="mission-title">Our Mission</h3>
+                        <p class="mission-text">
+                            To provide high-quality, healthy livestock through sustainable farming practices 
+                            that contribute to food security and economic growth in Cross River State and beyond.
+                        </p>
+                    </div>
+                    
+                    <div class="vision-card">
+                        <div class="vision-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="vision-title">Our Vision</h3>
+                        <p class="vision-text">
+                            To become the leading agricultural enterprise in Southern Nigeria, 
+                            setting standards in animal welfare, sustainable farming, and customer satisfaction.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Story Content -->
+                <div class="story-container">
+                    <div class="story-image">
+                        <img src="images/Agri_logo_with_text.png" alt="AgriGloria Farm" loading="lazy">
+                        <div class="experience-badge">
+                            <span class="years">5+</span>
+                            <span class="label">Years of Excellence</span>
+                        </div>
+                    </div>
+                    
+                    <div class="story-content">
+                        <h3 class="story-title">Our Story</h3>
+                        <p class="story-text">
+                            Founded in 2026, AgriGloria Farms began as a small family-owned venture 
+                            in Ayaebam Village, Akamkpa. What started with a few chickens and goats 
+                            has grown into a reputable livestock farm serving individuals, businesses, 
+                            and communities across Cross River State.
+                        </p>
+                        <p class="story-text">
+                            Our name "AgriGloria" combines Agriculture and Glory, reflecting our 
+                            commitment to bringing glory to farming through excellence, innovation, 
+                            and sustainable practices. We believe in farming that honors both the 
+                            land and the people it serves.
+                        </p>
+                        
+                        <div class="values-list">
+                            <div class="value-item">
+                                <i class="fas fa-seedling"></i>
+                                <h4>Sustainability</h4>
+                                <p>Eco-friendly farming methods</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-heart"></i>
+                                <h4>Animal Welfare</h4>
+                                <p>Humane treatment and care</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-users"></i>
+                                <h4>Community</h4>
+                                <p>Supporting local farmers</p>
+                            </div>
+                            <div class="value-item">
+                                <i class="fas fa-gem"></i>
+                                <h4>Quality</h4>
+                                <p>Premium livestock standards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Section -->
+                <div class="team-section">
+                    <h3 class="team-title">Meet Our Team</h3>
+                    <p class="team-subtitle">Passionate professionals dedicated to agricultural excellence</p>
+                    
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://media.istockphoto.com/id/2235859424/photo/a-pensive-male-farmer-in-a-hat-and-jacket-holds-a-shovel-looking-away-from-the-camera-in-a.webp?a=1&b=1&s=612x612&w=0&k=20&c=tTZdMd53HqJR3eqT88vBEaV_isMK5tpM8ymBsD_itZE=" alt="Farm Manager" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">Okoi Otu</h4>
+                                <p class="member-role">Farm Manager & Veterinarian</p>
+                                <p class="member-bio">
+                                    10+ years experience in animal husbandry and veterinary care. 
+                                    Specializes in poultry and swine management.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://media.istockphoto.com/id/1430802839/photo/greenhouse-plantation-and-woman-farmer-thinking-in-garden-field-farming-with-carbon-capture.webp?a=1&b=1&s=612x612&w=0&k=20&c=C-Y6iEA1PajGqlHDU3s-yUTHZRBz4zvp5Hp_LqvEfac=" alt="Operations Head" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">Glory Okoi</h4>
+                                <p class="member-role">Operations Manager</p>
+                                <p class="member-bio">
+                                    Oversees daily farm operations and customer relations. 
+                                    Expert in logistics and supply chain management.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://media.istockphoto.com/id/2201573624/photo/female-farmer-checking-cabbage-plants-in-her-vegetable-garden.webp?a=1&b=1&s=612x612&w=0&k=20&c=-iHmm1NZ8-rlcMbQSUZoUJ4JuOTYG7opk9kYZuBQlc4=" alt="Senior Farmer" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">Success</h4>
+                                <p class="member-role">Senior Livestock Farmer</p>
+                                <p class="member-bio">
+                                    15 years of traditional and modern farming experience. 
+                                    Expert in goat and sheep rearing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Location -->
+                <div class="location-section">
+                    <div class="location-content">
+                        <h3 class="location-title">Located in Cross River State</h3>
+                        <p class="location-text">
+                            Our farm is situated in the fertile lands of Ayaebam Village, Akamkpa, 
+                            Cross River State. This strategic location provides:
+                        </p>
+                        <ul class="location-features">
+                            <li><i class="fas fa-check"></i> Rich, fertile soil for natural grazing</li>
+                            <li><i class="fas fa-check"></i> Clean water sources for animals</li>
+                            <li><i class="fas fa-check"></i> Optimal climate for livestock health</li>
+                            <li><i class="fas fa-check"></i> Proximity to major markets</li>
+                        </ul>
+                        <a href="#contact" class="btn-visit">
+                            <i class="fas fa-map-marker-alt"></i> Visit Our Farm
+                        </a>
+                    </div>
+                    <div class="location-image">
+                        <img src="https://media.istockphoto.com/id/2203041659/photo/farm-storage-livestock-buildings-with-cows-hay-barns.webp?a=1&b=1&s=612x612&w=0&k=20&c=fYht-OhkIpeISn29nLZ9ckKzqiEMC8ISmkmgixOJLYk=" alt="Farm Location" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Us Section End -->
+
+    <!-- Testimonials Section Start -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="logo-container">
+                    <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo" class="farm-logo" width="120">
+                </div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Hear from satisfied farmers, businesses, and individuals who trust AgriGloria</p>
+            </div>
+            
+            <!-- Marquee Container -->
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <!-- Duplicate testimonials for seamless looping -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"AgriGloria's broiler chickens have transformed my poultry business. The growth rate and meat quality are exceptional!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" 
+        alt="Chinedu Okoro" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Chinedu Okoro</h4>
+                                <p>Poultry Farmer, Calabar</p>
+                                <div class="author-rating">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"The eggs from AgriGloria are always fresh and of premium quality. My restaurant customers can taste the difference!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face" 
+        alt="John Akpan" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Chinedu Okoro</h4>
+                                <p>Poultry Farmer, Calabar</p>
+                                <div class="author-rating">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"As a snail farmer, I appreciate AgriGloria's healthy breeding stock. Their snails have high survival rates!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" 
+        alt="Emeka Nwosu" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Emeka Nwosu</h4>
+                                <p>Snail Farmer, Port Harcourt</p>
+                                <div class="author-rating">★★★★☆</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"The pigs we got from AgriGloria were healthy and well-cared for. Their after-sales support is excellent!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&h=150&fit=crop&crop=face" 
+        alt="Bisi Adekunle" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Bisi Adekunle</h4>
+                                <p>Pig Farm Manager, Akamkpa</p>
+                                <div class="author-rating">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicate the same testimonials for seamless loop -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"AgriGloria's broiler chickens have transformed my poultry business. The growth rate and meat quality are exceptional!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face" 
+        alt="John Akpan" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Chinedu Okoro</h4>
+                                <p>Poultry Farmer, Calabar</p>
+                                <div class="author-rating">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"The eggs from AgriGloria are always fresh and of premium quality. My restaurant customers can taste the difference!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b786d4d9?w=150&h=150&fit=crop&crop=face" 
+        alt="Fatima Mohammed" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Amina Yusuf</h4>
+                                <p>Restaurant Owner, Uyo</p>
+                                <div class="author-rating">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"As a snail farmer, I appreciate AgriGloria's healthy breeding stock. Their snails have high survival rates!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" 
+        alt="Chinedu Okoro" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Emeka Nwosu</h4>
+                                <p>Snail Farmer, Port Harcourt</p>
+                                <div class="author-rating">★★★★☆</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"The pigs we got from AgriGloria were healthy and well-cared for. Their after-sales support is excellent!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b786d4d9?w=150&h=150&fit=crop&crop=face" 
+        alt="Fatima Mohammed" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Amina Yusuf</h4>
+                                <p>Restaurant Owner, Uyo</p>
+                                <div class="author-rating">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Manual Navigation Dots -->
+            <div class="marquee-controls">
+                <div class="nav-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+                <button class="pause-btn" id="pauseMarquee">
+                    <i class="fas fa-pause"></i>
+                </button>
+            </div>
+            
+            <!-- Trust Indicators (Keep same as before) -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-award"></i>
+                    <h3>Quality Certified</h3>
+                    <p>Premium livestock standards</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-truck"></i>
+                    <h3>Reliable Delivery</h3>
+                    <p>Across Cross River State</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Always here to help</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Trusted Partner</h3>
+                    <p>Since 2019</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section End -->
 
     <!-- Gallery Section Start -->
-    <section class="gallery" id="gallery">
-        <h2>Gallery</h2>
-        <div class="container-card">
-            <button class="arrow left">◀</button>
-            <div class="ex-cards">
-
-                <div class="panel" style="background-image: url(gallery/Black_and_White_Pig_Feeding_Her_Piglets.jpg);">
-                    <h3>Black and White Pig Feeding Her Piglets</h3>
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <div class="logo-container">
+                    <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo" class="farm-logo" width="120">
                 </div>
-
-                <div class="panel" style="background-image: url(gallery/Black_Pig_at_Fence.jpg);">
-                    <h3>Black Pig at Fence</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Brown_Eggs_on_Brown_Wooden_Bowl_on_Beige_Knit_Textile.jpg);">
-                    <h3>Brown Eggs on Brown Wooden Bowl on Beige Knit Textile</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Brown_Hen_Near_White_Egg_on_Nest.jpg);">
-                    <h3>Brown Hen Near White Egg on Nest</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Bunch_of_Grey_Fish.jpg);">
-                    <h3>Bunch of Grey Fish</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Cassava_Crops_in_Close_Up_Photography.jpg);">
-                    <h3>Cassava Crops in Close Up Photography</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Chickens_in_a_Coop.jpg);">
-                    <h3>Chickens in a Coop</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Brown_Snail_on_Tree_Trunk.jpg);">
-                    <h3>Brown Snail on Tree Trunk</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Brown_Snails_on_Green_Plant.jpg);">
-                    <h3>Brown Snails on Green Plant</h3>
-                </div>
-
-
-                <div class="panel" style="background-image: url(gallery/Chickens_in_an_Ecuadorian_Henhouse.jpg);">
-                    <h3>Chickens in an Ecuadorian Henhouse</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Chickens_in_Barn_with_Rustic_Atmosphere.jpg);">
-                    <h3>Chickens in Barn with Rustic Atmosphere</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Close_Photo_of_Pig.jpg);">
-                    <h3>Close Photo of Pig</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Close_Up_Photo_of_a_Goat_Head.jpg);">
-                    <h3>Close Up Photo of a Goat Head</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Fresh_Ginger_Root_Close_up_in_Market_Setting.jpg);">
-                    <h3>Fresh Ginger Root Close up in Market Setting</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Hot_Pepper.jpg);">
-                    <h3>Hot Pepper</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Pile_of_Fish.jpg);">
-                    <h3>Pile of Fish</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Ginger_on_Gray_Surface.jpg);">
-                    <h3>Ginger on Gray Surface</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Close_Up_Photo_of_a_Snail.jpg);">
-                    <h3>Close Up Shot of a Snail</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Pile_of_Fresh_Ginger_in_Close_Up_Photography.jpg);">
-                    <h3>Pile of Fresh Ginger in Close Up_Photography</h3>
-                </div>
-                <div class="panel" style="background-image: url(gallery/Close_Up_Shot_of_a_Broiler_Chicken.jpg);">
-                    <h3>Close Up Shot of a Broiler Chicken</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Red_and_yellow_chillies.jpg);">
-                    <h3>Red and Yellow Chillies</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Selective_Focus_Beige_and_Brown_Goat.jpg);">
-                    <h3>Selective Focus Beige and Brown Goat</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Eggs_in_Bowl.jpg);">
-                    <h3>Eggs in Bowl</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Organic_brown_chicken_eggs_on_table_in_daylight.jpg);">
-                    <h3>Organic brown chicken eggs on table in daylight</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Piglets_at_Farm.jpg);">
-                    <h3>Piglets at Farm</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Groups_of_Pigs_in_Pigpen.jpg);">
-                    <h3>Groups of Pigs in Pigpen</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Six_Brown_Eggs_With_Tray.jpg);">
-                    <h3>Six Brown Eggs With Tray</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Snail_in_Grass.jpg);">
-                    <h3>Snail in Grass</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Sow_and_Piglets_Resting_in_Barn.jpg);">
-                    <h3>Sow and Piglets Resting in Barn</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Two_Brown_Hen_and_One_Red_Rooster.jpg);">
-                    <h3>Two Brown Hen and One Red Rooster</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Two_Garden_Snails_on_Pebble_Surface_with_Leaves.jpg);">
-                    <h3>Two Garden Snails on Pebble Surface with Leaves</h3>
-                </div>
-
-                <div class="panel" style="background-image: url(gallery/Variety_of_Farm_Fresh_Eggs_in_Natural_Colors.jpg);">
-                    <h3>Variety of Farm Fresh Eggs in Natural Colors</h3>
-                </div>
-        
+                <h2 class="section-title">Our Farm Gallery</h2>
+                <p class="section-subtitle">A visual journey through our farm and livestock</p>
             </div>
-            <button class="arrow right">▶</button>
+
+            <!-- Category Filters -->
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="poultry">Poultry</button>
+                <button class="filter-btn" data-filter="pigs">Pigs</button>
+                <button class="filter-btn" data-filter="snails">Snails</button>
+                <button class="filter-btn" data-filter="fish">Fish</button>
+                <button class="filter-btn" data-filter="goats">Goats</button>
+                <button class="filter-btn" data-filter="crops">Crops</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Poultry Images -->
+                <div class="gallery-item" data-category="poultry">
+                    <div class="gallery-image">
+                        <img src="gallery/Close_Up_Shot_of_a_Broiler_Chicken.jpg" alt="Broiler Chicken" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Broiler Chicken</h3>
+                            <p>Healthy meat chickens</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="poultry">
+                    <div class="gallery-image">
+                        <img src="gallery/Brown_Hen_Near_White_Egg_on_Nest.jpg" alt="Hen with Egg" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Layer Hen</h3>
+                            <p>Egg production</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pigs Images -->
+                <div class="gallery-item" data-category="pigs">
+                    <div class="gallery-image">
+                        <img src="gallery/Black_and_White_Pig_Feeding_Her_Piglets.jpg" alt="Pig with Piglets" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Mother Pig</h3>
+                            <p>Feeding piglets</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="pigs">
+                    <div class="gallery-image">
+                        <img src="gallery/Piglets_at_Farm.jpg" alt="Piglets" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Piglets</h3>
+                            <p>Young healthy pigs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snails Images -->
+                <div class="gallery-item" data-category="snails">
+                    <div class="gallery-image">
+                        <img src="gallery/Brown_Snail_on_Tree_Trunk.jpg" alt="Snail" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Edible Snails</h3>
+                            <p>Quality heliculture</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fish Images -->
+                <div class="gallery-item" data-category="fish">
+                    <div class="gallery-image">
+                        <img src="gallery/Bunch_of_Grey_Fish.jpg" alt="Fish" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Fresh Fish</h3>
+                            <p>Aquaculture</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goats Images -->
+                <div class="gallery-item" data-category="goats">
+                    <div class="gallery-image">
+                        <img src="gallery/Close_Up_Photo_of_a_Goat_Head.jpg" alt="Goat" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Goat</h3>
+                            <p>Meat & dairy breed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crops Images -->
+                <div class="gallery-item" data-category="crops">
+                    <div class="gallery-image">
+                        <img src="gallery/Cassava_Crops_in_Close_Up_Photography.jpg" alt="Cassava" loading="lazy">
+                        <div class="image-overlay">
+                            <h3>Cassava</h3>
+                            <p>Fresh crops</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more images as needed (select 12-16 best images) -->
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div class="lightbox-modal">
+                <div class="lightbox-content">
+                    <button class="lightbox-close">&times;</button>
+                    <button class="lightbox-prev">&#10094;</button>
+                    <button class="lightbox-next">&#10095;</button>
+                    <img class="lightbox-image" src="" alt="">
+                    <div class="lightbox-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="gallery-footer">
+                <button class="btn-view-more">
+                    <i class="fas fa-images"></i> View More Photos
+                </button>
+            </div>
         </div>
-    </section> 
+    </section>
+    <!-- Gallery Section End -->
 
-    <!-- <div class="dialog-overlay" id="custom-dialog">
-        <div class="dialog-box">
-            <p>Welcome to AgriGloria Farms & Holdings. This site is still under development.</p>
-            <button id="close-dialog">OK</button>
-        </div>
-    </div> -->
-
-
-
+    
     <script src="js/script.js"></script>
     <script src="js/activeNav.js"></script>
     <script src="js/card.js"></script>
