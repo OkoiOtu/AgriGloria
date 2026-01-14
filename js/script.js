@@ -641,3 +641,427 @@ document.addEventListener('DOMContentLoaded', () => {
         }, index * 100);
     });
 });
+
+// Contact Section JavaScript - Complete
+document.addEventListener('DOMContentLoaded', function() {
+    // ============================================
+    // 1. SCROLL ANIMATIONS
+    // ============================================
+    function initScrollAnimations() {
+        // Elements to animate in Contact section
+        const contactElements = [
+            ...document.querySelectorAll('.info-card'),
+            document.querySelector('.contact-form-container'),
+            document.querySelector('.map-container'),
+        ].filter(el => el !== null);
+
+        // Create Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Staggered animation based on index
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Set initial state and observe each element
+        contactElements.forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            element.dataset.animationIndex = index;
+            observer.observe(element);
+        });
+    }
+
+    // ============================================
+    // 2. FORM HANDLING
+    // ============================================
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const sendAnotherBtn = document.getElementById('sendAnother');
+    const submitBtn = contactForm ? contactForm.querySelector('.submit-btn') : null;
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+
+    // Form validation and submission
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm()) {
+                return;
+            }
+
+            // Show loading state
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+            }
+
+            // Simulate form submission
+            setTimeout(() => {
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Log form data (in real app, send to server)
+                console.log('Contact Form Submitted:', formData);
+                
+                // Show success message
+                if (contactForm && successMessage) {
+                    contactForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                }
+                
+                // Reset button
+                if (submitBtn) {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+                
+                // Scroll to success message
+                if (successMessage) {
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                // Send notification (simulated)
+                sendNotificationEmail(formData);
+                
+            }, 2000);
+        });
+    }
+
+    // Send another message button
+    if (sendAnotherBtn) {
+        sendAnotherBtn.addEventListener('click', function() {
+            if (contactForm && successMessage) {
+                contactForm.reset();
+                contactForm.style.display = 'flex';
+                successMessage.style.display = 'none';
+                contactForm.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // Form validation function
+    function validateForm() {
+        if (!contactForm) return false;
+
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value.trim();
+
+        // Reset error states
+        clearErrors();
+
+        let isValid = true;
+
+        // Name validation
+        if (!name) {
+            showError('name', 'Please enter your full name');
+            isValid = false;
+        }
+
+        // Phone validation (Nigerian format)
+        const phoneRegex = /^(\+234|0)[789][01]\d{8}$/;
+        if (!phone) {
+            showError('phone', 'Please enter your phone number');
+            isValid = false;
+        } else if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+            showError('phone', 'Please enter a valid Nigerian phone number');
+            isValid = false;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email) {
+            showError('email', 'Please enter your email address');
+            isValid = false;
+        } else if (!emailRegex.test(email)) {
+            showError('email', 'Please enter a valid email address');
+            isValid = false;
+        }
+
+        // Subject validation
+        if (!subject) {
+            showError('subject', 'Please select an inquiry type');
+            isValid = false;
+        }
+
+        // Message validation
+        if (!message) {
+            showError('message', 'Please enter your message');
+            isValid = false;
+        } else if (message.length < 10) {
+            showError('message', 'Message must be at least 10 characters');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    // Show error message
+    function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        if (!field) return;
+
+        const formGroup = field.closest('.form-group');
+        if (!formGroup) return;
+        
+        // Add error class to input
+        field.classList.add('error');
+        
+        // Create or update error message
+        let errorElement = formGroup.querySelector('.error-message');
+        if (!errorElement) {
+            errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            formGroup.appendChild(errorElement);
+        }
+        
+        errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        errorElement.style.color = '#dc3545';
+        errorElement.style.fontSize = '0.85rem';
+        errorElement.style.marginTop = '5px';
+    }
+
+    // Clear all errors
+    function clearErrors() {
+        // Remove error classes
+        document.querySelectorAll('.error').forEach(el => {
+            el.classList.remove('error');
+        });
+        
+        // Remove error messages
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.remove();
+        });
+    }
+
+    // Real-time validation
+    if (contactForm) {
+        const formInputs = contactForm.querySelectorAll('input, select, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    const errorMsg = this.closest('.form-group')?.querySelector('.error-message');
+                    if (errorMsg) errorMsg.remove();
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    const errorMsg = this.closest('.form-group')?.querySelector('.error-message');
+                    if (errorMsg) errorMsg.remove();
+                }
+            });
+        });
+    }
+
+    // Phone number formatting
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            // Format Nigerian number
+            if (value.startsWith('0')) {
+                value = value.substring(0, 11);
+                if (value.length >= 4) {
+                    value = value.replace(/(\d{4})/, '$1 ');
+                }
+                if (value.length >= 8) {
+                    value = value.replace(/(\d{4}) (\d{3})/, '$1 $2 ');
+                }
+            } else if (value.startsWith('234')) {
+                value = '+234 ' + value.substring(3);
+                if (value.length >= 9) {
+                    value = value.replace(/(\+234 \d{3})/, '$1 ');
+                }
+                if (value.length >= 13) {
+                    value = value.replace(/(\+234 \d{3} \d{3})/, '$1 ');
+                }
+            }
+            
+            e.target.value = value;
+        });
+    }
+
+    // ============================================
+    // 3. QUICK CONTACT BUTTONS
+    // ============================================
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Analytics tracking (in real app)
+            console.log(`Quick contact clicked: ${this.textContent.trim()}`);
+        });
+    });
+
+    // Map link
+    const mapLink = document.querySelector('.btn-view-map');
+    if (mapLink) {
+        mapLink.addEventListener('click', function() {
+            console.log('Opening Google Maps for AgriGloria location');
+        });
+    }
+
+    // ============================================
+    // 4. HELPER FUNCTIONS
+    // ============================================
+    // Simulate sending notification email
+    function sendNotificationEmail(formData) {
+        // This would be an AJAX call to your backend in a real application
+        console.log('Sending notification email with data:', formData);
+        
+        // Example email data
+        const emailData = {
+            to: 'info@agrigloria.com',
+            subject: `New Contact Form: ${formData.subject}`,
+            body: `
+                New inquiry from AgriGloria website:
+                
+                Name: ${formData.name}
+                Phone: ${formData.phone}
+                Email: ${formData.email}
+                Subject: ${formData.subject}
+                Message: ${formData.message}
+                
+                Time: ${new Date().toLocaleString()}
+            `
+        };
+        
+        // In real implementation:
+        // fetch('/api/send-email', { 
+        //     method: 'POST', 
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify(emailData) 
+        // })
+    }
+
+    // ============================================
+    // 5. ADD CSS STYLES FOR ANIMATIONS & ERRORS
+    // ============================================
+    function addStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            /* Animation Styles */
+            .animate-in {
+                animation: fadeInUp 0.6s ease forwards;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Error Styles */
+            .form-group input.error,
+            .form-group select.error,
+            .form-group textarea.error {
+                border-color: #dc3545 !important;
+                background: #fff5f5 !important;
+            }
+            
+            .form-group input.error:focus,
+            .form-group select.error:focus,
+            .form-group textarea.error:focus {
+                box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2) !important;
+            }
+            
+            .error-message {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-5px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            /* Success Message Animation */
+            #successMessage {
+                animation: slideIn 0.5s ease;
+            }
+            
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Hover effects for info cards */
+            .info-card:hover {
+                transition: transform 0.3s ease !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // ============================================
+    // 6. INITIALIZE EVERYTHING
+    // ============================================
+    function initializeContactSection() {
+        // Add CSS styles
+        addStyles();
+        
+        // Initialize scroll animations
+        initScrollAnimations();
+        
+        console.log('Contact section initialized successfully');
+    }
+
+    // Start everything
+    initializeContactSection();
+
+    // ============================================
+    // 7. WINDOW RESIZE HANDLER (Optional)
+    // ============================================
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Re-initialize animations if needed
+            const animatedElements = document.querySelectorAll('.animate-in');
+            if (animatedElements.length > 0 && window.innerWidth < 768) {
+                // Mobile-specific adjustments
+                animatedElements.forEach(el => {
+                    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                });
+            }
+        }, 250);
+    });
+});
