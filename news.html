@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriGloria Farms News - Read our latest farm updates, agricultural tips, and success stories">
+  <meta name="keywords" content="farming news, agricultural updates, Nigeria farming, livestock news, AgriGloria">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>News & Updates - AgriGloria Farms</title>
+</head>
+<body>
+  <!-- Header (Same as index.html) -->
+  <header class="nav-header">
+    <div class="top-bar">
+      <div class="address-bar">
+        <span><i class="material-icons">location_on</i> 02 Ayaebam Village, Akamkpa, Cross River, Nigeria.</span>
+        <a href=""><span><i class="material-icons">email</i> info@agrigloria.com</span></a>
+        <span><i class="material-icons">access_time</i> Mon-Sat: 8:00AM - 6:00PM</span>
+      </div>
+      <div class="social-media-bar">
+        <a href=""><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-tiktok"></i></a>
+        <div class="slash">|</div>
+        <a href=""><i class="fas fa-user"></i> Login</a>
+      </div>
+    </div>
+    <div class="sticky">
+      <div class="nav-bar">
+        <div class="logo">
+            <a href="index.html"><img src="images/AgriGloria_logo.png" alt="Agrigloria Farms & Holdings Logo" width="120" /></a>
+        </div>
+        <div class="nav-components">
+          <div class="nav">      
+            <nav class="nav-links" id="nav-links">
+              <ul class="links">
+                <li><a class="link" href="index.html#home" data-link="home">Home</a></li>
+                <li><a class="link" href="index.html#ouranimals" data-link="animals">Our Animals</a></li>
+                <li><a class="link" href="index.html#about" data-link="about">About Us</a></li>
+                <li><a class="link" href="index.html#news" data-link="news">News & Updates</a></li>
+                <li><a class="link" href="index.html#gallery" data-link="gallery">Gallery</a></li>
+                <li><a class="link" href="index.html#contact" data-link="contact">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="questions">
+            <span><i class="material-icons">phone</i></span>
+            <div class="question">
+              <p>Have Questions?</p>
+              <a href="">+234 803 123 4567</a>
+            </div>
+          </div>
+
+          <form class="search">
+            <input class="searcher" type="text" placeholder="Search..." />
+            <button type="button" class="search-icon">
+              <i class="material-icons">search</i>
+            </button>
+          </form>
+
+          <div class="cart">
+            <a href=""><i class="material-icons">shopping_cart<span>(0)</span></i></a>
+          </div>
+
+          <div class="menu-icon" id="menu-icon">
+            <i class="material-icons" id="menu-icon-img">menu</i>
+            <i class="material-icons" id="close-icon-img" style="display: none;">close</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main News Article Content -->
+  <main class="news-article-page">
+    <div class="news-article-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span>/</span>
+            <a href="index.html#news">News & Updates</a>
+            <span>/</span>
+            <span id="articleBreadcrumb">Article</span>
+        </div>
+
+        <!-- Article will be loaded here by JavaScript -->
+        <div id="articleContent" class="loading-state">
+            <i class="fas fa-spinner"></i>
+            <p>Loading article...</p>
+        </div>
+
+        <!-- Comments Section -->
+        <div id="commentsSection" class="comments-section" style="display: none;">
+          <h2><i class="far fa-comments"></i> Comments</h2>
+          
+          <!-- Add Comment Form -->
+          <div class="add-comment-form">
+            <h3><i class="fas fa-edit"></i> Add Your Comment</h3>
+            <form id="commentForm">
+              <div class="comment-form-row">
+                <div class="form-group">
+                  <label for="commenterName">Your Name *</label>
+                  <input type="text" id="commenterName" required>
+                </div>
+                <div class="form-group">
+                  <label for="commenterEmail">Your Email (Optional)</label>
+                  <input type="email" id="commenterEmail">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="commentText">Your Comment *</label>
+                <textarea id="commentText" required></textarea>
+              </div>
+              <button type="submit" class="comment-submit-btn">
+                <i class="fas fa-paper-plane"></i> Post Comment
+              </button>
+            </form>
+          </div>
+
+          <!-- Comments List -->
+          <div id="commentsList" class="comments-list">
+              <div class="no-comments">
+                  <i class="far fa-comment-dots"></i>
+                  <p>No comments yet. Be the first to comment!</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Related Articles -->
+      <div id="relatedArticles" class="related-articles" style="display: none;">
+        <h2><i class="fas fa-newspaper"></i> Related Articles</h2>
+        <div id="relatedGrid" class="related-grid">
+          <!-- Related articles will be loaded here -->
+        </div>
+      </div>
+
+      <!-- Back to News Button -->
+      <div class="back-to-news">
+        <a href="index.html#news" class="back-to-news-btn">
+          <i class="fas fa-arrow-left"></i> Back to All News
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (Copy from your index.html) -->
+  <footer>
+      <!-- Copy your footer from index.html here -->
+  </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html>

@@ -110,7 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/ --- Video Script Only --- //
+// =====================
+// Video Script Only
+// =====================
 document.addEventListener('DOMContentLoaded', () => {
   const videoSlides = document.querySelectorAll('.video-slide'); 
   const contentDiv = document.querySelector('.banner-content .content');
@@ -197,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 10000);
 });
 
-/// Button animation on hover
+// Button animation on hover
 const bannerBtn = document.querySelector('a.banner-btn');
 
 if (bannerBtn) {
@@ -239,8 +241,6 @@ if (bannerBtn) {
         setTimeout(() => {
             ripple.remove();
         }, 600);
-        
-        // Link will navigate naturally after ripple animation
     });
 }
 
@@ -256,7 +256,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Optional: Add entrance animation to button when page loads
+// Entrance animation to button when page loads
 document.addEventListener('DOMContentLoaded', () => {
     const bannerBtn = document.querySelector('a.banner-btn');
     if (bannerBtn) {
@@ -265,7 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Add this to your existing JavaScript file
 document.addEventListener('DOMContentLoaded', () => {
     // Animate animal cards on scroll
     const animalCards = document.querySelectorAll('.animal-card');
@@ -292,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
     
-    // Add click tracking for analytics (optional)
+    // Click tracking for analytics
     const inquireButtons = document.querySelectorAll('.btn-inquire');
     inquireButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -303,66 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Add this to your existing JavaScript file
-document.addEventListener('DOMContentLoaded', () => {
-    // Animated counters
-    function animateCounters() {
-        const statNumbers = document.querySelectorAll('.stat-number');
-        
-        statNumbers.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-count'));
-            const duration = 2000; // 2 seconds
-            const increment = target / (duration / 16); // 60fps
-            
-            let current = 0;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                stat.textContent = Math.floor(current);
-            }, 16);
-        });
-    }
-    
-    // Animate when section comes into view
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    const statsSection = document.querySelector('.stats-container');
-    if (statsSection) {
-        observer.observe(statsSection);
-    }
-    
-    // Feature cards animation on scroll
-    const featureCards = document.querySelectorAll('.feature-card');
-    
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    // Set initial state for animation
-    featureCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        cardObserver.observe(card);
-    });
-});
-
-// Add this to your existing JavaScript file
+// About Us Section Animations
 document.addEventListener('DOMContentLoaded', () => {
     // Animate mission/vision cards on scroll
     const missionCards = document.querySelectorAll('.mission-card, .vision-card');
@@ -425,6 +365,64 @@ document.addEventListener('DOMContentLoaded', () => {
         item.style.transform = 'translateY(20px)';
         item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
         valueObserver.observe(item);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Animated counters
+    function animateCounters() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            
+            let current = 0;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current);
+            }, 16);
+        });
+    }
+    
+    // Animate when section comes into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    const statsSection = document.querySelector('.stats-container');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+    
+    // Feature cards animation on scroll
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // Set initial state for animation
+    featureCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        cardObserver.observe(card);
     });
 });
 
@@ -640,6 +638,944 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.transform = 'translateY(0)';
         }, index * 100);
     });
+});
+
+// ======= NEWS & UPDATES - FULLY FUNCTIONAL =======
+document.addEventListener('DOMContentLoaded', () => {
+    // News Data Structure with WORKING IMAGES
+    const newsData = [
+        {
+            id: 1,
+            title: "New High-Yield Layer Chickens Arrived",
+            excerpt: "500 new high-yield layer chickens from our trusted breeding partner.",
+            content: "We're excited to announce the arrival of 500 new high-yield layer chickens from our trusted breeding partner. These birds are specially bred for optimal egg production and adaptability to our Cross River climate. They have been quarantined and are receiving the best care from our veterinary team. Available for purchase starting next week!",
+            category: "Farm News",
+            date: "2024-03-15",
+            author: "Okoi Otu",
+            views: 1245,
+            likes: 42,
+            comments: 18,
+            featured: true,
+            // Using reliable Unsplash images with proper parameters
+            image: "https://images.unsplash.com/photo-1595344073133-7549ea4c7981?q=80&w=867&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            id: 2,
+            title: "Poultry Health Tips for Rainy Season",
+            excerpt: "Essential tips to protect your chickens during rainy season.",
+            content: "Learn how to protect your chickens from common rainy season challenges: 1. Improve ventilation in coops to prevent respiratory issues. 2. Keep bedding dry and clean. 3. Monitor feed quality and avoid moldy feed. 4. Provide clean water daily. 5. Watch for signs of illness and consult our veterinary team.",
+            category: "Farming Tips",
+            date: "2024-03-10",
+            author: "Glory Okoi",
+            views: 892,
+            likes: 31,
+            comments: 12,
+            featured: false,
+            image: "https://images.unsplash.com/photo-1716797701752-e9214beb5f9e?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            id: 3,
+            title: "Snail Farming Success Stories",
+            excerpt: "How our training program transformed farmers' livelihoods.",
+            content: "Meet three farmers who transformed their livelihoods through our heliculture training program: Chinedu expanded from 50 to 500 snails in 6 months. Fatima now supplies local restaurants. Emeka exports to neighboring states. Their success proves that snail farming can be highly profitable with proper guidance.",
+            category: "Success Stories",
+            date: "2024-03-05",
+            author: "Success",
+            views: 1534,
+            likes: 56,
+            comments: 24,
+            featured: false,
+            image: "https://plus.unsplash.com/premium_photo-1663011608477-4ee76ba19c43?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            id: 4,
+            title: "2024 Agricultural Export Trends",
+            excerpt: "Analysis of emerging markets for Nigerian farmers.",
+            content: "Analysis of emerging markets and opportunities for Nigerian agricultural exports in 2024: 1. Increased demand for organic produce in Europe. 2. Growing markets for processed agricultural products. 3. Opportunities in West African regional trade. 4. Export incentives from the Nigerian government. 5. Focus on value-added products like smoked fish and packaged spices.",
+            category: "Industry News",
+            date: "2024-02-28",
+            author: "Okoi Otu",
+            views: 2156,
+            likes: 38,
+            comments: 31,
+            featured: false,
+            image: "https://images.unsplash.com/photo-1706169989859-f8e16497a8e1?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            id: 5,
+            title: "New Fish Pond Expansion Complete",
+            excerpt: "Our aquaculture section now has 5 new fish ponds.",
+            content: "We've successfully completed the expansion of our fish farming facilities with 5 new ponds added. Each pond can hold up to 5,000 catfish or tilapia. The new ponds feature: Automated feeding systems, Water quality monitoring, Improved drainage, and Shade structures for optimal fish growth.",
+            category: "Farm News",
+            date: "2024-02-20",
+            author: "Glory Okoi",
+            views: 987,
+            likes: 27,
+            comments: 8,
+            featured: false,
+            image: "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?w=870&h=580&fit=crop&crop=center"
+        },
+        {
+            id: 6,
+            title: "Organic Feed Production Started",
+            excerpt: "We now produce our own organic animal feed.",
+            content: "To ensure the highest quality for our livestock, we've started producing our own organic animal feed. Our feed contains: 100% natural ingredients, No artificial additives, Proper protein balance for each animal type, and Essential vitamins and minerals. This improves animal health and product quality.",
+            category: "Farm News",
+            date: "2024-02-15",
+            author: "Okoi Otu",
+            views: 1123,
+            likes: 45,
+            comments: 15,
+            featured: false,
+            image: "https://plus.unsplash.com/premium_photo-1661849446191-8793e93a27c2?q=80&w=893&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+    ];
+
+    // Comments Data
+    const commentsData = [
+        {
+            id: 1,
+            postId: 2,
+            author: "Chinedu Okoro",
+            date: "2024-03-11",
+            text: "These tips came at the perfect time! I implemented the ventilation suggestions and already see improvement in my flock. Thank you AgriGloria!"
+        },
+        {
+            id: 2,
+            postId: 3,
+            author: "Fatima Mohammed",
+            date: "2024-03-07",
+            text: "The snail farming training was life-changing! I've started my own small operation and already have my first batch ready for market. God bless AgriGloria!"
+        },
+        {
+            id: 3,
+            postId: 1,
+            author: "Emeka Nwosu",
+            date: "2024-03-16",
+            text: "When will these new layer chickens be available for purchase? I'm interested in starting my own poultry farm."
+        },
+        {
+            id: 4,
+            postId: 4,
+            author: "Bisi Adekunle",
+            date: "2024-03-01",
+            text: "Great analysis! Do you provide guidance on export documentation for farmers?"
+        }
+    ];
+
+    // Newsletter subscribers - Load from localStorage
+    let subscribers = JSON.parse(localStorage.getItem('agrigloria_subscribers')) || [];
+    
+    // Liked articles - Load from localStorage
+    let likedArticles = JSON.parse(localStorage.getItem('agrigloria_likes')) || [];
+    
+    // Current state
+    let currentPage = 1;
+    const itemsPerPage = 6;
+    let currentSort = 'newest';
+    let currentFilter = 'all';
+    let currentPostId = null;
+
+    // DOM Elements
+    const newsContainer = document.getElementById('newsContainer');
+    const newsSearch = document.getElementById('newsSearch');
+    const sortBy = document.getElementById('sortBy');
+    const commentModal = document.getElementById('commentModal');
+    const closeModal = document.querySelector('.close-modal');
+    const commentsList = document.getElementById('commentsList');
+    const addCommentForm = document.getElementById('addCommentForm');
+    const newsletterForm = document.getElementById('newsletterForm');
+    const prevPageBtn = document.getElementById('prevPage');
+    const nextPageBtn = document.getElementById('nextPage');
+    const pageNumbers = document.getElementById('pageNumbers');
+    
+    // Filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    // Initialize
+    function initNewsSection() {
+        // Add search functionality if search input exists
+        if (newsSearch) {
+            newsSearch.addEventListener('input', debounce(() => {
+                currentPage = 1;
+                renderNews();
+                updatePagination();
+            }, 300));
+        }
+        
+        // Add sort functionality
+        if (sortBy) {
+            sortBy.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                renderNews();
+                updatePagination();
+            });
+        }
+        
+        // Set up filter buttons
+        setupFilterButtons();
+        
+        renderNews();
+        setupEventListeners();
+        updatePagination();
+    }
+
+    // Set up filter buttons
+    function setupFilterButtons() {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                currentPage = 1;
+                renderNews();
+                updatePagination();
+            });
+        });
+    }
+
+    // Render News
+    function renderNews() {
+        const filteredNews = filterAndSortNews();
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const paginatedNews = filteredNews.slice(startIndex, startIndex + itemsPerPage);
+        
+        newsContainer.innerHTML = '';
+        
+        if (paginatedNews.length === 0) {
+            newsContainer.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>No news articles found</h3>
+                    <p>Try adjusting your search or filter criteria.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        const newsGrid = document.createElement('div');
+        newsGrid.className = 'news-grid';
+        
+        paginatedNews.forEach((news, index) => {
+            const newsCard = createNewsCard(news);
+            newsGrid.appendChild(newsCard);
+            
+            // Add featured card styling
+            if (index === 0 && news.featured) {
+                newsCard.classList.add('featured');
+            }
+        });
+        
+        newsContainer.appendChild(newsGrid);
+    }
+
+    // Create News Card with fallback images
+    function createNewsCard(news) {
+        const card = document.createElement('div');
+        card.className = 'news-card';
+        card.dataset.id = news.id;
+        card.dataset.category = news.category.toLowerCase().replace(' ', '-');
+        
+        const date = new Date(news.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+        
+        const categoryIcon = getCategoryIcon(news.category);
+        
+        // Check if article is liked
+        const isLiked = likedArticles.includes(news.id);
+        const likeIcon = isLiked ? 'fas fa-heart' : 'far fa-heart';
+        const likeText = isLiked ? 'Liked' : 'Like';
+        
+        card.innerHTML = `
+            <div class="news-image">
+                <img src="${news.image}" alt="${news.title}" loading="lazy" 
+                     onerror="this.onerror=null; this.src='${getFallbackImage(news.category)}'">
+                ${news.featured ? '<span class="news-badge"><i class="fas fa-star"></i> Featured</span>' : ''}
+            </div>
+            <div class="news-content">
+                <div class="news-meta">
+                    <span class="news-category">${categoryIcon} ${news.category}</span>
+                    <span class="news-date">${date}</span>
+                </div>
+                <h3 class="news-title">${news.title}</h3>
+                <p class="news-excerpt">${news.excerpt}</p>
+                <div class="news-stats">
+                    <span><i class="far fa-eye"></i> ${news.views.toLocaleString()} views</span>
+                    <span><i class="far fa-comments"></i> ${news.comments} comments</span>
+                    <span><i class="far fa-heart"></i> ${news.likes} likes</span>
+                </div>
+                <div class="news-actions">
+                    <button class="action-btn btn-read-more" data-id="${news.id}">
+                        <i class="fas fa-book-reader"></i> Read More
+                    </button>
+                    <button class="action-btn btn-like ${isLiked ? 'liked' : ''}" data-id="${news.id}">
+                        <i class="${likeIcon}"></i> ${likeText}
+                    </button>
+                    <button class="action-btn btn-comment" data-id="${news.id}">
+                        <i class="far fa-comments"></i> Comment
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        return card;
+    }
+
+    // Get fallback image for each category
+    function getFallbackImage(category) {
+        const fallbackImages = {
+            'Farm News': 'https://images.unsplash.com/photo-1500384066616-8a8d547abfc9?w=870&h=580&fit=crop&crop=center',
+            'Farming Tips': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=870&h=580&fit=crop&crop=center',
+            'Success Stories': 'https://images.unsplash.com/photo-1590502593743-8d0c9b5d8c8d?w=870&h=580&fit=crop&crop=center',
+            'Industry News': 'https://images.unsplash.com/photo-1586771107445-d3ca888129fc?w=870&h=580&fit=crop&crop=center'
+        };
+        
+        return fallbackImages[category] || 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=870&h=580&fit=crop&crop=center';
+    }
+
+    // Filter and Sort News
+    function filterAndSortNews() {
+        let filtered = [...newsData];
+        
+        // Apply search filter if search input exists
+        if (newsSearch && newsSearch.value) {
+            const searchTerm = newsSearch.value.toLowerCase();
+            filtered = filtered.filter(news => 
+                news.title.toLowerCase().includes(searchTerm) ||
+                news.excerpt.toLowerCase().includes(searchTerm) ||
+                news.content.toLowerCase().includes(searchTerm)
+            );
+        }
+        
+        // Apply category filter
+        if (currentFilter !== 'all') {
+            filtered = filtered.filter(news => 
+                news.category.toLowerCase().replace(' ', '-') === currentFilter
+            );
+        }
+        
+        // Apply sorting
+        switch (currentSort) {
+            case 'newest':
+                filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+                break;
+            case 'oldest':
+                filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+                break;
+            case 'popular':
+                filtered.sort((a, b) => b.views - a.views);
+                break;
+            case 'most-commented':
+                filtered.sort((a, b) => b.comments - a.comments);
+                break;
+        }
+        
+        return filtered;
+    }
+
+    // Get Category Icon
+    function getCategoryIcon(category) {
+        const icons = {
+            'Farm News': '<i class="fas fa-tractor"></i>',
+            'Farming Tips': '<i class="fas fa-lightbulb"></i>',
+            'Success Stories': '<i class="fas fa-trophy"></i>',
+            'Industry News': '<i class="fas fa-chart-line"></i>'
+        };
+        return icons[category] || '<i class="fas fa-newspaper"></i>';
+    }
+
+    // Setup Event Listeners
+    function setupEventListeners() {
+        // News card actions
+        // In your newsContainer click event listener:
+        newsContainer.addEventListener('click', (e) => {
+            const card = e.target.closest('.news-card');
+            if (!card) return;
+            
+            const id = parseInt(card.dataset.id);
+            const btn = e.target.closest('.action-btn');
+            
+            if (btn?.classList.contains('btn-read-more')) {
+                showFullArticle(id); // This now redirects to news.html
+            } else if (btn?.classList.contains('btn-like')) {
+                likeArticle(id);
+            } else if (btn?.classList.contains('btn-comment')) {
+                showComments(id);
+            } else if (e.target.classList.contains('news-title')) {
+                showFullArticle(id); // Also redirect when clicking title
+            }
+        });
+        
+        // Modal
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                commentModal.classList.remove('active');
+            });
+        }
+        
+        if (commentModal) {
+            commentModal.addEventListener('click', (e) => {
+                if (e.target === commentModal) {
+                    commentModal.classList.remove('active');
+                }
+            });
+        }
+        
+        // Add Comment
+        if (addCommentForm) {
+            addCommentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('commentName').value;
+                const text = document.getElementById('commentText').value;
+                
+                if (name && text && currentPostId) {
+                    const newComment = {
+                        id: commentsData.length + 1,
+                        postId: currentPostId,
+                        author: name,
+                        date: new Date().toISOString().split('T')[0],
+                        text: text
+                    };
+                    
+                    commentsData.push(newComment);
+                    
+                    // Update news article comment count
+                    const newsIndex = newsData.findIndex(n => n.id === currentPostId);
+                    if (newsIndex !== -1) {
+                        newsData[newsIndex].comments++;
+                    }
+                    
+                    // Re-render comments
+                    renderComments();
+                    
+                    // Clear form
+                    addCommentForm.reset();
+                    
+                    // Show success message
+                    showNotification('Comment posted successfully!');
+                }
+            });
+        }
+        
+        // Newsletter
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('subscriberName')?.value || 'Subscriber';
+                const email = document.getElementById('subscriberEmail').value;
+                
+                if (email) {
+                    // Check if already subscribed
+                    if (subscribers.some(sub => sub.email === email)) {
+                        showNotification('You are already subscribed!', 'warning');
+                        return;
+                    }
+                    
+                    subscribers.push({ name, email, date: new Date() });
+                    localStorage.setItem('agrigloria_subscribers', JSON.stringify(subscribers));
+                    
+                    newsletterForm.reset();
+                    showNotification('Thank you for subscribing to our newsletter!');
+                    
+                    // In real app, send to backend
+                    console.log('New subscriber:', { name, email });
+                }
+            });
+        }
+        
+        // Pagination
+        if (prevPageBtn) {
+            prevPageBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderNews();
+                    updatePagination();
+                }
+            });
+        }
+        
+        if (nextPageBtn) {
+            nextPageBtn.addEventListener('click', () => {
+                const totalPages = Math.ceil(filterAndSortNews().length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderNews();
+                    updatePagination();
+                }
+            });
+        }
+    }
+
+    function showFullArticle(id) {
+        const news = newsData.find(n => n.id === id);
+        if (!news) return;
+        
+        // Increase view count
+        news.views++;
+        
+        // Save to localStorage to pass to news.html
+        localStorage.setItem('agrigloria_current_article', JSON.stringify(news));
+        
+        // Redirect to news.html with article ID
+        window.location.href = `news.html?id=${id}`;
+    }
+
+    // Like Article with localStorage persistence
+    function likeArticle(id) {
+        const news = newsData.find(n => n.id === id);
+        if (!news) return;
+        
+        const isCurrentlyLiked = likedArticles.includes(id);
+        
+        if (isCurrentlyLiked) {
+            // Unlike
+            news.likes = Math.max(0, news.likes - 1);
+            likedArticles = likedArticles.filter(item => item !== id);
+        } else {
+            // Like
+            news.likes++;
+            likedArticles.push(id);
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('agrigloria_likes', JSON.stringify(likedArticles));
+        
+        // Update UI
+        const likeBtn = document.querySelector(`.btn-like[data-id="${id}"]`);
+        if (likeBtn) {
+            if (isCurrentlyLiked) {
+                likeBtn.classList.remove('liked');
+                likeBtn.innerHTML = `<i class="far fa-heart"></i> Like`;
+            } else {
+                likeBtn.classList.add('liked');
+                likeBtn.innerHTML = `<i class="fas fa-heart"></i> Liked`;
+                
+                // Animation
+                likeBtn.style.animation = 'heartBeat 0.5s ease';
+                setTimeout(() => {
+                    likeBtn.style.animation = '';
+                }, 500);
+            }
+        }
+        
+        // Update stats display
+        const statsSpan = document.querySelector(`.news-card[data-id="${id}"] .news-stats span:nth-child(3)`);
+        if (statsSpan) {
+            statsSpan.innerHTML = `<i class="far fa-heart"></i> ${news.likes} likes`;
+        }
+        
+        showNotification(isCurrentlyLiked ? 'Article unliked' : 'Article liked!');
+    }
+
+    // Show Comments
+    function showComments(id) {
+        currentPostId = id;
+        const news = newsData.find(n => n.id === id);
+        
+        if (news && commentModal) {
+            const modalHeader = commentModal.querySelector('.modal-header h3');
+            if (modalHeader) {
+                modalHeader.innerHTML = `<i class="far fa-comments"></i> Comments on "${news.title}"`;
+            }
+            commentModal.classList.add('active');
+            renderComments();
+        }
+    }
+
+    // Render Comments
+    function renderComments() {
+        if (!commentsList) return;
+        
+        const postComments = commentsData.filter(comment => comment.postId === currentPostId);
+        
+        if (postComments.length === 0) {
+            commentsList.innerHTML = `
+                <div class="no-comments">
+                    <i class="far fa-comment-dots"></i>
+                    <p>No comments yet. Be the first to share your thoughts!</p>
+                </div>
+            `;
+            return;
+        }
+        
+        commentsList.innerHTML = postComments.map(comment => `
+            <div class="comment-item">
+                <div class="comment-header">
+                    <span class="comment-author">${comment.author}</span>
+                    <span class="comment-date">${new Date(comment.date).toLocaleDateString()}</span>
+                </div>
+                <div class="comment-text">${comment.text}</div>
+            </div>
+        `).join('');
+    }
+
+    // Update Pagination
+    function updatePagination() {
+        if (!prevPageBtn || !nextPageBtn || !pageNumbers) return;
+        
+        const totalItems = filterAndSortNews().length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        
+        // Update buttons
+        prevPageBtn.disabled = currentPage === 1;
+        nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
+        
+        // Update page numbers
+        pageNumbers.innerHTML = '';
+        if (totalPages <= 1) return;
+        
+        // Show only a few page numbers
+        const pagesToShow = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
+        let endPage = Math.min(totalPages, startPage + pagesToShow - 1);
+        
+        if (endPage - startPage + 1 < pagesToShow) {
+            startPage = Math.max(1, endPage - pagesToShow + 1);
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderNews();
+                updatePagination();
+            });
+            pageNumbers.appendChild(pageBtn);
+        }
+    }
+
+    // Show Notification
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+            <span>${message}</span>
+            <button class="close-notification">&times;</button>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto remove after 4 seconds
+        setTimeout(() => {
+            notification.classList.add('fade-out');
+            setTimeout(() => notification.remove(), 300);
+        }, 4000);
+        
+        // Manual close
+        notification.querySelector('.close-notification').addEventListener('click', () => {
+            notification.remove();
+        });
+    }
+
+    // Utility: Debounce
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Add CSS for notifications and modal
+    function addStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            .article-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                z-index: 1001;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+            
+            .article-modal.active {
+                display: flex;
+            }
+            
+            .article-modal-content {
+                background: white;
+                width: 100%;
+                max-width: 800px;
+                max-height: 90vh;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            }
+            
+            .article-modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 25px;
+                background: var(--dark-green-color);
+                color: white;
+            }
+            
+            .article-modal-header h3 {
+                margin: 0;
+                font-size: 1.4rem;
+                flex: 1;
+                padding-right: 20px;
+            }
+            
+            .close-article {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 2.5rem;
+                cursor: pointer;
+                line-height: 1;
+                transition: transform 0.3s ease;
+            }
+            
+            .close-article:hover {
+                transform: rotate(90deg);
+            }
+            
+            .article-modal-body {
+                padding: 30px;
+                overflow-y: auto;
+            }
+            
+            .article-meta {
+                display: flex;
+                gap: 20px;
+                margin-bottom: 25px;
+                color: var(--dark-color);
+                font-size: 0.9rem;
+                flex-wrap: wrap;
+            }
+            
+            .article-meta span {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+            
+            .article-modal-body img {
+                width: 100%;
+                max-height: 400px;
+                object-fit: cover;
+                border-radius: 10px;
+                margin-bottom: 30px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .article-content {
+                line-height: 1.8;
+                color: var(--dark-color);
+                margin-bottom: 30px;
+                font-size: 1.05rem;
+            }
+            
+            .article-tags {
+                display: flex;
+                gap: 10px;
+                margin-top: 25px;
+                flex-wrap: wrap;
+            }
+            
+            .tag {
+                background: var(--light-green-color);
+                color: white;
+                padding: 6px 15px;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                font-weight: 500;
+            }
+            
+            .article-stats {
+                display: flex;
+                gap: 25px;
+                padding-top: 25px;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                color: var(--dark-color);
+                font-size: 0.9rem;
+            }
+            
+            .article-stats span {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--dark-green-color);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                z-index: 1002;
+                animation: slideIn 0.3s ease;
+            }
+            
+            .notification.success {
+                background: #27ae60;
+            }
+            
+            .notification.warning {
+                background: #e74c3c;
+            }
+            
+            .close-notification {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.2rem;
+                cursor: pointer;
+                margin-left: 10px;
+                opacity: 0.8;
+                transition: opacity 0.3s ease;
+            }
+            
+            .close-notification:hover {
+                opacity: 1;
+            }
+            
+            .notification.fade-out {
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.3s ease;
+            }
+            
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes heartBeat {
+                0% { transform: scale(1); }
+                25% { transform: scale(1.2); }
+                50% { transform: scale(1); }
+                75% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+            
+            .no-results, .no-comments {
+                text-align: center;
+                padding: 60px 20px;
+                color: var(--dark-color);
+            }
+            
+            .no-results i, .no-comments i {
+                font-size: 4rem;
+                color: var(--primary-color);
+                margin-bottom: 20px;
+                opacity: 0.5;
+            }
+            
+            .no-results h3 {
+                color: var(--dark-green-color);
+                margin-bottom: 10px;
+            }
+            
+            .no-results p {
+                color: var(--dark-color);
+                opacity: 0.7;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Initialize everything
+    addStyles();
+    initNewsSection();
+});
+
+// ======= FAQ SECTION JAVASCRIPT =======
+document.addEventListener('DOMContentLoaded', () => {
+    // FAQ Toggle Functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const faqItem = this.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            if (!isActive) {
+                faqItem.classList.add('active');
+            } else {
+                faqItem.classList.remove('active');
+            }
+        });
+    });
+    
+    // Smooth scroll to FAQ section
+    const faqLinks = document.querySelectorAll('a[href="#faq"]');
+    faqLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const faqSection = document.getElementById('faq');
+            if (faqSection) {
+                const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+                window.scrollTo({
+                    top: faqSection.offsetTop - headerHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // FAQ Category Animation on Scroll
+    const faqCategories = document.querySelectorAll('.faq-category');
+    
+    const faqObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 200);
+                faqObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // Set initial state for animation
+    faqCategories.forEach((category, index) => {
+        category.style.opacity = '0';
+        category.style.transform = 'translateY(30px)';
+        category.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        faqObserver.observe(category);
+    });
+    
+    console.log('FAQ section initialized successfully');
 });
 
 // Contact Section JavaScript - Complete
@@ -960,7 +1896,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================
-    // 5. ADD CSS STYLES FOR ANIMATIONS & ERRORS
+    // 5. CSS STYLES FOR ANIMATIONS & ERRORS
     // ============================================
     function addStyles() {
         const style = document.createElement('style');
@@ -1048,7 +1984,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContactSection();
 
     // ============================================
-    // 7. WINDOW RESIZE HANDLER (Optional)
+    // 7. WINDOW RESIZE HANDLER
     // ============================================
     let resizeTimer;
     window.addEventListener('resize', () => {

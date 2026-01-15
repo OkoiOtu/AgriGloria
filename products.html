@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AgriGloria Farms Products & Pricing - Premium livestock, competitive prices, bulk discounts">
+    <meta name="keywords" content="farm products, livestock prices, chicken prices, pig prices, snail farming, fish farming, agricultural products Nigeria">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Products & Pricing - AgriGloria Farms</title>
+</head>
+<body>
+    <!-- Header (Same as index.html) -->
+    <div class="nav-header">
+        <div class="top-bar">
+            <div class="address-bar">
+                <span><i class="material-icons">location_on</i> 02 Ayaebam Village, Akamkpa, Cross River, Nigeria.</span>
+                <a href=""><span><i class="material-icons">email</i> info@agrigloria.com</span></a>
+                <span><i class="material-icons">access_time</i> Mon-Sat: 8:00AM - 6:00PM</span>
+            </div>
+            <div class="social-media-bar">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-tiktok"></i></a>
+                <div class="slash">|</div>
+                <a href=""><i class="fas fa-user"></i> Login</a>
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="nav-bar">
+                <div class="logo">
+                    <a href="index.html"><img src="images/AgriGloria_logo.png" alt="Agrigloria Farms & Holdings Logo" width="120" /></a>
+                </div>
+                <div class="nav-components">
+                    <div class="nav">      
+                        <nav class="nav-links" id="nav-links">
+                            <ul class="links">
+                                <li><a class="link" href="index.html#home">Home</a></li>
+                                <li><a class="link" href="index.html#livestock">Livestock</a></li>
+                                <li><a class="link" href="index.html#about">About Us</a></li>
+                                <li><a class="link" href="index.html#news">News</a></li>
+                                <li><a class="link" href="products.html" class="active">Products & Pricing</a></li>
+                                <li><a class="link" href="index.html#gallery">Gallery</a></li>
+                                <li><a class="link" href="index.html#contact">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+    
+                    <div class="questions">
+                        <span><i class="material-icons">phone</i></span>
+                        <div class="question">
+                            <p>Have Questions?</p>
+                            <a href="tel:+2348031234567">+234 803 123 4567</a>
+                        </div>
+                    </div>
+    
+                    <form class="search">
+                        <input class="searcher" type="text" placeholder="Search products...">
+                        <button type="button" class="search-icon">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
+    
+                    <div class="cart">
+                        <a href="cart.html"><i class="material-icons">shopping_cart<span id="cartCount">(0)</span></i></a>
+                    </div>
+    
+                    <div class="menu-icon" id="menu-icon">
+                        <i class="material-icons" id="menu-icon-img">menu</i>
+                        <i class="material-icons" id="close-icon-img" style="display: none;">close</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Page Content -->
+    <main class="products-page">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span>/</span>
+                <span>Products & Pricing</span>
+            </div>
+            <h1>Our Products & Pricing</h1>
+            <p>Premium livestock at competitive prices. Bulk orders attract special discounts</p>
+            <a href="#productsGrid" class="btn-view-products">
+                <i class="fas fa-arrow-down"></i> View All Products
+            </a>
+        </div>
+
+        <!-- Products Container -->
+        <div class="products-container">
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Product Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-number">15-25%</div>
+                    <div class="stat-label">Bulk Discount</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-number">2-7</div>
+                    <div class="stat-label">Delivery Days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="stat-number">48-Hour</div>
+                    <div class="stat-label">Health Guarantee</div>
+                </div>
+            </div>
+
+            <!-- Products Navigation -->
+            <div class="products-nav">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th-large"></i> All Products
+                </button>
+                <button class="category-btn" data-category="poultry">
+                    <i class="fas fa-egg"></i> Poultry
+                </button>
+                <button class="category-btn" data-category="pigs">
+                    <i class="fas fa-piggy-bank"></i> Pigs
+                </button>
+                <button class="category-btn" data-category="snails">
+                    <i class="fas fa-bug"></i> Snails
+                </button>
+                <button class="category-btn" data-category="fish">
+                    <i class="fas fa-fish"></i> Fish
+                </button>
+                <button class="category-btn" data-category="goats">
+                    <i class="fas fa-paw"></i> Goats
+                </button>
+                <button class="category-btn" data-category="special-offers">
+                    <i class="fas fa-star"></i> Special Offers
+                </button>
+            </div>
+
+            <!-- Currency & Unit Selector -->
+            <div class="pricing-controls">
+                <div class="currency-selector">
+                    <span class="control-label">
+                        <i class="fas fa-money-bill-wave"></i> Currency:
+                    </span>
+                    <div class="currency-options">
+                        <button class="currency-btn active" data-currency="NGN">₦ NGN</button>
+                        <button class="currency-btn" data-currency="USD">$ USD</button>
+                    </div>
+                </div>
+                
+                <div class="quantity-selector">
+                    <span class="control-label">
+                        <i class="fas fa-balance-scale"></i> Quantity:
+                    </span>
+                    <div class="quantity-options">
+                        <button class="qty-btn active" data-qty="single">Single</button>
+                        <button class="qty-btn" data-qty="dozen">Dozen</button>
+                        <button class="qty-btn" data-qty="bulk">Bulk (50+)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded by JavaScript -->
+                <div class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading products...</p>
+                </div>
+            </div>
+
+            <!-- Bulk Order Calculator -->
+            <div class="bulk-calculator">
+                <div class="calculator-header">
+                    <h3><i class="fas fa-calculator"></i> Bulk Order Calculator</h3>
+                    <p>Calculate savings for large orders</p>
+                </div>
+                
+                <div class="calculator-body">
+                    <div class="calculator-inputs">
+                        <div class="calc-row">
+                            <div class="calc-group">
+                                <label for="productSelect">
+                                    <i class="fas fa-egg"></i> Select Product
+                                </label>
+                                <select id="productSelect" class="calc-select">
+                                    <option value="">Choose a product</option>
+                                    <option value="layer-chicken">Layer Chicken</option>
+                                    <option value="broiler-chicken">Broiler Chicken</option>
+                                    <option value="pig">Pig</option>
+                                    <option value="snail">Snail</option>
+                                    <option value="fish">Fish (Catfish/Tilapia)</option>
+                                    <option value="goat">Goat</option>
+                                </select>
+                            </div>
+                            
+                            <div class="calc-group">
+                                <label for="quantityInput">
+                                    <i class="fas fa-hashtag"></i> Quantity
+                                </label>
+                                <div class="quantity-control">
+                                    <button class="qty-minus" id="qtyMinus">-</button>
+                                    <input type="number" id="quantityInput" value="50" min="10" max="1000">
+                                    <button class="qty-plus" id="qtyPlus">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="calc-row">
+                            <div class="calc-group">
+                                <label for="deliveryLocation">
+                                    <i class="fas fa-truck"></i> Delivery Location
+                                </label>
+                                <select id="deliveryLocation" class="calc-select">
+                                    <option value="within-akamkpa">Within Akamkpa</option>
+                                    <option value="cross-river">Other Cross River Areas</option>
+                                    <option value="neighboring-states">Neighboring States</option>
+                                </select>
+                            </div>
+                            
+                            <div class="calc-group">
+                                <label>
+                                    <i class="fas fa-percentage"></i> Bulk Discount
+                                </label>
+                                <div class="discount-display">
+                                    <span id="discountPercent">10%</span>
+                                    <span class="discount-note">Applied automatically</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-results">
+                        <div class="result-item">
+                            <span class="result-label">Unit Price:</span>
+                            <span class="result-value" id="unitPrice">₦ 4,500</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Quantity:</span>
+                            <span class="result-value" id="totalQuantity">50 units</span>
+                        </div>
+                        <div class="result-item discount">
+                            <span class="result-label">Bulk Discount:</span>
+                            <span class="result-value" id="discountAmount">- ₦ 22,500</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Delivery Cost:</span>
+                            <span class="result-value" id="deliveryCost">₦ 15,000</span>
+                        </div>
+                        <div class="result-item total">
+                            <span class="result-label">Total Cost:</span>
+                            <span class="result-value" id="totalCost">₦ 207,500</span>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-actions">
+                        <button class="btn-reset" id="resetCalculator">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                        <button class="btn-get-quote" id="getQuoteBtn">
+                            <i class="fas fa-file-invoice"></i> Get Detailed Quote
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Comparison Table -->
+            <div class="price-comparison">
+                <div class="comparison-header">
+                    <h3><i class="fas fa-chart-bar"></i> Price Comparison</h3>
+                    <p>See how our prices compare to market average</p>
+                </div>
+                
+                <div class="comparison-table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Our Price</th>
+                                <th>Market Average</th>
+                                <th>You Save</th>
+                                <th>Quality Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparisonTable">
+                            <!-- Data will be loaded by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payment & Delivery Info -->
+            <div class="payment-delivery-info">
+                <div class="info-card payment-info">
+                    <div class="info-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Payment Options</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-check-circle"></i> Bank Transfer</li>
+                        <li><i class="fas fa-check-circle"></i> Cash on Delivery</li>
+                        <li><i class="fas fa-check-circle"></i> 50% Advance Payment</li>
+                        <li><i class="fas fa-check-circle"></i> Installment Plans Available</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card delivery-info">
+                    <div class="info-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Delivery Information</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-check-circle"></i> Free delivery within Akamkpa (50+ units)</li>
+                        <li><i class="fas fa-check-circle"></i> Cross River State: ₦ 5,000 - ₦ 15,000</li>
+                        <li><i class="fas fa-check-circle"></i> Neighboring states: ₦ 20,000+</li>
+                        <li><i class="fas fa-check-circle"></i> Delivery within 2-7 days</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card warranty-info">
+                    <div class="info-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Quality Guarantee</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-check-circle"></i> 48-hour health guarantee</li>
+                        <li><i class="fas fa-check-circle"></i> Vaccination certificates provided</li>
+                        <li><i class="fas fa-check-circle"></i> Free veterinary consultation</li>
+                        <li><i class="fas fa-check-circle"></i> Replacement for DOA</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="pricing-cta">
+                <div class="cta-content">
+                    <h3><i class="fas fa-tag"></i> Ready to Place Your Order?</h3>
+                    <p>Contact our sales team for personalized pricing and expert advice</p>
+                    <div class="cta-buttons">
+                        <a href="tel:+2348031234567" class="btn-cta primary">
+                            <i class="fas fa-phone-alt"></i> Call Now: +234 803 123 4567
+                        </a>
+                        <a href="mailto:sales@agrigloria.com" class="btn-cta secondary">
+                            <i class="fas fa-envelope"></i> Email for Quote
+                        </a>
+                        <a href="https://wa.me/2348031234567" target="_blank" class="btn-cta outline" id="whatsappOrder">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Order
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Copy from your index.html) -->
+    <footer>
+        <!-- Copy your footer from index.html here -->
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2348031234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/script.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
