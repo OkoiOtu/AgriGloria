@@ -8,12 +8,15 @@ let isMenuOpen = false;
 
 if (menuIcon && navLinks && menuImg) {
   menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
     isMenuOpen = !isMenuOpen;
-
-    // Change icon
-    menuImg.textContent = isMenuOpen ? 'close' : 'menu';
-    menuImg.alt = isMenuOpen ? 'Close Menu' : 'Open Menu';
+    navLinks.classList.toggle('open', isMenuOpen);
+    // prevent background scroll when menu open (mobile)
+    document.documentElement.style.overflow = isMenuOpen ? 'hidden' : '';
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    // toggle icon text if using material-icons
+    if (menuImg) menuImg.textContent = isMenuOpen ? 'close' : 'menu';
+    // also toggle aria for accessibility
+    menuIcon.setAttribute('aria-expanded', isMenuOpen ? 'true' : 'false');
   });
 }
 
@@ -2000,4 +2003,77 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 250);
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.getElementById('backToTop');
+    if (!backToTop) return;
+
+    // Ensure initial hidden state (in case CSS display none was removed)
+    backToTop.style.display = 'none';
+    backToTop.style.cursor = 'pointer';
+
+    const SHOW_AFTER = 400;
+    const toggleVisibility = () => {
+        if (window.scrollY > SHOW_AFTER) backToTop.style.display = 'flex';
+        else backToTop.style.display = 'none';
+    };
+
+    // On scroll toggle
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    // Initial check
+    toggleVisibility();
+
+    // Click / keyboard activation
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    backToTop.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            backToTop.click();
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // set current year
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // footer newsletter
+  const footerForm = document.getElementById('footerNewsletterForm');
+  const footerEmail = document.getElementById('footerEmail');
+  const footerMsg = document.getElementById('footerNewsletterMsg');
+
+  if (footerForm) {
+    footerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = (footerEmail && footerEmail.value || '').trim();
+      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        if (footerMsg) footerMsg.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      // simple UX - simulate subscribe
+      if (footerMsg) footerMsg.textContent = 'Subscribing...';
+      setTimeout(() => {
+        if (footerMsg) footerMsg.textContent = 'Thanks — you are subscribed!';
+        if (footerEmail) footerEmail.value = '';
+      }, 750);
+      // TODO: replace with real API call
+    });
+  }
+
+  // back-to-top visibility + smooth scroll
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    const toggle = () => {
+      if (window.scrollY > 300) backToTop.style.display = 'flex';
+      else backToTop.style.display = 'none';
+    };
+    window.addEventListener('scroll', toggle);
+    toggle();
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    backToTop.addEventListener('keydown', (e) => { if (e.key === 'Enter') window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
 });

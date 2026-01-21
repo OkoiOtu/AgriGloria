@@ -668,6 +668,11 @@
     gap: 10px;
 }
 
+.comparison-header p {
+    color: var(--dark-color);
+    opacity: 0.8;
+}
+
 .comparison-table-container {
     overflow-x: auto;
 }
@@ -731,4 +736,124 @@
 .payment-delivery-info {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    text-align: left;
+}
+
+.info-card h3 {
+    color: var(--dark-green-color);
+    margin-bottom: 12px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-list li {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+/* Call to Action */
+.pricing-cta {
+    margin-top: 40px;
+    background: linear-gradient(90deg, rgba(83,94,58,0.95), rgba(54,63,31,0.95));
+    padding: 40px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+}
+
+.pricing-cta .btn-cta {
+    display: inline-flex;
+    gap: 12px;
+    padding: 12px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.btn-cta.primary { background: #2e7d32; color: white; }
+.btn-cta.secondary { background: #1565c0; color: white; }
+.btn-cta.outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.25); }
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    background: #25D366;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* Back to Top */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: var(--dark-green-color);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Loading State */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--dark-color);
+    gap: 12px;
+}
+
+.loading-state i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .products-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .calc-row { grid-template-columns: 1fr; }
+    .pricing-controls { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 { font-size: 2.2rem; }
+    .product-image { height: 180px; }
+    .calculator-results { padding: 20px; }
+}
+
+@media (max-width: 480px) {
+    .product-image { height: 160px; }
+    .product-title { font-size: 1.1rem; }
+    .btn-order, .btn-inquire, .btn-details { min-width: 100px; padding: 10px; font-size: 0.85rem; }
+    .pricing-controls { padding: 15px; }
+}

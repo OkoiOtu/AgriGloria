@@ -26,10 +26,11 @@
                 <a href="#faq"><span><i class="material-icons">question_answer</i>FAQs</span></a>
             </div>
             <div class="social-media-bar">
+                <span>Follow Us:</span>
                 <a href=""><i class="fab fa-facebook-f"></i></a>
-                <a href=""><i class="fab fa-twitter"></i></a>
+                <!-- <a href=""><i class="fab fa-twitter"></i></a> -->
                 <a href=""><i class="fab fa-instagram"></i></a>
-                <a href=""><i class="fab fa-tiktok"></i></a>
+                <!-- <a href=""><i class="fab fa-tiktok"></i></a> -->
                 <div class="slash">|</div>
                 <a href=""><i class="fas fa-user"></i> Login</a>
             </div>
@@ -48,9 +49,30 @@
                                 <li><a class="link" href="#about" data-link="about">About Us</a></li>
                                 <li><a class="link" href="#gallery" data-link="gallery">Gallery</a></li>
                                 <li><a class="link" href="index.html#news" data-link="news">News & Updates</a></li>
-                                <li><a class="link" href="products.html" data-link="products">Products</a></li>
-                                <li><a class="link" href="#contact" data-link="contact">Contact Us</a></li>
+                                <li><a class="link" href="products.html" data-link="products">Products & Pricing</a></li>
+                                <li><a class="link" href="#contact" data-link="contact">Contact Us </a></li>
+
+                                <div class="login">
+                                    <h3>Have an account?</h3>
+                                    <a href=""><i class="fas fa-user"></i> Login</a>
+                                </div>
                             </ul>
+                            
+                            <div class="side-bar">
+                                <div class="address-bar">
+                                    <span><i class="material-icons">location_on</i> 02 Ayaebam Village, Akamkpa, Cross River, Nigeria.</span>
+                                    <a href=""><span><i class="material-icons">email</i> info@agrigloria.com</span></a>
+                                    <span><i class="material-icons">access_time</i> Mon-Sat: 8:00AM - 6:00PM</span>
+                                    <a href="#faq"><span><i class="material-icons">question_answer</i>FAQs</span></a>
+                                </div>
+                                <div class="social-media-bar">
+                                    <span>Follow Us On:</span>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <!-- <a href=""><i class="fab fa-twitter"></i></a> -->
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <!-- <a href=""><i class="fab fa-tiktok"></i></a> -->
+                                </div>
+                            </div>
                         </nav>
                     </div>
     
@@ -58,20 +80,12 @@
                         <span><i class="material-icons">phone</i></span>
                         <div class="question">
                             <p>Have Questions?</p>
-                            <a href="">+234 803 123 4567</a>
+                            <h2>+7 915 365 34 52</h2>
                         </div>
                     </div>
-    
-                    <form class="search">
-                        <input class="searcher" type="text" placeholder="Search..." />
-    
-                        <button type="button" class="search-icon">
-                            <i class="material-icons">search</i>
-                        </button>
-                    </form>
-    
-                    <div class="cart">
-                        <a href=""><i class="material-icons">shopping_cart<span>(0)</span></i></a>
+
+                    <div class="quote">
+                        <a href="#get-a-quote" class="quote-btn">Get a Quote</a>
                     </div>
     
                     <div class="menu-icon" id="menu-icon">
@@ -82,7 +96,6 @@
             </div>
         </div>
     </header>
-    
     <!-- Header Ends -->
 
     <!-- Banner Section Start -->
@@ -119,7 +132,7 @@
             <div class="content">
                 <div><img class="agri" src="images/AgriGloria.png" alt="Agrigloria" width="600"></div>
                 <!-- The h1 will be inserted here by JavaScript -->
-                <a href="#products" class="banner-btn">View our Products</a>
+                <a href="products.html" class="banner-btn">View our Products</a>
             </div>
         </div>
     </section>
@@ -334,10 +347,10 @@
                 <div class="story-container">
                     <div class="story-image">
                         <img src="images/Agri_logo_with_text.png" alt="AgriGloria Farm" loading="lazy">
-                        <div class="experience-badge">
+                        <!-- <div class="experience-badge">
                             <span class="years">5+</span>
                             <span class="label">Years of Excellence</span>
-                        </div>
+                        </div> -->
                     </div>
                     
                     <div class="story-content">
@@ -1201,7 +1214,7 @@
                     </div>
 
                     <!-- Info Card 4 -->
-                    <div class="info-card">
+                    <div class="info-card" id="get-a-quote">
                         <div class="info-icon">
                             <i class="fas fa-clock"></i>
                         </div>
@@ -1332,6 +1345,73 @@
     </section>
     <!-- Contact Section End -->
     
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+79153653452" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" role="button" tabindex="0" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </div>
+
+    <!-- JavaScript Files -->
     <script src="js/script.js"></script>
+
+    <!-- Footer Section Start -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-col about">
+                <a href="index.html" class="footer-logo">
+                    <img src="images/AgriGloria_logo.png" alt="AgriGloria logo" width="120">
+                </a>
+                <p>Located in Ayaebam Village, Akamkpa.</p>
+                <p class="footer-small">Open Mon–Sat: 8:00AM – 6:00PM</p>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#livestock">Livestock</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="products.html">Products & Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact</h4>
+                <p><i class="material-icons">location_on</i> 02 Ayaebam Village, Akamkpa, Cross River, Nigeria</p>
+                <p><i class="material-icons">phone</i> <a href="tel:+79153653452">+234 803 123 4567</a></p>
+                <p><i class="material-icons">email</i> <a href="mailto:info@agrigloria.com">info@agrigloria.com</a></p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/+79153653452" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+            </div>
+
+            <div class="footer-col newsletter">
+            <h4>Subscribe</h4>
+            <p>Get weekly updates, pricing and offers.</p>
+            <form id="footerNewsletterForm" class="footer-newsletter-form" novalidate>
+                <input type="email" id="footerEmail" placeholder="Your email" required aria-label="Email">
+                <button type="submit" class="footer-subscribe-btn">Subscribe</button>
+            </form>
+            <p id="footerNewsletterMsg" class="footer-msg" aria-live="polite"></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> AgriGloria Farms &amp; Holdings. All rights reserved.</p>
+            <nav class="footer-policy">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#contact">Support</a>
+            </nav>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
 </body>
 </html>
