@@ -161,9 +161,14 @@
 
 .currency-selector,
 .quantity-selector {
-    display: flex;
+    display: block;
     align-items: center;
     gap: 15px;
+}
+
+.currency-selector span,
+.quantity-selector span {
+    margin-bottom: 10px;
 }
 
 .control-label {
