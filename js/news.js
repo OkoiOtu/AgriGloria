@@ -40,17 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // ... rest of your news data from index.js
   ];
   
-  // Comments data
-  const commentsData = [
-    // ... your comments data from index.js
-  ];
+  // Comments data (empty by default - fill from backend or index.js if available)
+  const commentsData = [];
   
   // Load article data
   function loadArticle() {
     const article = newsData.find(n => n.id === articleId) || newsData[0];
     
     // Update breadcrumb
-    document.getElementById('articleBreadcrumb').textContent = article.title;
+    const bc = document.getElementById('articleBreadcrumb');
+    if (bc) bc.textContent = article.title;
     
     // Render article
     renderArticle(article);
@@ -65,7 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render article
   function renderArticle(article) {
     const articleContent = document.getElementById('articleContent');
-    const isLiked = JSON.parse(localStorage.getItem('agrigloria_likes') || '[]').includes(article.id);
+    if (!articleContent) return;
+    const likedStorage = JSON.parse(localStorage.getItem('agrigloria_likes') || '[]');
+    const isLiked = Array.isArray(likedStorage) && likedStorage.includes(article.id);
     
     // Format date
     const date = new Date(article.date).toLocaleDateString('en-US', {
@@ -134,7 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
       
       // Show comments section
-      document.getElementById('commentsSection').style.display = 'block';
+      const commentsSection = document.getElementById('commentsSection');
+      if (commentsSection) commentsSection.style.display = 'block';
       
       // Add event listeners
       setupArticleActions(article);
@@ -146,9 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter(n => n.id !== currentArticle.id && n.category === currentArticle.category)
             .slice(0, 3);
         
+        const relatedGrid = document.getElementById('relatedGrid');
+        if (!relatedGrid) return;
+        
         if (related.length > 0) {
-            const relatedGrid = document.getElementById('relatedGrid');
-            relatedGrid.innerHTML = related.map(article => `
+            relatedGrid.innerHTML = related.map(article => {
+                const shortDate = new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                return `
                 <div class="related-article">
                     <div class="related-image">
                         <img src="${article.image}" alt="${article.title}">
@@ -159,14 +165,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         </h3>
                         <p>${article.excerpt}</p>
                         <div class="related-meta">
-                            <span><i class="far fa-calendar"></i> ${new Date(article.date).toLocaleDateString('short')}</span>
+                            <span><i class="far fa-calendar"></i> ${shortDate}</span>
                             <span><i class="far fa-eye"></i> ${article.views}</span>
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
             
-            document.getElementById('relatedArticles').style.display = 'block';
+            const relatedSection = document.getElementById('relatedArticles');
+            if (relatedSection) relatedSection.style.display = 'block';
+        } else {
+            relatedGrid.innerHTML = '';
+            const relatedSection = document.getElementById('relatedArticles');
+            if (relatedSection) relatedSection.style.display = 'none';
         }
     }
     
@@ -174,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadComments(postId) {
         const postComments = commentsData.filter(comment => comment.postId === postId);
         const commentsList = document.getElementById('commentsList');
+        if (!commentsList) return;
         
         if (postComments.length > 0) {
             commentsList.innerHTML = postComments.map(comment => `
@@ -185,115 +198,152 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="comment-text">${comment.text}</div>
                 </div>
             `).join('');
+        } else {
+            // show default "no comments" placeholder
+            commentsList.innerHTML = `
+              <div class="no-comments">
+                  <i class="far fa-comment-dots"></i>
+                  <p>No comments yet. Be the first to comment!</p>
+              </div>
+            `;
         }
     }
     
     // Setup article actions
     function setupArticleActions(article) {
         // Like button
-        document.getElementById('likeArticleBtn').addEventListener('click', function() {
-            const isLiked = this.classList.contains('liked');
-            const likesSpan = document.querySelector('.article-stats span:nth-child(3)');
-            
-            if (isLiked) {
-                // Unlike
-                article.likes = Math.max(0, article.likes - 1);
-                this.classList.remove('liked');
-                this.innerHTML = '<i class="far fa-heart"></i> Like';
+        const likeBtn = document.getElementById('likeArticleBtn');
+        if (likeBtn) {
+            likeBtn.addEventListener('click', function() {
+                const isLiked = this.classList.contains('liked');
+                const likesSpan = document.querySelector('.article-stats span:nth-child(3)');
                 
-                // Remove from localStorage
-                let likedArticles = JSON.parse(localStorage.getItem('agrigloria_likes') || '[]');
-                likedArticles = likedArticles.filter(id => id !== article.id);
-                localStorage.setItem('agrigloria_likes', JSON.stringify(likedArticles));
-            } else {
-                // Like
-                article.likes++;
-                this.classList.add('liked');
-                this.innerHTML = '<i class="fas fa-heart"></i> Liked';
+                if (isLiked) {
+                    // Unlike
+                    article.likes = Math.max(0, article.likes - 1);
+                    this.classList.remove('liked');
+                    this.innerHTML = '<i class="far fa-heart"></i> Like';
+                    
+                    // Remove from localStorage
+                    let likedArticles = JSON.parse(localStorage.getItem('agrigloria_likes') || '[]');
+                    likedArticles = likedArticles.filter(id => id !== article.id);
+                    localStorage.setItem('agrigloria_likes', JSON.stringify(likedArticles));
+                } else {
+                    // Like
+                    article.likes++;
+                    this.classList.add('liked');
+                    this.innerHTML = '<i class="fas fa-heart"></i> Liked';
+                    
+                    // Add to localStorage (avoid duplicates)
+                    let likedArticles = JSON.parse(localStorage.getItem('agrigloria_likes') || '[]');
+                    if (!Array.isArray(likedArticles)) likedArticles = [];
+                    if (!likedArticles.includes(article.id)) likedArticles.push(article.id);
+                    localStorage.setItem('agrigloria_likes', JSON.stringify(likedArticles));
+                }
                 
-                // Add to localStorage
-                let likedArticles = JSON.parse(localStorage.getItem('agrigloria_likes') || '[]');
-                likedArticles.push(article.id);
-                localStorage.setItem('agrigloria_likes', JSON.stringify(likedArticles));
-            }
-            
-            // Update likes display
-            if (likesSpan) {
-                likesSpan.innerHTML = `<i class="far fa-heart"></i> ${article.likes} likes`;
-            }
-        });
+                // Update likes display
+                if (likesSpan) {
+                    likesSpan.innerHTML = `<i class="far fa-heart"></i> ${article.likes} likes`;
+                }
+            });
+        }
         
         // Share button
-        document.getElementById('shareArticleBtn').addEventListener('click', function() {
-            if (navigator.share) {
-                navigator.share({
-                    title: article.title,
-                    text: article.excerpt,
-                    url: window.location.href
-                });
-            } else {
-                // Fallback: Copy to clipboard
-                navigator.clipboard.writeText(window.location.href);
-                alert('Link copied to clipboard!');
-            }
-        });
+        const shareBtn = document.getElementById('shareArticleBtn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async function() {
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: article.title,
+                            text: article.excerpt,
+                            url: window.location.href
+                        });
+                    } catch (err) {
+                        // user cancelled or error - ignore
+                    }
+                } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                    try {
+                        await navigator.clipboard.writeText(window.location.href);
+                        showNotification('Link copied to clipboard!');
+                    } catch (err) {
+                        // fallback
+                        showNotification('Unable to copy link automatically. Please copy manually.');
+                    }
+                } else {
+                    // last resort - select and prompt
+                    showNotification('Copy this URL: ' + window.location.href);
+                }
+            });
+        }
         
         // Print button
-        document.getElementById('printArticleBtn').addEventListener('click', function() {
-            window.print();
-        });
+        const printBtn = document.getElementById('printArticleBtn');
+        if (printBtn) {
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+        }
         
         // Comment form
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('commenterName').value;
-            const text = document.getElementById('commentText').value;
-            
-            if (name && text) {
-                // In real app, send to backend
-                const newComment = {
-                    id: commentsData.length + 1,
-                    postId: article.id,
-                    author: name,
-                    date: new Date().toISOString().split('T')[0],
-                    text: text
-                };
+        const commentForm = document.getElementById('commentForm');
+        if (commentForm) {
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Add to comments list
-                const commentsList = document.getElementById('commentsList');
-                const commentItem = document.createElement('div');
-                commentItem.className = 'comment-item';
-                commentItem.innerHTML = `
-                    <div class="comment-header">
-                        <span class="comment-author">${newComment.author}</span>
-                        <span class="comment-date">${new Date(newComment.date).toLocaleDateString()}</span>
-                    </div>
-                    <div class="comment-text">${newComment.text}</div>
-                `;
+                const nameEl = document.getElementById('commenterName');
+                const textEl = document.getElementById('commentText');
+                const name = nameEl ? nameEl.value.trim() : '';
+                const text = textEl ? textEl.value.trim() : '';
                 
-                // Remove "no comments" message if exists
-                const noComments = commentsList.querySelector('.no-comments');
-                if (noComments) {
-                    noComments.remove();
+                if (name && text) {
+                    // In real app, send to backend
+                    const newComment = {
+                        id: commentsData.length + 1,
+                        postId: article.id,
+                        author: name,
+                        date: new Date().toISOString().split('T')[0],
+                        text: text
+                    };
+                    
+                    // Add to comments list (DOM)
+                    const commentsList = document.getElementById('commentsList');
+                    if (commentsList) {
+                        const commentItem = document.createElement('div');
+                        commentItem.className = 'comment-item';
+                        commentItem.innerHTML = `
+                            <div class="comment-header">
+                                <span class="comment-author">${newComment.author}</span>
+                                <span class="comment-date">${new Date(newComment.date).toLocaleDateString()}</span>
+                            </div>
+                            <div class="comment-text">${newComment.text}</div>
+                        `;
+                        
+                        // Remove "no comments" message if exists
+                        const noComments = commentsList.querySelector('.no-comments');
+                        if (noComments) noComments.remove();
+                        
+                        commentsList.insertBefore(commentItem, commentsList.firstChild);
+                    }
+                    
+                    // Update comment count
+                    article.comments++;
+                    const commentsSpan = document.querySelector('.article-stats span:nth-child(2)');
+                    if (commentsSpan) {
+                        commentsSpan.innerHTML = `<i class="far fa-comments"></i> ${article.comments} comments`;
+                    }
+                    
+                    // Optionally keep commentsData in-memory
+                    commentsData.push(newComment);
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Show success message
+                    showNotification('Comment posted successfully!');
                 }
-                
-                commentsList.insertBefore(commentItem, commentsList.firstChild);
-                
-                // Update comment count
-                article.comments++;
-                const commentsSpan = document.querySelector('.article-stats span:nth-child(2)');
-                if (commentsSpan) {
-                    commentsSpan.innerHTML = `<i class="far fa-comments"></i> ${article.comments} comments`;
-                }
-                
-                // Reset form
-                this.reset();
-                
-                // Show success message
-                showNotification('Comment posted successfully!');
-            }
-        });
+            });
+        }
     }
     
     // Show notification

@@ -15,7 +15,7 @@
 </head>
 <body>
 
-    <!-- Header Starts -->
+    <!-- HEADER SECTION START! -->
     <div id="home"></div>
     <header class="nav-header">
         <div class="top-bar">
@@ -96,9 +96,9 @@
             </div>
         </div>
     </header>
-    <!-- Header Ends -->
+    <!-- HEADER SECTION END! -->
 
-    <!-- Banner Section Start -->
+    <!-- BANNER SECTION START! -->
     <section class="banner">
         <div class="video-slider">
             <!-- Video 1 (no quote needed here anymore) -->
@@ -136,13 +136,14 @@
             </div>
         </div>
     </section>
-    <!-- banner Section End -->
+    <!-- BANNER SECTION END! -->
 
-    <!-- Our Animals Section Start -->
+    <!-- LIVESTOCK SECTION START! -->
     <section id="livestock" class="animals-section">
         <div class="section-header">
             <div class="logo-container">
                 <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo" class="farm-logo" width="130">
+                <div class="logo-pulse"></div>
             </div>
             <h2 class="section-title">Our Premium Livestock</h2>
             <p class="section-subtitle">Healthy, well-cared animals raised with sustainable practices</p>
@@ -304,14 +305,15 @@
             </a>
         </div>
     </section>
-    <!-- Our Animals Section End -->
+    <!-- LIVESTOCK SECTION END! -->
 
-    <!-- About Us Section Start -->
+    <!-- ABOUT US SECTION START! -->
     <section id="about" class="about-section">
         <div class="container">
             <div class="section-header">
                 <div class="logo-container">
                     <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo"  class="farm-logo" width="130">
+                    <div class="logo-pulse"></div>
                 </div>
                 <h2 class="section-title">About AgriGloria Farms</h2>
                 <p class="section-subtitle">Our journey in sustainable farming and animal husbandry</p>
@@ -468,14 +470,15 @@
             </div>
         </div>
     </section>
-    <!-- About Us Section End -->
+    <!-- ABOUT US SECTION END! -->
 
-    <!-- Why Choose Us Section Start -->
+    <!-- WHY CHOOSE US SECTION START! -->
     <section class="why-choose-section">
         <div class="container">
             <div class="section-header">
                 <div class="logo-container">
                     <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo"  class="farm-logo" width="130">
+                    <div class="logo-pulse"></div>
                 </div>
                 <h2 class="section-title">Why Choose AgriGloria?</h2>
                 <p class="section-subtitle">Excellence in every aspect of farming and animal husbandry</p>
@@ -576,14 +579,15 @@
             </div>
         </div>
     </section>
-    <!-- Why Choose Us Section End -->
+    <!-- WHY CHOOSE US SECTION END! -->
 
-    <!-- Testimonials Section Start -->
+    <!-- TESTIMONIALS SECTION START -->
     <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
                 <div class="logo-container">
                     <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo" class="farm-logo" width="120">
+                    <div class="logo-pulse"></div>
                 </div>
                 <h2 class="section-title">What Our Clients Say</h2>
                 <p class="section-subtitle">Hear from satisfied farmers, businesses, and individuals who trust AgriGloria</p>
@@ -746,146 +750,539 @@
             </div>
         </div>
     </section>
-    <!-- Testimonials Section End -->
+    <!-- TESTIMONIALS SECTION END! -->
 
-    <!-- Gallery Section Start -->
+    <!-- GALLERY SECTION START! -->
     <section class="gallery-section" id="gallery">
         <div class="container">
+            <!-- Enhanced Header -->
             <div class="section-header">
                 <div class="logo-container">
-                    <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo" class="farm-logo" width="120">
+                    <div class="logo-animation">
+                        <img src="images/Agri_logo.png" alt="AgriGloria Farms Logo" class="farm-logo" width="120">
+                        <div class="logo-pulse"></div>
+                    </div>
                 </div>
-                <h2 class="section-title">Our Farm Gallery</h2>
-                <p class="section-subtitle">A visual journey through our farm and livestock</p>
+                <h2 class="section-title">Our Livestock Gallery</h2>
+                <p class="section-subtitle">Premium quality livestock, documented with care and precision</p>
             </div>
 
-            <!-- Category Filters -->
-            <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="poultry">Poultry</button>
-                <button class="filter-btn" data-filter="pigs">Pigs</button>
-                <button class="filter-btn" data-filter="snails">Snails</button>
-                <button class="filter-btn" data-filter="fish">Fish</button>
-                <button class="filter-btn" data-filter="goats">Goats</button>
-                <button class="filter-btn" data-filter="crops">Crops</button>
+            <!-- Advanced Filter System -->
+            <div class="gallery-controls">
+                <div class="filter-section">
+                    <div class="filter-header">
+                        <h3>Filter by Livestock Type</h3>
+                        <button class="clear-filters" aria-label="Clear all filters">
+                            <i class="fas fa-times"></i> Clear All
+                        </button>
+                    </div>
+                    
+                    <div class="advanced-filters">
+                        <!-- Filter Buttons with Counters -->
+                        <button class="filter-btn active" data-filter="all">
+                            <span class="filter-text">All Livestock</span>
+                            <span class="filter-count">12</span>
+                        </button>
+                        <button class="filter-btn" data-filter="poultry">
+                            <span class="filter-text">Poultry</span>
+                            <span class="filter-count">3</span>
+                        </button>
+                        <button class="filter-btn" data-filter="pigs">
+                            <span class="filter-text">Pigs</span>
+                            <span class="filter-count">3</span>
+                        </button>
+                        <button class="filter-btn" data-filter="snails">
+                            <span class="filter-text">Snails</span>
+                            <span class="filter-count">1</span>
+                        </button>
+                        <button class="filter-btn" data-filter="fish">
+                            <span class="filter-text">Fish</span>
+                            <span class="filter-count">1</span>
+                        </button>
+                        <button class="filter-btn" data-filter="goats">
+                            <span class="filter-text">Goats</span>
+                            <span class="filter-count">1</span>
+                        </button>
+                        <button class="filter-btn" data-filter="crops">
+                            <span class="filter-text">Crops</span>
+                            <span class="filter-count">1</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Active Filter Chips -->
+                    <div class="active-filters">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Search & Sort -->
+                <div class="search-sort-section">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="search" 
+                            class="gallery-search" 
+                            placeholder="Search livestock, breeds, or tags..."
+                            aria-label="Search gallery">
+                        <button class="search-clear" aria-label="Clear search">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="sort-controls">
+                        <select class="sort-select" aria-label="Sort gallery items">
+                            <option value="default">Sort: Featured</option>
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="name">Name A-Z</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
-            <!-- Gallery Grid -->
-            <div class="gallery-grid">
-                <!-- Poultry Images -->
-                <div class="gallery-item" data-category="poultry">
-                    <div class="gallery-image">
-                        <img src="gallery/Close_Up_Shot_of_a_Broiler_Chicken.jpg" alt="Broiler Chicken" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Broiler Chicken</h3>
-                            <p>Healthy meat chickens</p>
+            <!-- Masonry Gallery Grid -->
+            <div class="gallery-container">
+                <div class="masonry-grid" id="masonryGrid">
+                    <!-- Poultry Images -->
+                    <div class="gallery-item masonry-item" 
+                        data-category="poultry" 
+                        data-date="2024-03-15"
+                        data-name="Broiler Chicken Video"
+                        data-breed="Ross 308"
+                        data-age="6 weeks"
+                        data-weight="2.8kg"
+                        data-location="Main Poultry House"
+                        data-video="videos/Banner3.webm"
+                        data-index="1"
+                        data-type="video">
+                        <div class="gallery-card">
+                            <div class="card-image">
+                                <div class="image-loader">
+                                    <div class="loader-spinner"></div>
+                                </div>
+                                <div class="video-container">
+                                    <img src="gallery/Broiler_Chicken_Video.png" 
+                                        alt="Healthy Ross 308 Broiler Chicken Video Thumbnail" 
+                                        loading="lazy"
+                                        class="video-thumbnail lazy-image">
+                                    <div class="video-play-overlay">
+                                        <i class="fas fa-play-circle"></i>
+                                    </div>
+                                    <video class="gallery-video" preload="metadata" style="display:none;">
+                                        <source src="videos/Banner1.webm" type="video/webm">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="image-badges">
+                                    <span class="badge hd-badge">HD</span>
+                                    <span class="badge video-badge">
+                                        <i class="fas fa-play"></i> Video
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="animal-name">Broiler Chicken Video</h3>
+                                <div class="animal-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-dna"></i>
+                                        <span>Ross 308</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        <span>6 weeks</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-weight"></i>
+                                        <span>2.8kg</span>
+                                    </span>
+                                </div>
+                                <p class="animal-description">Premium meat chicken with excellent feed conversion ratio (Video)</p>
+                                <div class="card-tags">
+                                    <span class="tag">Vaccinated</span>
+                                    <span class="tag">Free Range</span>
+                                    <span class="tag location-tag">
+                                        <i class="fas fa-map-marker-alt"></i> Poultry House
+                                    </span>
+                                    <span class="tag video-tag">
+                                        <i class="fas fa-video"></i> 1:30 min
+                                    </span>
+                                </div>
+                                <button class="quick-view-btn" aria-label="Play video">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn compare-btn" aria-label="Add to comparison">
+                                    <i class="fas fa-balance-scale"></i>
+                                </button>
+                                <button class="action-btn share-btn" aria-label="Share video">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="action-btn favorite-btn" aria-label="Add video to favorites">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="gallery-item" data-category="poultry">
-                    <div class="gallery-image">
-                        <img src="gallery/Brown_Hen_Near_White_Egg_on_Nest.jpg" alt="Hen with Egg" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Layer Hen</h3>
-                            <p>Egg production</p>
+                    <div class="gallery-item" masonry-item
+                        data-category="poultry" 
+                        data-date="2024-03-18"
+                        data-name="Rooster"
+                        data-breed="Leghorn"
+                        data-age="20 weeks"
+                        data-weight="3.2kg"
+                        data-location="Poultry Yard"
+                        data-index="2">
+                        <div class="gallery-card">
+                            <div class="card-image">
+                                <div class="image-loader"></div>
+                                <picture>
+                                    <img src="gallery/White_Leghorn_Rooster_in_a_Farmyard.jpg" 
+                                        alt="White Leghorn Rooster standing in farmyard" 
+                                        loading="lazy"
+                                        class="lazy-image">
+                                </picture>
+                                <div class="image-badges">
+                                    <span class="badge hd-badge">Old Rooster</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="animal-name">Rooster</h3>
+                                <div class="animal-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-dna"></i>
+                                        <span>Leghorn</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        <span>20 weeks</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-weight"></i>
+                                        <span>3.2kg</span>
+                                    </span>
+                                </div>
+                                <p class="animal-description">White Leghorn rooster in farmyard setting</p>
+                                <div class="card-tags">
+                                    <span class="tag">Vaccinated</span>
+                                    <span class="tag">Free Range</span>
+                                    <span class="tag location-tag">
+                                        <i class="fas fa-map-marker-alt"></i> Poultry Yard
+                                    </span>
+                                </div>
+                                <button class="quick-view-btn" aria-label="Quick view">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn compare-btn">
+                                    <i class="fas fa-balance-scale"></i>
+                                </button>
+                                <button class="action-btn share-btn">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="action-btn favorite-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Pigs Images -->
-                <div class="gallery-item" data-category="pigs">
-                    <div class="gallery-image">
-                        <img src="gallery/Black_and_White_Pig_Feeding_Her_Piglets.jpg" alt="Pig with Piglets" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Mother Pig</h3>
-                            <p>Feeding piglets</p>
+                    <div class="gallery-item masonry-item" 
+                        data-category="poultry" 
+                        data-date="2024-03-10"
+                        data-name="Layer Hen"
+                        data-breed="ISA Brown"
+                        data-age="28 weeks"
+                        data-eggs="92%"
+                        data-location="Egg Production Unit">
+                        <div class="gallery-card">
+                            <div class="card-image">
+                                <div class="image-loader"></div>
+                                <picture>
+                                    <img src="gallery/Brown_Hen_Near_White_Egg_on_Nest.jpg" 
+                                        alt="ISA Brown Layer Hen with fresh egg" 
+                                        loading="lazy"
+                                        class="lazy-image">
+                                </picture>
+                                <div class="image-badges">
+                                    <span class="badge premium-badge">Premium</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="animal-name">Layer Hen</h3>
+                                <div class="animal-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-dna"></i>
+                                        <span>ISA Brown</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        <span>28 weeks</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-egg"></i>
+                                        <span>92% Production</span>
+                                    </span>
+                                </div>
+                                <p class="animal-description">High-production layer with consistent egg quality</p>
+                                <div class="card-tags">
+                                    <span class="tag">Certified</span>
+                                    <span class="tag">Organic Feed</span>
+                                    <span class="tag location-tag">
+                                        <i class="fas fa-map-marker-alt"></i> Egg Unit
+                                    </span>
+                                </div>
+                                <button class="quick-view-btn" aria-label="Quick view">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn compare-btn">
+                                    <i class="fas fa-balance-scale"></i>
+                                </button>
+                                <button class="action-btn share-btn">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="action-btn favorite-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="gallery-item" data-category="pigs">
-                    <div class="gallery-image">
-                        <img src="gallery/Piglets_at_Farm.jpg" alt="Piglets" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Piglets</h3>
-                            <p>Young healthy pigs</p>
+                    <!-- Pigs 1 -->
+                    <div class="gallery-item masonry-item" 
+                        data-category="pigs" 
+                        data-date="2024-03-12"
+                        data-name="Mother Pig"
+                        data-breed="Large White"
+                        data-age="2 years"
+                        data-litter="12 piglets"
+                        data-location="Maternity Pen">
+                        <div class="gallery-card">
+                            <div class="card-image">
+                                <div class="image-loader"></div>
+                                <picture>
+                                    <source srcset="gallery/Black_and_White_Pig_Feeding_Her_Piglets.jpg" type="image/webp">
+                                    <img src="gallery/Black_and_White_Pig_Feeding_Her_Piglets.jpg" 
+                                        alt="Large White mother pig feeding piglets" 
+                                        loading="lazy"
+                                        class="lazy-image">
+                                </picture>
+                                <div class="image-badges">
+                                    <span class="badge new-badge">New Arrival</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="animal-name">Mother Pig</h3>
+                                <div class="animal-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-dna"></i>
+                                        <span>Large White</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        <span>2 years</span>
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-paw"></i>
+                                        <span>12 piglets</span>
+                                    </span>
+                                </div>
+                                <p class="animal-description">Proven sow with excellent maternal instincts</p>
+                                <div class="card-tags">
+                                    <span class="tag">Registered</span>
+                                    <span class="tag">Healthy Litter</span>
+                                    <span class="tag location-tag">
+                                        <i class="fas fa-map-marker-alt"></i> Maternity
+                                    </span>
+                                </div>
+                                <button class="quick-view-btn" aria-label="Quick view">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn compare-btn">
+                                    <i class="fas fa-balance-scale"></i>
+                                </button>
+                                <button class="action-btn share-btn">
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                                <button class="action-btn favorite-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Snails Images -->
-                <div class="gallery-item" data-category="snails">
-                    <div class="gallery-image">
-                        <img src="gallery/Brown_Snail_on_Tree_Trunk.jpg" alt="Snail" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Edible Snails</h3>
-                            <p>Quality heliculture</p>
-                        </div>
+                    <!-- Add remaining items in same format (pigs, snails, fish, goats, crops) -->
+                    <!-- Use same structure for consistency -->
+
+                </div>
+                
+                <!-- Loading More Indicator -->
+                <div class="load-more-container">
+                    <div class="loading-indicator" id="loadingIndicator">
+                        <div class="loading-spinner"></div>
+                        <p>Loading more livestock...</p>
                     </div>
                 </div>
-
-                <!-- Fish Images -->
-                <div class="gallery-item" data-category="fish">
-                    <div class="gallery-image">
-                        <img src="gallery/Bunch_of_Grey_Fish.jpg" alt="Fish" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Fresh Fish</h3>
-                            <p>Aquaculture</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Goats Images -->
-                <div class="gallery-item" data-category="goats">
-                    <div class="gallery-image">
-                        <img src="gallery/Close_Up_Photo_of_a_Goat_Head.jpg" alt="Goat" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Goat</h3>
-                            <p>Meat & dairy breed</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Crops Images -->
-                <div class="gallery-item" data-category="crops">
-                    <div class="gallery-image">
-                        <img src="gallery/Cassava_Crops_in_Close_Up_Photography.jpg" alt="Cassava" loading="lazy">
-                        <div class="image-overlay">
-                            <h3>Cassava</h3>
-                            <p>Fresh crops</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more images as needed (select 12-16 best images) -->
             </div>
 
-            <!-- Lightbox Modal -->
-            <div class="lightbox-modal">
-                <div class="lightbox-content">
-                    <button class="lightbox-close">&times;</button>
-                    <button class="lightbox-prev">&#10094;</button>
-                    <button class="lightbox-next">&#10095;</button>
-                    <img class="lightbox-image" src="" alt="">
-                    <div class="lightbox-caption">
-                        <h3></h3>
-                        <p></p>
+            <!-- Enhanced Lightbox Modal -->
+            <div class="advanced-lightbox" id="lightboxModal" aria-hidden="true">
+                <div class="lightbox-overlay"></div>
+                <div class="lightbox-container">
+                    <button class="lightbox-close" aria-label="Close lightbox">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    
+                    <div class="lightbox-content">
+                        <div class="lightbox-media">
+                            <div class="media-container">
+                                <div class="video-loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <img class="lightbox-image" src="" alt="" id="lightboxImage">
+                                <video class="lightbox-video" controls style="display:none;">
+                                    <source src="" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="zoom-controls">
+                                    <button class="zoom-btn zoom-in" aria-label="Zoom in">
+                                        <i class="fas fa-search-plus"></i>
+                                    </button>
+                                    <button class="zoom-btn zoom-out" aria-label="Zoom out">
+                                        <i class="fas fa-search-minus"></i>
+                                    </button>
+                                    <button class="zoom-btn zoom-reset" aria-label="Reset zoom">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="lightbox-navigation">
+                                <button class="nav-btn prev-btn" aria-label="Previous image">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="image-counter">
+                                    <span id="currentIndex">1</span> / <span id="totalImages">12</span>
+                                </div>
+                                <button class="nav-btn next-btn" aria-label="Next image">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="lightbox-info">
+                            <div class="info-header">
+                                <h3 class="info-title" id="lightboxTitle"></h3>
+                                <div class="info-actions">
+                                    <button class="info-action-btn download-btn" aria-label="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="info-action-btn share-btn" aria-label="Share">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
+                                    <button class="info-action-btn qr-btn" aria-label="Show QR code">
+                                        <i class="fas fa-qrcode"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="info-metadata">
+                                <div class="metadata-grid">
+                                    <div class="metadata-item">
+                                        <span class="meta-label">Breed:</span>
+                                        <span class="meta-value" id="metaBreed"></span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <span class="meta-label">Age:</span>
+                                        <span class="meta-value" id="metaAge"></span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <span class="meta-label">Weight:</span>
+                                        <span class="meta-value" id="metaWeight"></span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <span class="meta-label">Location:</span>
+                                        <span class="meta-value" id="metaLocation"></span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <span class="meta-label">Date Added:</span>
+                                        <span class="meta-value" id="metaDate"></span>
+                                    </div>
+                                    <div class="metadata-item">
+                                        <span class="meta-label">Health Status:</span>
+                                        <span class="meta-value" id="metaHealth">Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-description">
+                                <p id="lightboxDescription"></p>
+                            </div>
+                            
+                            <div class="info-tags" id="lightboxTags"></div>
+                            
+                            <div class="info-map" id="locationMap" style="display:none;">
+                                <!-- Map placeholder -->
+                                <div class="map-placeholder">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    <p>Location map would be displayed here</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <div class="lightbox-thumbnails">
+                        <!-- Thumbnails will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Modal -->
+            <div class="comparison-modal" id="comparisonModal">
+                <div class="comparison-header">
+                    <h3>Compare Livestock</h3>
+                    <button class="comparison-close" aria-label="Close comparison">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="comparison-grid" id="comparisonGrid">
+                    <!-- Comparison items will be added here -->
+                </div>
+                <div class="comparison-actions">
+                    <button class="btn-clear-comparison">Clear All</button>
+                    <button class="btn-export-comparison">
+                        <i class="fas fa-file-export"></i> Export as PDF
+                    </button>
                 </div>
             </div>
 
             <!-- View More Button -->
             <div class="gallery-footer">
-                <button class="btn-view-more">
-                    <i class="fas fa-images"></i> View More Photos
+                <button class="btn-view-more" id="loadMoreBtn">
+                    <span class="btn-content">
+                        <i class="fas fa-images"></i>
+                        <span>Load More Livestock</span>
+                    </span>
+                    <span class="btn-loader" style="display:none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Loading...</span>
+                    </span>
                 </button>
+                <p class="gallery-tip">
+                    <i class="fas fa-lightbulb"></i>
+                    Tip: Use Ctrl+Click to select multiple filter categories
+                </p>
             </div>
         </div>
     </section>
-    <!-- Gallery Section End -->
+    <!-- GALLERY SECTION END! -->
 
-    <!-- ======= News & Updates Section Start ======= -->
+    <!-- NEWS & UPDATES SECTION START! -->
     <section id="news" class="news-section">
         <div class="container">
             <div class="section-header">
@@ -984,9 +1381,9 @@
             </div>
         </div>
     </section>
-    <!-- ======= News & Updates Section End ======= -->
+    <!-- NEWS & UPDATES SECTION END! -->
 
-    <!-- ======= FAQ Section Start ======= -->
+    <!-- FAQ SECTION START! -->
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -1151,9 +1548,9 @@
             </div>
         </div>
     </section>
-    <!-- ======= FAQ Section End ======= -->
+    <!-- FAQ SECTION END! -->
 
-    <!-- Contact Section Start -->
+    <!-- CONTACT US SECTION START! -->
     <section id="contact" class="contact-section">
         <div class="container">
             <!-- Header -->
@@ -1343,22 +1740,9 @@
             </div>
         </div>
     </section>
-    <!-- Contact Section End -->
-    
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/+79153653452" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
+    <!-- CONTACT US SECTION END! -->
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" role="button" tabindex="0" aria-label="Back to top">
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </div>
-
-    <!-- JavaScript Files -->
-    <script src="js/script.js"></script>
-
-    <!-- Footer Section Start -->
+    <!-- FOOTER SECTION START! -->
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
             <div class="footer-col about">
@@ -1412,6 +1796,19 @@
             </nav>
         </div>
     </footer>
-    <!-- Footer Section End -->
+    <!-- FOOTER SECTION END! -->
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+79153653452" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" role="button" tabindex="0" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/script.js"></script>
 </body>
 </html>

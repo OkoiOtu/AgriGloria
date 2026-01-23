@@ -1,6 +1,8 @@
 // =====================
-// Toggle Mobile Nav
+// HEADER SECTION START!
 // =====================
+
+// TOGGLE MOBILE NAVIGATION
 const menuIcon = document.getElementById('menu-icon');
 const navLinks = document.getElementById('nav-links');
 const menuImg = document.getElementById('menu-icon-img');
@@ -20,9 +22,7 @@ if (menuIcon && navLinks && menuImg) {
   });
 }
 
-// =====================
-// Active Link Handling
-// =====================
+// ACTIVE LINK HANDLING - SCROLL SPY & PRICING PAGE
 document.addEventListener("DOMContentLoaded", () => {
   const navItems = document.querySelectorAll(".links a");
 
@@ -112,10 +112,15 @@ document.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
     });
 });
+// =====================
+// HEADER SECTION END!
+// =====================
 
 // =====================
-// Video Script Only
+// BANNER SECTION START!
 // =====================
+
+// Video Script Only
 document.addEventListener('DOMContentLoaded', () => {
   const videoSlides = document.querySelectorAll('.video-slide'); 
   const contentDiv = document.querySelector('.banner-content .content');
@@ -304,7 +309,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// =====================
+// BANNER SECTION END!
+// =====================
 
+// =====================
+// ABOUT US SECTION START!
+// =====================
 // About Us Section Animations
 document.addEventListener('DOMContentLoaded', () => {
     // Animate mission/vision cards on scroll
@@ -491,159 +502,2106 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+// =====================
+// ABOUT US SECTION END!
+// =====================
 
-// Gallery Section JavaScript
-document.addEventListener('DOMContentLoaded', () => {
-    // Elements
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const lightboxModal = document.querySelector('.lightbox-modal');
-    const lightboxImage = document.querySelector('.lightbox-image');
-    const lightboxCaption = document.querySelector('.lightbox-caption h3');
-    const lightboxDescription = document.querySelector('.lightbox-caption p');
-    const lightboxClose = document.querySelector('.lightbox-close');
-    const lightboxPrev = document.querySelector('.lightbox-prev');
-    const lightboxNext = document.querySelector('.lightbox-next');
-    const btnViewMore = document.querySelector('.btn-view-more');
+// =====================
+// GALLERY SECTION START!
+// =====================
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Gallery
+    const gallery = {
+        // Elements
+        elements: {
+            grid: document.getElementById('masonryGrid'),
+            items: document.querySelectorAll('.gallery-item'),
+            filterButtons: document.querySelectorAll('.filter-btn'),
+            clearFiltersBtn: document.querySelector('.clear-filters'),
+            activeFiltersContainer: document.querySelector('.active-filters'),
+            searchInput: document.querySelector('.gallery-search'),
+            searchClearBtn: document.querySelector('.search-clear'),
+            sortSelect: document.querySelector('.sort-select'),
+            loadMoreBtn: document.getElementById('loadMoreBtn'),
+            loadingIndicator: document.getElementById('loadingIndicator'),
+            lightboxModal: document.getElementById('lightboxModal'),
+            comparisonModal: document.getElementById('comparisonModal'),
+            statsNumbers: document.querySelectorAll('.stat-number'),
+            viewMoreBtn: document.getElementById('loadMoreBtn')
+        },
 
-    let currentImageIndex = 0;
-    let filteredItems = Array.from(galleryItems);
-    let currentFilter = 'all';
+        // State
+        state: {
+            currentFilter: 'all',
+            activeFilters: new Set(['all']),
+            searchQuery: '',
+            sortBy: 'default',
+            currentPage: 1,
+            isLoading: false,
+            hasMoreItems: true,
+            currentImageIndex: 0,
+            filteredItems: [],
+            comparisonItems: new Set(),
+            zoomLevel: 1
+        },
 
-    // Filter Gallery Items
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Update active filter button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+        // Initialize
+        init: function() {
+            console.log('🚜 Advanced Livestock Gallery Initialized');
+
+            // Initialize video support FIRST
+            this.initVideoSupport();
             
-            currentFilter = button.dataset.filter;
+            // Set data-index on all items for sorting
+            this.elements.items.forEach((item, index) => {
+                item.dataset.index = index;
+            });
+            
+            // Cache filtered items
+            this.state.filteredItems = Array.from(this.elements.items);
+            
+            // Initialize image loading FIRST
+            this.initImageLoading();
+            
+            // Then set up other event listeners
+            this.setupEventListeners();
+            
+            // Initialize animations
+            this.initAnimations();
+            
+            // Initialize masonry layout
+            this.initMasonry();
+            
+            // Initialize lightbox
+            this.initLightbox();
+            
+            // Initialize comparison modal
+            this.initComparison();
+            
+            // Update filter counts
+            this.updateFilterCounts();
+            
+            // Animate stats
+            // this.animateStats();
+        },
+
+        // Initialize Video Support
+        initVideoSupport: function() {
+            // Remove separate video modal creation
+            const existingModal = document.getElementById('videoPreviewModal');
+            if (existingModal) existingModal.remove();
+            
+            // Add click handlers to video containers
+            document.querySelectorAll('.video-container').forEach(container => {
+                container.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const item = container.closest('.gallery-item');
+                    // Don't play video directly, open lightbox instead
+                    this.openLightbox(item);
+                });
+            });
+            
+            // Update quick view buttons for videos
+            document.querySelectorAll('.gallery-item:has(.video-container) .quick-view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const item = btn.closest('.gallery-item');
+                    this.openLightbox(item);
+                });
+            });
+        },
+
+        // Create Video Preview Modal
+        createVideoPreviewModal: function() {
+            // Remove existing modal if any
+            const existingModal = document.getElementById('videoPreviewModal');
+            if (existingModal) existingModal.remove();
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.id = 'videoPreviewModal';
+            modal.className = 'video-preview-modal';
+            modal.innerHTML = `
+                <div class="video-preview-content">
+                    <button class="video-preview-close" aria-label="Close video">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <video controls>
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-controls">
+                        <button class="video-control-btn play-pause-btn" aria-label="Play/Pause">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="video-control-btn mute-btn" aria-label="Mute/Unmute">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <button class="video-control-btn fullscreen-btn" aria-label="Fullscreen">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Set up video modal events
+            this.setupVideoModalEvents();
+        },
+
+         // Setup Video Modal Events
+        setupVideoModalEvents: function() {
+            const modal = document.getElementById('videoPreviewModal');
+            const video = modal.querySelector('video');
+            const closeBtn = modal.querySelector('.video-preview-close');
+            const playPauseBtn = modal.querySelector('.play-pause-btn');
+            const muteBtn = modal.querySelector('.mute-btn');
+            const fullscreenBtn = modal.querySelector('.fullscreen-btn');
+            
+            // Close modal
+            closeBtn.addEventListener('click', () => this.closeVideoPreview());
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) this.closeVideoPreview();
+            });
+            
+            // Play/Pause button
+            playPauseBtn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    video.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            
+            // Video play/pause events
+            video.addEventListener('play', () => {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            });
+            
+            video.addEventListener('pause', () => {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+            
+            // Mute button
+            muteBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                muteBtn.innerHTML = video.muted ? 
+                    '<i class="fas fa-volume-mute"></i>' : 
+                    '<i class="fas fa-volume-up"></i>';
+            });
+            
+            // Fullscreen button
+            fullscreenBtn.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    modal.requestFullscreen().catch(err => {
+                        console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+            
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (modal.classList.contains('active')) {
+                    switch(e.key) {
+                        case 'Escape':
+                            this.closeVideoPreview();
+                            break;
+                        case ' ':
+                        case 'Spacebar':
+                            e.preventDefault();
+                            if (video.paused) {
+                                video.play();
+                                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                            } else {
+                                video.pause();
+                                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                            }
+                            break;
+                        case 'm':
+                        case 'M':
+                            video.muted = !video.muted;
+                            muteBtn.innerHTML = video.muted ? 
+                                '<i class="fas fa-volume-mute"></i>' : 
+                                '<i class="fas fa-volume-up"></i>';
+                            break;
+                        case 'f':
+                        case 'F':
+                            if (!document.fullscreenElement) {
+                                modal.requestFullscreen();
+                            } else {
+                                document.exitFullscreen();
+                            }
+                            break;
+                    }
+                }
+            });
+        },
+
+        // Play Video Preview
+        playVideoPreview: function(item) {
+            const videoSrc = item.dataset.video || item.querySelector('.gallery-video source')?.src;
+            const modal = document.getElementById('videoPreviewModal');
+            const video = modal.querySelector('video');
+            
+            if (!videoSrc) {
+                this.showNotification('Video source not found', 'warning');
+                return;
+            }
+            
+            // Set video source
+            video.querySelector('source').src = videoSrc;
+            video.load();
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Attempt to play
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Autoplay prevented:', error);
+                    // Show play button
+                    modal.querySelector('.play-pause-btn').innerHTML = '<i class="fas fa-play"></i>';
+                });
+            }
+        },
+
+        // Close Video Preview
+        closeVideoPreview: function() {
+            const modal = document.getElementById('videoPreviewModal');
+            const video = modal.querySelector('video');
+            
+            // Pause video
+            video.pause();
+            video.currentTime = 0;
+            
+            // Hide modal
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reset play button
+            modal.querySelector('.play-pause-btn').innerHTML = '<i class="fas fa-play"></i>';
+        },
+
+        // Initialize Image Loading with Error Handling
+        initImageLoading: function() {
+            const images = document.querySelectorAll('.gallery-img');
+            
+            images.forEach(img => {
+                // Add error handling
+                img.addEventListener('error', () => {
+                    console.error(`Failed to load image: ${img.dataset.src || img.src}`);
+                    img.src = 'images/placeholder-error.jpg';
+                    img.alt = 'Image not available';
+                    
+                    // Hide loader
+                    const loader = img.parentNode.querySelector('.image-loader');
+                    if (loader) {
+                        loader.style.display = 'none';
+                    }
+                });
+                
+                img.addEventListener('load', () => {
+                    console.log(`Image loaded: ${img.src}`);
+                    img.classList.add('loaded');
+                    
+                    // Hide loader with fade out
+                    const loader = img.parentNode.querySelector('.image-loader');
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Load the actual image if data-src exists
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+            });
+        },
+
+        // Setup Event Listeners
+        setupEventListeners: function() {
+            // Filter button click (with multi-select on Ctrl/Cmd click)
+            this.elements.filterButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const filter = btn.dataset.filter;
+                    const isMultiSelect = e.ctrlKey || e.metaKey;
+                    
+                    if (isMultiSelect && filter !== 'all') {
+                        this.toggleMultiFilter(filter);
+                    } else {
+                        this.setFilter(filter);
+                    }
+                    
+                    this.updateGallery();
+                });
+            });
+
+            // Clear all filters
+            if (this.elements.clearFiltersBtn) {
+                this.elements.clearFiltersBtn.addEventListener('click', () => {
+                    this.clearAllFilters();
+                });
+            }
+
+            // Search input
+            if (this.elements.searchInput) {
+                this.elements.searchInput.addEventListener('input', (e) => {
+                    this.state.searchQuery = e.target.value.toLowerCase().trim();
+                    this.toggleSearchClear();
+                    this.debouncedSearch();
+                });
+                
+                // Search clear button
+                this.elements.searchClearBtn.addEventListener('click', () => {
+                    this.elements.searchInput.value = '';
+                    this.state.searchQuery = '';
+                    this.toggleSearchClear();
+                    this.updateGallery();
+                });
+            }
+
+            // Sort select
+            if (this.elements.sortSelect) {
+                this.elements.sortSelect.addEventListener('change', (e) => {
+                    this.state.sortBy = e.target.value;
+                    this.updateGallery();
+                });
+            }
+
+            // Load more button
+            if (this.elements.loadMoreBtn) {
+                this.elements.loadMoreBtn.addEventListener('click', () => {
+                    this.loadMoreItems();
+                });
+            }
+
+            // Quick view buttons
+            document.querySelectorAll('.quick-view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const item = btn.closest('.gallery-item');
+                    this.openLightbox(item);
+                });
+            });
+
+            // Card click for lightbox
+            this.elements.items.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (!e.target.closest('.quick-view-btn') && 
+                        !e.target.closest('.action-btn')) {
+                        this.openLightbox(item);
+                    }
+                });
+            });
+
+            // Favorite buttons
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleFavorite(btn);
+                });
+            });
+
+            // Compare buttons
+            document.querySelectorAll('.compare-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleComparison(btn);
+                });
+            });
+
+            // Share buttons
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.shareItem(btn);
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (this.elements.lightboxModal.classList.contains('active')) {
+                    this.handleLightboxKeyboard(e);
+                }
+            });
+
+            // Window resize for masonry
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    this.recalculateMasonry();
+                }, 250);
+            });
+        },
+
+        // Initialize Animations
+        initAnimations: function() {
+            // Stagger animation for grid items
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = `${Math.random() * 0.3}s`;
+                        entry.target.classList.add('animated');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            this.elements.items.forEach(item => {
+                observer.observe(item);
+            });
+
+            // Hover tilt effect
+            this.elements.items.forEach(item => {
+                item.addEventListener('mousemove', (e) => {
+                    if (window.innerWidth > 768) { // Desktop only
+                        this.handleTiltEffect(e, item);
+                    }
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(-10px)';
+                });
+            });
+        },
+
+        // Handle Tilt Effect
+        handleTiltEffect: function(e, item) {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateY = ((x - centerX) / centerX) * 3;
+            const rotateX = ((centerY - y) / centerY) * 3;
+            
+            item.style.transform = `
+                translateY(-10px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                scale(1.02)
+            `;
+        },
+
+        // Initialize Masonry Layout
+        initMasonry: function() {
+            if (!this.elements.grid) return;
+            
+            // Use CSS Grid for masonry-like layout
+            const items = Array.from(this.elements.items);
+            
+            // Set random heights for masonry effect (simulated)
+            items.forEach(item => {
+                const heights = [300, 350, 400];
+                const randomHeight = heights[Math.floor(Math.random() * heights.length)];
+                item.querySelector('.gallery-card').style.minHeight = `${randomHeight}px`;
+            });
+            
+            // Force reflow for proper rendering
+            setTimeout(() => {
+                this.recalculateMasonry();
+            }, 100);
+        },
+
+        // Recalculate Masonry
+        recalculateMasonry: function() {
+            // This is a simplified masonry using CSS Grid
+            // For true masonry, you might want to use a library like Masonry.js
+            // But we'll keep it vanilla for performance
+            
+            const items = Array.from(this.elements.items);
+            items.forEach(item => {
+                if (item.style.display !== 'none') {
+                    item.style.opacity = '1';
+                }
+            });
+        },
+
+        // Set Filter
+        setFilter: function(filter) {
+            // Update active filter
+            this.state.currentFilter = filter;
+            
+            // Update filter buttons
+            this.elements.filterButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+            });
+            
+            // Update active filters set
+            if (filter === 'all') {
+                this.state.activeFilters.clear();
+                this.state.activeFilters.add('all');
+            } else {
+                this.state.activeFilters.clear();
+                this.state.activeFilters.add(filter);
+            }
+            
+            // Update active filters display
+            this.updateActiveFiltersDisplay();
+        },
+
+        // Toggle Multi Filter
+        toggleMultiFilter: function(filter) {
+            if (filter === 'all') {
+                this.state.activeFilters.clear();
+                this.state.activeFilters.add('all');
+            } else {
+                this.state.activeFilters.delete('all');
+                
+                if (this.state.activeFilters.has(filter)) {
+                    this.state.activeFilters.delete(filter);
+                } else {
+                    this.state.activeFilters.add(filter);
+                }
+                
+                // If no filters selected, select 'all'
+                if (this.state.activeFilters.size === 0) {
+                    this.state.activeFilters.add('all');
+                }
+            }
+            
+            // Update filter buttons
+            this.elements.filterButtons.forEach(btn => {
+                const isActive = this.state.activeFilters.has(btn.dataset.filter);
+                btn.classList.toggle('active', isActive);
+            });
+            
+            // Update active filters display
+            this.updateActiveFiltersDisplay();
+        },
+
+        // Clear All Filters
+        clearAllFilters: function() {
+            this.state.activeFilters.clear();
+            this.state.activeFilters.add('all');
+            this.state.currentFilter = 'all';
+            
+            // Update UI
+            this.elements.filterButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === 'all');
+            });
+            
+            this.updateActiveFiltersDisplay();
+            this.updateGallery();
+        },
+
+        // Update Active Filters Display
+        updateActiveFiltersDisplay: function() {
+            const container = this.elements.activeFiltersContainer;
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            // Don't show 'all' as a chip
+            const filtersToShow = Array.from(this.state.activeFilters).filter(f => f !== 'all');
+            
+            if (filtersToShow.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            container.style.display = 'flex';
+            
+            filtersToShow.forEach(filter => {
+                const chip = document.createElement('div');
+                chip.className = 'filter-chip';
+                chip.innerHTML = `
+                    <span>${this.formatFilterName(filter)}</span>
+                    <button type="button" aria-label="Remove ${filter} filter">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                chip.querySelector('button').addEventListener('click', () => {
+                    this.state.activeFilters.delete(filter);
+                    if (this.state.activeFilters.size === 0) {
+                        this.state.activeFilters.add('all');
+                    }
+                    this.updateActiveFiltersDisplay();
+                    this.updateGallery();
+                });
+                
+                container.appendChild(chip);
+            });
+        },
+
+        // Format Filter Name
+        formatFilterName: function(filter) {
+            return filter.charAt(0).toUpperCase() + filter.slice(1);
+        },
+
+        // Toggle Search Clear Button
+        toggleSearchClear: function() {
+            if (this.elements.searchInput.value.trim()) {
+                this.elements.searchClearBtn.classList.add('visible');
+            } else {
+                this.elements.searchClearBtn.classList.remove('visible');
+            }
+        },
+
+        // Debounced Search
+        debouncedSearch: debounce(() => {
+            gallery.updateGallery();
+        }, 300),
+
+        // Update Gallery
+        updateGallery: function() {
+            // Show loading state
+            this.showLoading();
             
             // Filter items
-            galleryItems.forEach(item => {
-                if (currentFilter === 'all' || item.dataset.category === currentFilter) {
+            this.state.filteredItems = this.filterItems();
+            
+            // Sort items
+            this.sortItems();
+            
+            // Update UI
+            this.updateItemsDisplay();
+            
+            // Update counts
+            this.updateFilterCounts();
+            
+            // Hide loading state
+            setTimeout(() => {
+                this.hideLoading();
+                this.recalculateMasonry();
+            }, 300);
+        },
+
+        // Filter Items
+        filterItems: function() {
+            return Array.from(this.elements.items).filter(item => {
+                // Category filter
+                const category = item.dataset.category;
+                const passesCategory = this.state.activeFilters.has('all') || 
+                                      this.state.activeFilters.has(category);
+                
+                // Search filter
+                const passesSearch = !this.state.searchQuery || 
+                    item.dataset.name.toLowerCase().includes(this.state.searchQuery) ||
+                    item.dataset.breed.toLowerCase().includes(this.state.searchQuery) ||
+                    item.querySelector('.animal-description').textContent.toLowerCase().includes(this.state.searchQuery);
+                
+                return passesCategory && passesSearch;
+            });
+        },
+
+        // Sort Items
+        sortItems: function() {
+            switch (this.state.sortBy) {
+                case 'newest':
+                    this.state.filteredItems.sort((a, b) => 
+                        new Date(b.dataset.date) - new Date(a.dataset.date)
+                    );
+                    break;
+                    
+                case 'oldest':
+                    this.state.filteredItems.sort((a, b) => 
+                        new Date(a.dataset.date) - new Date(b.dataset.date)
+                    );
+                    break;
+                    
+                case 'name':
+                    this.state.filteredItems.sort((a, b) => 
+                        a.dataset.name.localeCompare(b.dataset.name)
+                    );
+                    break;
+                    
+                default: // 'default' - featured order (original order)
+                    this.state.filteredItems.sort((a, b) => 
+                        parseInt(a.dataset.index) - parseInt(b.dataset.index)
+                    );
+            }
+        },
+
+        // Update Items Display
+        updateItemsDisplay: function() {
+            // Hide all items first
+            this.elements.items.forEach(item => {
+                item.style.display = 'none';
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+            });
+            
+            // Show filtered items with animation
+            this.state.filteredItems.forEach((item, index) => {
+                setTimeout(() => {
                     item.style.display = 'block';
                     setTimeout(() => {
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
                     }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
+                }, index * 50);
+            });
+            
+            // Show/hide "no results" message
+            this.showNoResultsMessage(this.state.filteredItems.length === 0);
+        },
+
+        // Show No Results Message
+        showNoResultsMessage: function(show) {
+            let message = document.querySelector('.no-results-message');
+            
+            if (show && !message) {
+                message = document.createElement('div');
+                message.className = 'no-results-message';
+                message.innerHTML = `
+                    <div class="no-results-content">
+                        <i class="fas fa-search"></i>
+                        <h3>No livestock found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                        <button class="btn-reset-filters">Reset All Filters</button>
+                    </div>
+                `;
+                
+                message.querySelector('.btn-reset-filters').addEventListener('click', () => {
+                    this.clearAllFilters();
+                    this.elements.searchInput.value = '';
+                    this.state.searchQuery = '';
+                    this.updateGallery();
+                });
+                
+                this.elements.grid.parentNode.insertBefore(message, this.elements.grid.nextSibling);
+            } else if (!show && message) {
+                message.remove();
+            }
+        },
+
+        // Update Filter Counts
+        updateFilterCounts: function() {
+            // Count items per category
+            const counts = {};
+            this.elements.filterButtons.forEach(btn => {
+                const filter = btn.dataset.filter;
+                if (filter !== 'all') {
+                    counts[filter] = Array.from(this.elements.items)
+                        .filter(item => item.dataset.category === filter).length;
                 }
             });
             
-            // Update filtered items array
-            filteredItems = Array.from(galleryItems).filter(item => {
-                return currentFilter === 'all' || item.dataset.category === currentFilter;
+            // Update count badges
+            this.elements.filterButtons.forEach(btn => {
+                const filter = btn.dataset.filter;
+                const countSpan = btn.querySelector('.filter-count');
+                
+                if (countSpan) {
+                    if (filter === 'all') {
+                        countSpan.textContent = this.elements.items.length;
+                    } else {
+                        countSpan.textContent = counts[filter] || 0;
+                    }
+                }
             });
-        });
-    });
+        },
 
-    // Open Lightbox
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            const imgSrc = item.querySelector('img').src;
-            const caption = item.querySelector('.image-overlay h3').textContent;
-            const description = item.querySelector('.image-overlay p').textContent;
+        // Show Loading
+        showLoading: function() {
+            if (this.elements.loadingIndicator) {
+                this.elements.loadingIndicator.style.display = 'flex';
+            }
+        },
+
+        // Hide Loading
+        hideLoading: function() {
+            if (this.elements.loadingIndicator) {
+                this.elements.loadingIndicator.style.display = 'none';
+            }
+        },
+
+        // Load More Items
+        loadMoreItems: function() {
+            if (this.state.isLoading || !this.state.hasMoreItems) return;
             
+            this.state.isLoading = true;
+            
+            // Show loading state
+            const btnContent = this.elements.viewMoreBtn.querySelector('.btn-content');
+            const btnLoader = this.elements.viewMoreBtn.querySelector('.btn-loader');
+            
+            btnContent.style.display = 'none';
+            btnLoader.style.display = 'flex';
+
+            const loadTimeout = setTimeout(() => {
+                // Timeout fallback
+                this.state.hasMoreItems = false;
+                this.state.isLoading = false;
+                
+                if (btnContent) btnContent.style.display = 'flex';
+                if (btnLoader) btnLoader.style.display = 'none';
+                
+                this.showNotification('Failed to load more items. Please try again.', 'warning');
+            }, 5000);
+            
+            // Simulate API call (replace with real API)
+            setTimeout(() => {
+                clearTimeout(loadTimeout);
+                
+                try {
+                    // Here you would fetch more items from server
+                    // For demo, we'll just show a message
+                    
+                    this.state.hasMoreItems = false;
+                    this.state.isLoading = false;
+                    
+                    // Hide load more button
+                    if (this.elements.viewMoreBtn) {
+                        this.elements.viewMoreBtn.style.display = 'none';
+                    }
+                    
+                    // Show message
+                    const message = document.createElement('p');
+                    message.className = 'all-loaded-message';
+                    message.textContent = 'All livestock loaded.';
+                    message.style.cssText = 'text-align: center; color: #666; margin-top: 20px;';
+                    
+                    if (this.elements.viewMoreBtn && this.elements.viewMoreBtn.parentNode) {
+                        this.elements.viewMoreBtn.parentNode.appendChild(message);
+                    }
+                    
+                } catch (error) {
+                    console.error('Error loading more items:', error);
+                    this.showNotification('Error loading more items', 'warning');
+                    
+                    if (btnContent) btnContent.style.display = 'flex';
+                    if (btnLoader) btnLoader.style.display = 'none';
+                }
+            }, 1500);
+        },
+
+        // Animate Stats
+        animateStats: function() {
+            this.elements.statsNumbers.forEach(stat => {
+                const target = parseInt(stat.dataset.count);
+                const duration = 2000;
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, 16);
+            });
+        },
+
+        // Initialize Lightbox
+        initLightbox: function() {
+            if (!this.elements.lightboxModal) return;
+            
+            // Lightbox elements
+            this.lightbox = {
+                modal: this.elements.lightboxModal,
+                image: this.elements.lightboxModal.querySelector('#lightboxImage'),
+                video: this.elements.lightboxModal.querySelector('.lightbox-video'),
+                title: this.elements.lightboxModal.querySelector('#lightboxTitle'),
+                description: this.elements.lightboxModal.querySelector('#lightboxDescription'),
+                breed: this.elements.lightboxModal.querySelector('#metaBreed'),
+                age: this.elements.lightboxModal.querySelector('#metaAge'),
+                weight: this.elements.lightboxModal.querySelector('#metaWeight'),
+                location: this.elements.lightboxModal.querySelector('#metaLocation'),
+                date: this.elements.lightboxModal.querySelector('#metaDate'),
+                tags: this.elements.lightboxModal.querySelector('#lightboxTags'),
+                closeBtn: this.elements.lightboxModal.querySelector('.lightbox-close'),
+                prevBtn: this.elements.lightboxModal.querySelector('.prev-btn'),
+                nextBtn: this.elements.lightboxModal.querySelector('.next-btn'),
+                currentIndex: this.elements.lightboxModal.querySelector('#currentIndex'),
+                totalImages: this.elements.lightboxModal.querySelector('#totalImages'),
+                thumbnails: this.elements.lightboxModal.querySelector('.lightbox-thumbnails'),
+                zoomIn: this.elements.lightboxModal.querySelector('.zoom-in'),
+                zoomOut: this.elements.lightboxModal.querySelector('.zoom-out'),
+                zoomReset: this.elements.lightboxModal.querySelector('.zoom-reset'),
+                downloadBtn: this.elements.lightboxModal.querySelector('.download-btn'),
+                shareBtn: this.elements.lightboxModal.querySelector('.share-btn'),
+                qrBtn: this.elements.lightboxModal.querySelector('.qr-btn')
+            };
+            
+            // Set up lightbox event listeners
+            this.setupLightboxEvents();
+        },
+
+        // Setup Lightbox Events
+        setupLightboxEvents: function() {
+            // Close lightbox
+            this.lightbox.closeBtn.addEventListener('click', () => this.closeLightbox());
+            this.lightbox.modal.addEventListener('click', (e) => {
+                if (e.target === this.lightbox.modal || e.target.classList.contains('lightbox-overlay')) {
+                    this.closeLightbox();
+                }
+            });
+            
+            // Navigation
+            this.lightbox.prevBtn.addEventListener('click', () => this.navigateLightbox(-1));
+            this.lightbox.nextBtn.addEventListener('click', () => this.navigateLightbox(1));
+            
+            // Zoom controls - UPDATED with boundaries
+            this.lightbox.zoomIn.addEventListener('click', () => this.zoomImage(0.2));
+            this.lightbox.zoomOut.addEventListener('click', () => this.zoomImage(-0.2));
+            this.lightbox.zoomReset.addEventListener('click', () => this.resetZoom());
+            
+            // Video play button
+            if (!this.lightbox.videoPlayBtn) {
+                this.createVideoControls();
+            }
+            
+            // Touch gestures for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            this.lightbox.modal.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            this.lightbox.modal.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                this.handleSwipe(touchStartX, touchEndX);
+            });
+            
+            // Action buttons
+            this.lightbox.downloadBtn.addEventListener('click', () => this.downloadImage());
+            this.lightbox.shareBtn.addEventListener('click', () => this.shareImage());
+            this.lightbox.qrBtn.addEventListener('click', () => this.showQRCode());
+        },
+
+        // Create Video Controls for Lightbox
+        createVideoControls: function() {
+            // Create video controls container
+            const videoControls = document.createElement('div');
+            videoControls.className = 'video-controls-lightbox';
+            videoControls.innerHTML = `
+                <div class="video-time-display">
+                    <span class="current-time">0:00</span>
+                    <span class="separator">/</span>
+                    <span class="duration">0:00</span>
+                </div>
+                
+                <div class="video-main-controls">
+                    <div class="video-progress-container">
+                        <div class="video-progress"></div>
+                    </div>
+                    
+                    <div class="video-control-buttons">
+                        <button class="video-control-btn play-pause-lightbox" aria-label="Play/Pause">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        
+                        <div class="video-volume-container">
+                            <button class="video-control-btn mute-lightbox" aria-label="Mute/Unmute">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <div class="volume-slider">
+                                <input type="range" min="0" max="1" step="0.01" value="1" class="volume-slider-input">
+                            </div>
+                        </div>
+                        
+                        <button class="video-control-btn fullscreen-lightbox" aria-label="Fullscreen">
+                            <i class="fas fa-expand"></i>
+                            <i class="fas fa-compress"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            this.lightbox.mediaContainer = this.lightbox.modal.querySelector('.media-container');
+            this.lightbox.mediaContainer.appendChild(videoControls);
+            
+            // Store control elements
+            this.lightbox.videoPlayBtn = videoControls.querySelector('.play-pause-lightbox');
+            this.lightbox.videoMuteBtn = videoControls.querySelector('.mute-lightbox');
+            this.lightbox.videoFullscreenBtn = videoControls.querySelector('.fullscreen-lightbox');
+            this.lightbox.currentTimeDisplay = videoControls.querySelector('.current-time');
+            this.lightbox.durationDisplay = videoControls.querySelector('.duration');
+            this.lightbox.videoProgress = videoControls.querySelector('.video-progress');
+            this.lightbox.videoProgressContainer = videoControls.querySelector('.video-progress-container');
+            this.lightbox.volumeSlider = videoControls.querySelector('.volume-slider-input');
+            this.lightbox.videoMainControls = videoControls.querySelector('.video-main-controls');
+            
+            // Set up video control events
+            this.setupVideoControlEvents();
+        },
+
+        // Setup Video Control Events
+        setupVideoControlEvents: function() {
+            // Format time helper function
+            const formatTime = (seconds) => {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            };
+            
+            // Play/Pause button
+            this.lightbox.videoPlayBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (this.lightbox.video.paused) {
+                    this.lightbox.video.play().catch(e => {
+                        console.log('Video play failed:', e);
+                        this.showNotification('Video playback failed. Please try again.', 'warning');
+                    });
+                } else {
+                    this.lightbox.video.pause();
+                }
+            });
+            
+            // Video time update events
+            this.lightbox.video.addEventListener('loadedmetadata', () => {
+                this.lightbox.durationDisplay.textContent = formatTime(this.lightbox.video.duration);
+            });
+            
+            this.lightbox.video.addEventListener('timeupdate', () => {
+                const currentTime = this.lightbox.video.currentTime;
+                const duration = this.lightbox.video.duration;
+                
+                // Update time display
+                this.lightbox.currentTimeDisplay.textContent = formatTime(currentTime);
+                
+                // Update progress bar
+                if (duration > 0) {
+                    const progressPercent = (currentTime / duration) * 100;
+                    this.lightbox.videoProgress.style.width = `${progressPercent}%`;
+                }
+            });
+            
+            // Click on progress bar to seek
+            this.lightbox.videoProgressContainer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const rect = this.lightbox.videoProgressContainer.getBoundingClientRect();
+                const clickPosition = (e.clientX - rect.left) / rect.width;
+                const duration = this.lightbox.video.duration;
+                
+                if (duration > 0) {
+                    this.lightbox.video.currentTime = clickPosition * duration;
+                }
+            });
+            
+            // Drag progress bar
+            let isDragging = false;
+            this.lightbox.videoProgressContainer.addEventListener('mousedown', (e) => {
+                e.stopPropagation();
+                isDragging = true;
+                this.updateProgressOnDrag(e);
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    this.updateProgressOnDrag(e);
+                }
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Touch events for mobile
+            this.lightbox.videoProgressContainer.addEventListener('touchstart', (e) => {
+                e.stopPropagation();
+                isDragging = true;
+                this.updateProgressOnDrag(e.touches[0]);
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    this.updateProgressOnDrag(e.touches[0]);
+                }
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            // Video play/pause events
+            this.lightbox.video.addEventListener('play', () => {
+                this.lightbox.videoPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            });
+            
+            this.lightbox.video.addEventListener('pause', () => {
+                this.lightbox.videoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+            
+            this.lightbox.video.addEventListener('ended', () => {
+                this.lightbox.videoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+                this.lightbox.video.currentTime = 0;
+            });
+            
+            // Mute button and volume slider
+            this.lightbox.videoMuteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.lightbox.video.muted = !this.lightbox.video.muted;
+                this.updateVolumeIcon();
+                
+                // Update slider value when muting/unmuting
+                if (this.lightbox.video.muted) {
+                    this.lightbox.volumeSlider.value = 0;
+                } else {
+                    this.lightbox.volumeSlider.value = this.lightbox.video.volume;
+                }
+            });
+            
+            // Volume slider change
+            this.lightbox.volumeSlider.addEventListener('input', (e) => {
+                e.stopPropagation();
+                const volume = parseFloat(e.target.value);
+                this.lightbox.video.volume = volume;
+                this.lightbox.video.muted = volume === 0;
+                this.updateVolumeIcon();
+            });
+            
+            // Update volume icon based on level
+            this.updateVolumeIcon = () => {
+                if (this.lightbox.video.muted || this.lightbox.video.volume === 0) {
+                    this.lightbox.videoMuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                } else if (this.lightbox.video.volume < 0.5) {
+                    this.lightbox.videoMuteBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+                } else {
+                    this.lightbox.videoMuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }
+            };
+            
+            // Initialize volume icon
+            this.updateVolumeIcon();
+            
+            // Fullscreen button
+            this.lightbox.videoFullscreenBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (!document.fullscreenElement) {
+                    this.lightbox.mediaContainer.requestFullscreen().catch(err => {
+                        console.log(`Fullscreen error: ${err.message}`);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+            
+            // Fullscreen change event
+            document.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement) {
+                    this.lightbox.videoFullscreenBtn.classList.remove('fullscreen');
+                } else {
+                    this.lightbox.videoFullscreenBtn.classList.add('fullscreen');
+                }
+            });
+            
+            // Prevent video click from bubbling up to lightbox
+            this.lightbox.video.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        },
+
+        // Progress bar dragging
+        updateProgressOnDrag: function(e) {
+            const rect = this.lightbox.videoProgressContainer.getBoundingClientRect();
+            let clickPosition = (e.clientX - rect.left) / rect.width;
+            clickPosition = Math.max(0, Math.min(1, clickPosition)); // Clamp between 0 and 1
+            
+            const duration = this.lightbox.video.duration;
+            if (duration > 0) {
+                this.lightbox.video.currentTime = clickPosition * duration;
+                this.lightbox.videoProgress.style.width = `${clickPosition * 100}%`;
+            }
+        },
+        
+
+        // Open Lightbox
+        openLightbox: function(item) {
             // Find index in filtered items
-            currentImageIndex = filteredItems.indexOf(item);
+            this.state.currentImageIndex = this.state.filteredItems.indexOf(item);
             
-            openLightbox(imgSrc, caption, description);
-        });
-    });
+            if (this.state.currentImageIndex === -1) return;
+            
+            // Update lightbox content
+            this.updateLightboxContent(item);
+            
+            // Show lightbox
+            this.lightbox.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            // Update thumbnails
+            this.updateLightboxThumbnails();
+            
+            // Set up keyboard navigation
+            this.isLightboxOpen = true;
+            
+            // Reset zoom when opening lightbox
+            this.resetZoom();
+        },
 
-    // Open Lightbox Function
-    function openLightbox(src, caption, description) {
-        lightboxImage.src = src;
-        lightboxCaption.textContent = caption;
-        lightboxDescription.textContent = description;
-        lightboxModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+        // Update Lightbox Content
+        updateLightboxContent: function(item) {
+            const isVideo = item.dataset.type === 'video' || item.querySelector('.video-container');
+            const image = item.querySelector('img');
+            const card = item.querySelector('.gallery-card');
+            
+            // Show/hide video controls based on content type
+            const videoControls = this.lightbox.modal.querySelector('.video-controls-lightbox');
+            if (videoControls) {
+                if (isVideo) {
+                    videoControls.style.display = 'flex';
+                    
+                    // Reset time display
+                    if (this.lightbox.currentTimeDisplay) {
+                        this.lightbox.currentTimeDisplay.textContent = '0:00';
+                        this.lightbox.durationDisplay.textContent = '0:00';
+                        this.lightbox.videoProgress.style.width = '0%';
+                    }
+                } else {
+                    videoControls.style.display = 'none';
+                }
+            }
+            
+            if (isVideo) {
+                // It's a video - show video player
+                this.lightbox.video.style.display = 'block';
+                this.lightbox.image.style.display = 'none';
+                
+                // Get video source
+                const videoSrc = item.dataset.video || 'videos/poultry_video1.mp4'; // Default fallback
+                
+                // Update video source
+                const source = this.lightbox.video.querySelector('source');
+                if (source.src !== videoSrc) {
+                    source.src = videoSrc;
+                    this.lightbox.video.load();
+                    
+                    // Reset play button
+                    if (this.lightbox.videoPlayBtn) {
+                        this.lightbox.videoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                }
+                
+                // Hide download button for videos
+                this.lightbox.downloadBtn.style.display = 'none';
+            } else {
+                // It's an image - show image
+                this.lightbox.video.style.display = 'none';
+                this.lightbox.image.style.display = 'block';
+                
+                // Set image source
+                this.lightbox.image.src = image.src;
+                this.lightbox.image.alt = image.alt;
+                
+                // Show download button for images
+                this.lightbox.downloadBtn.style.display = 'flex';
+            }
+            
+            // Update metadata (common for both image and video)
+            this.lightbox.title.textContent = item.dataset.name || 'Unknown';
+            this.lightbox.breed.textContent = item.dataset.breed || 'Not specified';
+            this.lightbox.age.textContent = item.dataset.age || 'Not specified';
+            this.lightbox.weight.textContent = item.dataset.weight || 'Not specified';
+            this.lightbox.location.textContent = item.dataset.location || 'Farm location';
+            this.lightbox.date.textContent = this.formatDate(item.dataset.date);
+            
+            // Update description
+            const description = card.querySelector('.animal-description');
+            this.lightbox.description.textContent = description ? description.textContent : '';
+            
+            // Update tags
+            this.updateLightboxTags(card);
+            
+            // Update counters
+            this.lightbox.currentIndex.textContent = this.state.currentImageIndex + 1;
+            this.lightbox.totalImages.textContent = this.state.filteredItems.length;
+            
+            // Reset zoom
+            this.resetZoom();
+        },
 
-    // Close Lightbox
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxModal.addEventListener('click', (e) => {
-        if (e.target === lightboxModal) {
-            closeLightbox();
+        // Update Lightbox Tags
+        updateLightboxTags: function(card) {
+            const tagsContainer = card.querySelector('.card-tags');
+            this.lightbox.tags.innerHTML = '';
+            
+            if (tagsContainer) {
+                const tags = tagsContainer.querySelectorAll('.tag');
+                tags.forEach(tag => {
+                    const tagClone = tag.cloneNode(true);
+                    this.lightbox.tags.appendChild(tagClone);
+                });
+            }
+        },
+
+        // Update Lightbox Thumbnails
+        updateLightboxThumbnails: function() {
+            this.lightbox.thumbnails.innerHTML = '';
+            
+            this.state.filteredItems.forEach((item, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'thumbnail';
+                if (index === this.state.currentImageIndex) {
+                    thumbnail.classList.add('active');
+                }
+                
+                const img = item.querySelector('img');
+                const isVideo = item.dataset.type === 'video' || item.querySelector('.video-container');
+                
+                // Add video indicator to thumbnails
+                let badge = '';
+                if (isVideo) {
+                    badge = '<span class="thumbnail-video-badge"><i class="fas fa-play"></i></span>';
+                }
+                
+                thumbnail.innerHTML = `
+                    ${badge}
+                    <img src="${img.src}" alt="${img.alt}">
+                `;
+                
+                thumbnail.addEventListener('click', () => {
+                    // Pause video if playing
+                    if (this.lightbox.video && !this.lightbox.video.paused) {
+                        this.lightbox.video.pause();
+                    }
+                    
+                    this.state.currentImageIndex = index;
+                    this.updateLightboxContent(item);
+                    this.updateActiveThumbnail();
+                    this.resetZoom();
+                });
+                
+                this.lightbox.thumbnails.appendChild(thumbnail);
+            });
+        },
+
+        // Update Active Thumbnail
+        updateActiveThumbnail: function() {
+            const thumbnails = this.lightbox.thumbnails.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === this.state.currentImageIndex);
+            });
+        },
+
+        // Navigate Lightbox
+        navigateLightbox: function(direction) {
+            // Pause video if playing
+            if (this.lightbox.video && !this.lightbox.video.paused) {
+                this.lightbox.video.pause();
+            }
+            
+            const total = this.state.filteredItems.length;
+            this.state.currentImageIndex = (this.state.currentImageIndex + direction + total) % total;
+            
+            const nextItem = this.state.filteredItems[this.state.currentImageIndex];
+            this.updateLightboxContent(nextItem);
+            this.updateActiveThumbnail();
+            
+            // Reset zoom when navigating (only for images)
+            if (this.lightbox.video.style.display !== 'block') {
+                this.resetZoom();
+            }
+        },
+
+        toggleZoomControls: function(show) {
+            if (!this.lightbox.zoomIn) return;
+            
+            if (show) {
+                this.lightbox.zoomIn.style.display = 'flex';
+                this.lightbox.zoomOut.style.display = 'flex';
+                this.lightbox.zoomReset.style.display = 'flex';
+            } else {
+                this.lightbox.zoomIn.style.display = 'none';
+                this.lightbox.zoomOut.style.display = 'none';
+                this.lightbox.zoomReset.style.display = 'none';
+            }
+        },
+
+        // Handle Lightbox Keyboard
+        handleLightboxKeyboard: function(e) {
+            // Only handle zoom shortcuts if image is displayed
+            const isImageDisplayed = this.lightbox.image.style.display === 'block';
+            
+            switch(e.key) {
+                case 'Escape':
+                    this.closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    this.navigateLightbox(-1);
+                    break;
+                case 'ArrowRight':
+                    this.navigateLightbox(1);
+                    break;
+                case '+':
+                case '=':
+                    if (e.ctrlKey && isImageDisplayed) {
+                        this.zoomImage(0.2);
+                    }
+                    break;
+                case '-':
+                    if (e.ctrlKey && isImageDisplayed) {
+                        this.zoomImage(-0.2);
+                    }
+                    break;
+                case '0':
+                    if (e.ctrlKey && isImageDisplayed) {
+                        this.resetZoom();
+                    }
+                    break;
+                case ' ':
+                case 'Spacebar':
+                    // Play/pause video if video is displayed
+                    if (this.lightbox.video.style.display === 'block') {
+                        e.preventDefault();
+                        if (this.lightbox.video.paused) {
+                            this.lightbox.video.play();
+                        } else {
+                            this.lightbox.video.pause();
+                        }
+                    }
+                    break;
+                case 'm':
+                case 'M':
+                    // Mute/unmute video if video is displayed
+                    if (this.lightbox.video.style.display === 'block') {
+                        e.preventDefault();
+                        this.lightbox.video.muted = !this.lightbox.video.muted;
+                        if (this.lightbox.videoMuteBtn) {
+                            this.lightbox.videoMuteBtn.innerHTML = this.lightbox.video.muted ? 
+                                '<i class="fas fa-volume-mute"></i>' : 
+                                '<i class="fas fa-volume-up"></i>';
+                        }
+                    }
+                    break;
+                case 'f':
+                case 'F':
+                    // Fullscreen for video
+                    if (this.lightbox.video.style.display === 'block' && this.lightbox.mediaContainer) {
+                        e.preventDefault();
+                        if (!document.fullscreenElement) {
+                            this.lightbox.mediaContainer.requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }
+                    break;
+            }
+        },
+
+        // Handle Swipe
+        handleSwipe: function(startX, endX) {
+            const swipeThreshold = 50;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    this.navigateLightbox(1); // Swipe left
+                } else {
+                    this.navigateLightbox(-1); // Swipe right
+                }
+            }
+        },
+
+        // Zoom Image
+        zoomImage: function(amount) {
+            // Only zoom if image is displayed (not video)
+            if (this.lightbox.video.style.display === 'block') {
+                return; // Don't zoom if video is showing
+            }
+            
+            this.state.zoomLevel += amount;
+            this.state.zoomLevel = Math.max(0.5, Math.min(3, this.state.zoomLevel));
+            
+            this.lightbox.image.style.transform = `scale(${this.state.zoomLevel})`;
+            
+            // Add overflow handling for large zooms
+            const container = this.lightbox.mediaContainer;
+            const img = this.lightbox.image;
+            
+            // Calculate if image is larger than container
+            const imgRect = img.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            
+            if (imgRect.width > containerRect.width || imgRect.height > containerRect.height) {
+                container.style.overflow = 'auto';
+            } else {
+                container.style.overflow = 'hidden';
+            }
+        },
+
+        // Reset Zoom - UPDATED
+        resetZoom: function() {
+            this.state.zoomLevel = 1;
+            this.lightbox.image.style.transform = 'scale(1)';
+            
+            // Reset overflow
+            if (this.lightbox.mediaContainer) {
+                this.lightbox.mediaContainer.style.overflow = 'hidden';
+            }
+        },
+
+        // Download Image
+        downloadImage: function() {
+            // Don't download if video is displayed
+            if (this.lightbox.video.style.display === 'block') {
+                this.showNotification('Download not available for videos', 'info');
+                return;
+            }
+            
+            const currentItem = this.state.filteredItems[this.state.currentImageIndex];
+            const image = currentItem.querySelector('img');
+            const link = document.createElement('a');
+            link.href = image.src;
+            link.download = `livestock-${currentItem.dataset.name.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            this.showNotification('Image download started', 'success');
+        },
+
+        // Share Image
+        shareImage: function() {
+            const currentItem = this.state.filteredItems[this.state.currentImageIndex];
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `Livestock: ${currentItem.dataset.name}`,
+                    text: `Check out this ${currentItem.dataset.breed} from our farm`,
+                    url: window.location.href + '#gallery'
+                });
+            } else {
+                // Fallback: Copy to clipboard
+                const shareText = `Check out this ${currentItem.dataset.name} (${currentItem.dataset.breed}) from our farm! ${window.location.href}#gallery`;
+                navigator.clipboard.writeText(shareText);
+                this.showNotification('Link copied to clipboard!', 'success');
+            }
+        },
+
+        // Show QR Code
+        showQRCode: function() {
+            // This would integrate with a QR code library
+            // For now, show a placeholder
+            this.showNotification('QR code feature coming soon!', 'info');
+        },
+
+        // Close Lightbox
+        closeLightbox: function() {
+            // Pause video if playing
+            if (this.lightbox.video && !this.lightbox.video.paused) {
+                this.lightbox.video.pause();
+            }
+            
+            this.lightbox.modal.classList.remove('active');
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            this.isLightboxOpen = false;
+            
+            // Reset zoom
+            this.resetZoom();
+            
+            // Exit fullscreen if active
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+        },
+
+        // Initialize Comparison
+        initComparison: function() {
+            if (!this.elements.comparisonModal) return;
+            
+            this.comparison = {
+                modal: this.elements.comparisonModal,
+                grid: this.elements.comparisonModal.querySelector('#comparisonGrid'),
+                closeBtn: this.elements.comparisonModal.querySelector('.comparison-close'),
+                clearBtn: this.elements.comparisonModal.querySelector('.btn-clear-comparison'),
+                exportBtn: this.elements.comparisonModal.querySelector('.btn-export-comparison')
+            };
+            
+            // Set up comparison events
+            this.setupComparisonEvents();
+        },
+
+        // Setup Comparison Events
+        setupComparisonEvents: function() {
+            this.comparison.closeBtn.addEventListener('click', () => {
+                this.comparison.modal.classList.remove('active');
+            });
+            
+            this.comparison.clearBtn.addEventListener('click', () => {
+                this.clearComparison();
+            });
+            
+            this.comparison.exportBtn.addEventListener('click', () => {
+                this.exportComparison();
+            });
+        },
+
+        // Toggle Comparison
+        toggleComparison: function(button) {
+            const item = button.closest('.gallery-item');
+            const itemId = item.dataset.name;
+            
+            if (this.state.comparisonItems.has(itemId)) {
+                this.state.comparisonItems.delete(itemId);
+                button.classList.remove('active');
+                this.showNotification('Removed from comparison', 'info');
+            } else {
+                if (this.state.comparisonItems.size >= 4) {
+                    this.showNotification('Maximum 4 items for comparison', 'warning');
+                    return;
+                }
+                this.state.comparisonItems.add(itemId);
+                button.classList.add('active');
+                this.showNotification('Added to comparison', 'success');
+            }
+            
+            // Update comparison modal
+            this.updateComparisonModal();
+            
+            // Show/hide comparison modal
+            if (this.state.comparisonItems.size > 0) {
+                this.comparison.modal.classList.add('active');
+            } else {
+                this.comparison.modal.classList.remove('active');
+            }
+        },
+
+        // Update Comparison Modal
+        updateComparisonModal: function() {
+            this.comparison.grid.innerHTML = '';
+            
+            this.state.comparisonItems.forEach(itemId => {
+                const item = Array.from(this.elements.items).find(
+                    el => el.dataset.name === itemId
+                );
+                
+                if (item) {
+                    const comparisonItem = document.createElement('div');
+                    comparisonItem.className = 'comparison-item';
+                    comparisonItem.innerHTML = `
+                        <div class="comparison-image">
+                            <img src="${item.querySelector('img').src}" alt="${item.dataset.name}">
+                        </div>
+                        <div class="comparison-info">
+                            <div class="comparison-name">${item.dataset.name}</div>
+                            <div class="comparison-meta">${item.dataset.breed} • ${item.dataset.age}</div>
+                        </div>
+                        <button class="remove-comparison" data-id="${itemId}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    comparisonItem.querySelector('.remove-comparison').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.state.comparisonItems.delete(itemId);
+                        this.updateComparisonModal();
+                        this.updateComparisonButtons();
+                    });
+                    
+                    this.comparison.grid.appendChild(comparisonItem);
+                }
+            });
+        },
+
+        // Update Comparison Buttons
+        updateComparisonButtons: function() {
+            document.querySelectorAll('.compare-btn').forEach(btn => {
+                const item = btn.closest('.gallery-item');
+                const itemId = item.dataset.name;
+                btn.classList.toggle('active', this.state.comparisonItems.has(itemId));
+            });
+        },
+
+        // Clear Comparison
+        clearComparison: function() {
+            this.state.comparisonItems.clear();
+            this.comparison.modal.classList.remove('active');
+            this.updateComparisonButtons();
+            this.showNotification('Comparison cleared', 'info');
+        },
+
+        // Export Comparison
+        exportComparison: function() {
+            // This would generate a PDF or spreadsheet
+            // For now, show a placeholder
+            this.showNotification('Export feature coming soon!', 'info');
+        },
+
+        // Toggle Favorite
+        toggleFavorite: function(button) {
+            button.classList.toggle('active');
+            button.querySelector('i').classList.toggle('far');
+            button.querySelector('i').classList.toggle('fas');
+            
+            const item = button.closest('.gallery-item');
+            const isFavorite = button.classList.contains('active');
+            
+            // Store in localStorage (optional)
+            const favorites = JSON.parse(localStorage.getItem('livestockFavorites') || '[]');
+            const itemId = item.dataset.name;
+            
+            if (isFavorite) {
+                if (!favorites.includes(itemId)) {
+                    favorites.push(itemId);
+                    this.showNotification('Added to favorites', 'success');
+                }
+            } else {
+                const index = favorites.indexOf(itemId);
+                if (index > -1) {
+                    favorites.splice(index, 1);
+                    this.showNotification('Removed from favorites', 'info');
+                }
+            }
+            
+            localStorage.setItem('livestockFavorites', JSON.stringify(favorites));
+        },
+
+        // Share Item
+        shareItem: function(button) {
+            const item = button.closest('.gallery-item');
+            const shareData = {
+                title: `Livestock: ${item.dataset.name}`,
+                text: `Check out this ${item.dataset.breed} from our farm!`,
+                url: window.location.href
+            };
+            
+            if (navigator.share) {
+                navigator.share(shareData);
+            } else {
+                // Fallback
+                const shareUrl = `${shareData.url}?share=${encodeURIComponent(item.dataset.name)}`;
+                navigator.clipboard.writeText(shareUrl);
+                this.showNotification('Link copied to clipboard!', 'success');
+            }
+        },
+
+        // Format Date
+        formatDate: function(dateString) {
+            if (!dateString) return 'Unknown date';
+            
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        },
+
+        // Show Notification
+        showNotification: function(message, type = 'info') {
+            // Remove existing notification
+            const existing = document.querySelector('.gallery-notification');
+            if (existing) existing.remove();
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = `gallery-notification notification-${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="notification-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            // Add styles
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4caf50' : type === 'warning' ? '#ff9800' : '#2196f3'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            // Close button
+            notification.querySelector('.notification-close').addEventListener('click', () => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            });
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 3000);
+            
+            document.body.appendChild(notification);
+            
+            // Add CSS animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
         }
-    });
+    };
 
-    function closeLightbox() {
-        lightboxModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-
-    // Navigation in Lightbox
-    lightboxPrev.addEventListener('click', showPrevImage);
-    lightboxNext.addEventListener('click', showNextImage);
-
-    // Keyboard Navigation
-    document.addEventListener('keydown', (e) => {
-        if (!lightboxModal.classList.contains('active')) return;
-        
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') showPrevImage();
-        if (e.key === 'ArrowRight') showNextImage();
-    });
-
-    function showPrevImage() {
-        currentImageIndex = (currentImageIndex - 1 + filteredItems.length) % filteredItems.length;
-        updateLightbox();
-    }
-
-    function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % filteredItems.length;
-        updateLightbox();
-    }
-
-    function updateLightbox() {
-        const currentItem = filteredItems[currentImageIndex];
-        const imgSrc = currentItem.querySelector('img').src;
-        const caption = currentItem.querySelector('.image-overlay h3').textContent;
-        const description = currentItem.querySelector('.image-overlay p').textContent;
-        
-        // Fade transition
-        lightboxImage.style.opacity = '0';
-        setTimeout(() => {
-            lightboxImage.src = imgSrc;
-            lightboxCaption.textContent = caption;
-            lightboxDescription.textContent = description;
-            lightboxImage.style.opacity = '1';
-        }, 200);
-    }
-
-    // View More Button (Load more images functionality)
-    if (btnViewMore) {
-        btnViewMore.addEventListener('click', () => {
-            // You can implement lazy loading or load more images here
-            alert('More photos would be loaded here. This is a demonstration.');
-            // In real implementation, you would:
-            // 1. Fetch more images from server
-            // 2. Append to gallery-grid
-            // 3. Reinitialize event listeners
+    // Initialize the gallery
+    try {
+        gallery.init();
+    } catch (error) {
+        console.error('Gallery initialization error:', error);
+        // Fallback: Show all items without filtering
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.style.display = 'block';
+            item.style.opacity = '1';
         });
     }
-
-    // Initial animation for gallery items
-    galleryItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
 });
 
-// ======= NEWS & UPDATES - FULLY FUNCTIONAL =======
+const videoThumbnailStyles = `
+    .thumbnail-video-badge {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: #ff4757;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        z-index: 2;
+    }
+    
+    .thumbnail {
+        position: relative;
+    }
+    
+    /* Hide video controls when not needed */
+    .lightbox-video:not([style*="display: block"]) ~ .video-controls-lightbox {
+        display: none !important;
+    }
+`;
+
+// Add the new styles
+const styleSheet2 = document.createElement('style');
+styleSheet2.textContent = videoThumbnailStyles;
+document.head.appendChild(styleSheet2);
+
+// Debounce Utility Function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Initialize Image Lazy Loading
+// Enhanced Lazy Loading with Error Handling
+function initLazyLoading() {
+    const lazyImages = document.querySelectorAll('.lazy-image');
+    
+    if (!lazyImages.length) {
+        console.log('No lazy images found');
+        return;
+    }
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                
+                // Check if image is already loaded or has error
+                if (img.complete) {
+                    if (img.naturalHeight === 0) {
+                        // Image error
+                        img.src = 'images/placeholder-error.jpg';
+                    }
+                    observer.unobserve(img);
+                    return;
+                }
+                
+                // Load image
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+                
+                // Handle load/error events
+                img.onload = function() {
+                    this.classList.remove('lazy-image');
+                    this.classList.add('loaded');
+                    
+                    const loader = this.parentNode.querySelector('.image-loader');
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            if (loader.parentNode) {
+                                loader.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+                };
+                
+                img.onerror = function() {
+                    console.error('Failed to lazy load image:', this.dataset.src);
+                    this.src = 'images/placeholder-error.jpg';
+                    this.alt = 'Image not available';
+                    
+                    const loader = this.parentNode.querySelector('.image-loader');
+                    if (loader) {
+                        loader.style.display = 'none';
+                    }
+                };
+                
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '100px 0px',
+        threshold: 0.1
+    });
+    
+    lazyImages.forEach(img => {
+        // Check if image is already in viewport
+        const rect = img.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            // Image is in viewport, load immediately
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+            }
+        } else {
+            // Observe for when it enters viewport
+            imageObserver.observe(img);
+        }
+    });
+}
+
+// Initialize when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLazyLoading);
+} else {
+    initLazyLoading();
+}
+
+// Fallback: Load all images after 3 seconds if still loading
+setTimeout(() => {
+    const loaders = document.querySelectorAll('.image-loader');
+    loaders.forEach(loader => {
+        if (loader.parentNode) {
+            loader.style.display = 'none';
+        }
+    });
+}, 3000);
+
+// Add this CSS for animations (add to your stylesheet if not present)
+const additionalStyles = `
+    .gallery-item {
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .gallery-item.animated {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .no-results-message {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 60px 20px;
+        background: #f8f9fa;
+        border-radius: 20px;
+        margin: 30px 0;
+    }
+    
+    .no-results-content {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .no-results-content i {
+        font-size: 3rem;
+        color: #ccc;
+        margin-bottom: 20px;
+        display: block;
+    }
+    
+    .no-results-content h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .no-results-content p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .btn-reset-filters {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-reset-filters:hover {
+        background: var(--dark-green-color);
+        transform: translateY(-2px);
+    }
+    
+    .all-loaded-message {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        margin-top: 20px;
+    }
+`;
+
+// Add styles to document
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
+
+// Export gallery object for debugging (optional)
+window.livestockGallery = gallery;
+// =====================
+// GALLERY SECTION END!
+// =====================
+
+// =====================
+// NEWS & UPDATES SECTION START!
+// =====================
 document.addEventListener('DOMContentLoaded', () => {
     // News Data Structure with WORKING IMAGES
     const newsData = [
@@ -1512,8 +3470,13 @@ document.addEventListener('DOMContentLoaded', () => {
     addStyles();
     initNewsSection();
 });
+// =====================
+// NEWS & UPDATES SECTION END!
+// =====================
 
-// ======= FAQ SECTION JAVASCRIPT =======
+// =====================
+// FAQ SECTION START!
+// =====================
 document.addEventListener('DOMContentLoaded', () => {
     // FAQ Toggle Functionality
     const faqQuestions = document.querySelectorAll('.faq-question');
@@ -1580,8 +3543,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log('FAQ section initialized successfully');
 });
+// =====================
+// FAQ SECTION START!
+// =====================
 
-// Contact Section JavaScript - Complete
+// =====================
+// CONTACT SECTION START!
+// =====================
 document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // 1. SCROLL ANIMATIONS
@@ -2004,38 +3972,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
 });
+// =====================
+// CONTACT SECTION END!
+// =====================
 
-document.addEventListener('DOMContentLoaded', () => {
-    const backToTop = document.getElementById('backToTop');
-    if (!backToTop) return;
-
-    // Ensure initial hidden state (in case CSS display none was removed)
-    backToTop.style.display = 'none';
-    backToTop.style.cursor = 'pointer';
-
-    const SHOW_AFTER = 400;
-    const toggleVisibility = () => {
-        if (window.scrollY > SHOW_AFTER) backToTop.style.display = 'flex';
-        else backToTop.style.display = 'none';
-    };
-
-    // On scroll toggle
-    window.addEventListener('scroll', toggleVisibility, { passive: true });
-    // Initial check
-    toggleVisibility();
-
-    // Click / keyboard activation
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    backToTop.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            backToTop.click();
-        }
-    });
-});
-
+// =====================
+// FOOTER SECTION START!
+// =====================
 document.addEventListener('DOMContentLoaded', () => {
   // set current year
   const yearEl = document.getElementById('currentYear');
@@ -2077,3 +4020,45 @@ document.addEventListener('DOMContentLoaded', () => {
     backToTop.addEventListener('keydown', (e) => { if (e.key === 'Enter') window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 });
+// =====================
+// FOOTER SECTION END!
+// =====================
+
+// =====================
+// BACK TO TOP BUTTON START!
+// =====================
+// With fade animation
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    if (!backToTopBtn) return;
+    
+    // Initially hidden
+    backToTopBtn.style.opacity = '0';
+    backToTopBtn.style.pointerEvents = 'none';
+    backToTopBtn.style.transition = 'opacity 0.3s ease';
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.style.opacity = '1';
+            backToTopBtn.style.pointerEvents = 'auto';
+        } else {
+            backToTopBtn.style.opacity = '0';
+            backToTopBtn.style.pointerEvents = 'none';
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Initial check
+    if (window.scrollY > 300) {
+        backToTopBtn.style.opacity = '1';
+        backToTopBtn.style.pointerEvents = 'auto';
+    }
+});
+// =====================
+// BACK TO TOP BUTTON END!
+// =====================
