@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       unit: 'per bird',
       stock: 120,
       featured: true,
-      image: 'gallery/Close_Up_Shot_of_a_Broiler_Chicken.jpg',
+      image: '../assets/gallery/Brown_Hen_Near_White_Egg_on_Nest.jpg',
       features: ['Vaccinated', 'High egg yield', 'Adapted to local climate'],
       description: 'Healthy point-of-lay layer chickens for egg production.'
     },
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       unit: 'per bird',
       stock: 300,
       featured: false,
-      image: 'gallery/Close_Up_Shot_of_a_Broiler_Chicken.jpg',
+      image: '../assets/gallery/Close_Up_Shot_of_a_Broiler_Chicken.jpg',
       features: ['Fast-growing', 'High feed conversion', 'Antibiotic-free'],
       description: 'Premium broiler stock raised for meat.'
     },
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       unit: 'per pig',
       stock: 40,
       featured: false,
-      image: 'gallery/Piglets_at_Farm.jpg',
+      image: '../assets/gallery/Piglets_at_Farm.jpg',
       features: ['Good breeding stock', 'Dewormed', 'Healthy'],
       description: 'Weaner pigs from quality breeds.'
     },
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       unit: 'per dozen',
       stock: 1000,
       featured: false,
-      image: 'gallery/Brown_Snail_on_Tree_Trunk.jpg',
+      image: '../assets/gallery/Brown_Snail_on_Tree_Trunk.jpg',
       features: ['High protein', 'Export quality'],
       description: 'Fresh heliculture stock.'
     },
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       unit: 'per kg',
       stock: 2000,
       featured: false,
-      image: 'gallery/Bunch_of_Grey_Fish.jpg',
+      image: '../assets/gallery/Bunch_of_Grey_Fish.jpg',
       features: ['Live delivery', 'Processed option'],
       description: 'Freshly harvested catfish and tilapia.'
     },
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       unit: 'per goat',
       stock: 25,
       featured: false,
-      image: 'gallery/Close_Up_Photo_of_a_Goat_Head.jpg',
+      image: '../assets/gallery/Close_Up_Photo_of_a_Goat_Head.jpg',
       features: ['Dual purpose', 'Healthy breeding stock'],
       description: 'Adult goats suitable for meat and dairy.'
     }
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.innerHTML = `
         ${p.featured ? `<div class="product-badge"><i class="fas fa-star"></i> Featured</div>` : ''}
-        <div class="product-image"><img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.onerror=null;this.src='images/Agri_logo.png'"></div>
+        <div class="product-image"><img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.onerror=null;this.src='../assets/images/Agri_logo.png'"></div>
         <div class="product-content">
           <h3 class="product-title">${p.title}</h3>
           <p class="product-description">${p.description}</p>

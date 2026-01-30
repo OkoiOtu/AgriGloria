@@ -1,0 +1,415 @@
+* {
+ box-sizing: border-box;
+}
+
+:root {
+ --white-color: #FFFFFF;
+ --primary-color: #D7BC97;
+ --secondary-color: #CBA05A;
+ --tertiary-color: #BE8625;
+ --light-green-color: #576332;
+ --dark-green-color: #353C1F;
+ --dark-color: #362308;
+ --black-color: #000000;
+}
+
+body {
+ margin: 0;
+ height: 100vh;
+ font-family: 'Muli', sans-serif;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ overflow: hidden;
+ position: relative;
+}
+
+.bg-slideshow {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: -1;
+ background: linear-gradient(rgba(39, 59, 53, 0.85), rgba(244, 247, 246, 0.9));
+}
+
+.bg-slideshow::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+ background-size: cover;
+ background-position: center;
+ animation: bgChange 60s infinite;
+ opacity: 0.3;
+ z-index: -1;
+}
+
+/* Background image animation */
+@keyframes bgChange {
+  0%, 25% {
+    background-image: url('https://media.istockphoto.com/id/177037767/photo/snail-on-the-ground.webp?a=1&b=1&s=612x612&w=0&k=20&c=XySBHv5KO3RYOeCL_hJabSWcdMry5JRSA7dGWTMGj-c=');
+  }
+  26%, 50% {
+    background-image: url('https://images.unsplash.com/photo-1759015541478-34740af4bb90?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  }
+  51%, 75% {
+    background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  }
+  76%, 100% {
+    background-image: url('https://media.istockphoto.com/id/1217649450/photo/chicken-or-hen-on-a-green-meadow.webp?a=1&b=1&s=612x612&w=0&k=20&c=q0EiV0B5_e0dfy_g2-UYqyRGaZbcCD6bbBdgZZNL7v0=');
+  }
+}
+
+.mobile-warning {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 1000;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 20px;
+ animation: fadeIn 0.5s ease;
+ color: white;
+}
+
+@media (min-width: 769px) {
+ .mobile-warning {
+   display: none !important;
+ }
+}
+
+@media (max-width: 768px) {
+ #loginContainer {
+   display: none !important;
+ }
+ 
+ .mobile-warning {
+   display: flex;
+ }
+}
+
+.mobile-warning.active {
+ display: flex;
+}
+
+.warning-content {
+ background: rgba(255, 255, 255, 0.95);
+ padding: 40px;
+ border-radius: 15px;
+ max-width: 500px;
+ text-align: center;
+ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+ animation: slideUp 0.5s ease;
+ color: #333;
+}
+
+.warning-logo img {
+ width: 100px;
+ height: 100px;
+ object-fit: contain;
+}
+
+.warning-content i.fa-laptop {
+ font-size: 40px;
+ color: var(--dark-green-color);
+}
+
+.warning-content i {
+ font-size: 30px;
+ color: var(--dark-green-color);
+}
+
+.warning-content h3 {
+ color: var(--dark-green-color);
+ font-size: 20px;
+}
+
+.warning-content p {
+ color: #555;
+ font-size: 1rem;
+}
+
+.warning-features {
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+}
+
+.feature {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+ background: rgba(53, 60, 31, 0.1);
+ border-radius: 8px;
+ padding: 5px 0;
+}
+
+.feature i {
+ color: var(--dark-green-color);
+ font-size: 10px;
+}
+
+.feature i.fas {
+  margin: 0;
+}
+
+.feature span {
+ font-size: 10px;
+ font-weight: 500;
+ color: var(--dark-green-color);
+}
+
+.warning-small {
+ font-size: 14px !important;
+ color: #777 !important;
+ font-style: italic;
+}
+
+.warning-btn {
+  width: 100%;
+  background: var(--dark-green-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.warning-btn i {
+  color: var(--white-color);
+ font-size: 15px;
+} 
+
+.warning-btn:hover {
+ background: var(--light-green-color);
+}
+
+@keyframes fadeIn {
+ from { opacity: 0; }
+ to { opacity: 1; }
+}
+
+@keyframes slideUp {
+ from {
+   opacity: 0;
+   transform: translateY(30px);
+ }
+ to {
+   opacity: 1;
+   transform: translateY(0);
+ }
+}
+
+.logo-wrapper {
+ position: absolute;
+ top: -80px;
+ left: 50%;
+ transform: translateX(-50%);
+ z-index: 10;
+}
+
+.logo-image {
+ width: 140px;
+ height: 140px;
+ object-fit: contain;
+ display: block;
+}
+
+.login-container {
+ background: rgba(255, 255, 255, 0.95);
+ width: 380px;
+ padding: 40px 35px 20px;
+ border-radius: 12px;
+ box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+ text-align: center;
+ position: relative;
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ backdrop-filter: blur(5px);
+ animation: fadeInUp 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+ .login-container {
+   display: none;
+ }
+}
+
+.form-content {
+  margin-top: 10px;
+}
+
+.login-container h2 {
+ margin-top: 30px;
+ margin-bottom: 10px;
+ color: var(--dark-green-color);
+ font-size: 18px;
+ font-weight: 600;
+}
+
+/* Wave Form Control Styles */
+.form-control {
+ position: relative;
+ margin: 30px 0;
+ width: 100%;
+ text-align: left;
+}
+
+.form-control input {
+ background-color: transparent;
+ border: 0;
+ border-bottom: 2px solid #ccc;
+ display: block;
+ width: 100%;
+ padding: 15px 0;
+ font-size: 16px;
+ color: var(--dark-color);
+ transition: border-bottom-color 0.3s ease;
+}
+
+.form-control input:focus {
+ outline: 0;
+ border-bottom-color: var(--dark-green-color);
+}
+
+.form-control label {
+ position: absolute;
+ top: 15px;
+ left: 0;
+ pointer-events: none;
+ color: #999;
+}
+
+.form-control label span {
+ display: inline-block;
+ font-size: 16px;
+ min-width: 5px;
+ transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.form-control.has-value label span,
+.form-control input:focus + label span {
+  color: var(--dark-green-color);
+  transform: translateY(-25px);
+}
+
+.form-control input:focus + label span {
+ color: var(--dark-green-color);
+ transform: translateY(-25px);
+}
+
+.btn {
+ cursor: pointer;
+ display: inline-block;
+ width: 100%;
+ background: var(--dark-green-color);
+ padding: 15px;
+ font-family: inherit;
+ font-size: 16px;
+ font-weight: 600;
+ border: none;
+ border-radius: 8px;
+ margin-top: 10px;
+ color: white;
+ letter-spacing: 0.5px;
+ transition: background 0.3s, transform 0.2s;
+}
+
+.btn:focus {
+ outline: 0;
+}
+
+.btn:hover {
+ background: var(--light-green-color);
+}
+
+.btn:active {
+ transform: scale(0.98);
+}
+
+/* Message styles */
+#loginMessage {
+ margin-top: 20px;
+ font-size: 14px;
+ padding: 10px;
+ border-radius: 5px;
+ min-height: 40px;
+}
+
+/* Signup text */
+.signup-text {
+ margin-top: 25px;
+ color: #666;
+ font-size: 14px;
+}
+
+.signup-text a {
+ text-decoration: none;
+ color: #2f7d32;
+ font-weight: 600;
+ transition: color 0.3s;
+}
+
+.signup-text a:hover {
+ color: #256428;
+ text-decoration: underline;
+}
+
+/* Password input specific styling */
+.form-control:last-of-type {
+ margin-bottom: 20px;
+}
+
+/* Remove autofill/autocomplete background colors */
+.form-control input:-webkit-autofill,
+.form-control input:-webkit-autofill:hover,
+.form-control input:-webkit-autofill:focus,
+.form-control input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #333 !important;
+  transition: background-color 5000s ease-in-out 0s;
+  border-bottom-color: var(--dark-green-color) !important;
+}
+
+/* For Firefox and other browsers */
+.form-control input:autofill {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Optional: Keep the border color consistent */
+.form-control input:-webkit-autofill {
+  border-bottom-color: #2f7d32 !important;
+}
+
+@keyframes fadeInUp {
+ from {
+   opacity: 0;
+   transform: translateY(20px);
+ }
+ to {
+   opacity: 1;
+   transform: translateY(0);
+ }
+}
+
+.login-container {
+ animation: fadeInUp 0.5s ease-out;
+}

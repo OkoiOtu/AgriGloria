@@ -3081,7 +3081,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('agrigloria_current_article', JSON.stringify(news));
         
         // Redirect to news.html with article ID
-        window.location.href = `news.html?id=${id}`;
+        window.location.href = `pages/news.html?id=${id}`;
     }
 
     // Like Article with localStorage persistence

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="AgriGloria Farms News - Read our latest farm updates, agricultural tips, and success stories">
   <meta name="keywords" content="farming news, agricultural updates, Nigeria farming, livestock news, AgriGloria">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/news.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>News & Updates - AgriGloria Farms</title>
@@ -95,7 +95,7 @@
     </header>
     <!-- HEADER SECTION END! -->
 
-  <!-- Main News Article Content -->
+  <!-- MAIN NEWS ARTICLE CONTENT STARTS! -->
   <main class="news-article-page">
     <div class="news-article-container">
         <!-- Breadcrumb -->
@@ -166,14 +166,66 @@
       </div>
     </div>
   </main>
+  <!-- MAIN NEWS ARTICLE CONTENT END! -->
 
-  <!-- Footer (Copy from your index.html) -->
-  <footer>
-      <!-- Copy your footer from index.html here -->
-  </footer>
+  <!-- FOOTER SECTION START! -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-col about">
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/images/AgriGloria_logo.png" alt="AgriGloria logo" width="120">
+                </a>
+                <p>Located in Ayaebam Village, Akamkpa.</p>
+                <p class="footer-small">Open Mon–Sat: 8:00AM – 6:00PM</p>
+            </div>
+
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#livestock">Livestock</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="products.html">Products & Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact">
+                <h4>Contact</h4>
+                <p><i class="material-icons">location_on</i> 02 Ayaebam Village, Akamkpa, Cross River, Nigeria</p>
+                <p><i class="material-icons">phone</i> <a href="tel:+79153653452">+234 803 123 4567</a></p>
+                <p><i class="material-icons">email</i> <a href="mailto:info@agrigloria.com">info@agrigloria.com</a></p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/+79153653452" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+            </div>
+
+            <div class="footer-col newsletter">
+            <h4>Subscribe</h4>
+            <p>Get weekly updates, pricing and offers.</p>
+            <form id="footerNewsletterForm" class="footer-newsletter-form" novalidate>
+                <input type="email" id="footerEmail" placeholder="Your email" required aria-label="Email">
+                <button type="submit" class="footer-subscribe-btn">Subscribe</button>
+            </form>
+            <p id="footerNewsletterMsg" class="footer-msg" aria-live="polite"></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> AgriGloria Farms &amp; Holdings. All rights reserved.</p>
+            <nav class="footer-policy">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#contact">Support</a>
+            </nav>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END! -->
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
-    <script src="js/news.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/news.js"></script>
 </body>
 </html>

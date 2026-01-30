@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | AgriGloria Farms</title>
+  <link rel="stylesheet" href="../assets/css/login.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Background slideshow container -->
+  <div class="bg-slideshow"></div>
+  
+  <!-- Mobile warning message (SHOWS ON MOBILE, HIDES LOGIN) -->
+  <div class="mobile-warning" id="mobileWarning">
+    <div class="warning-content">
+      <div class="warning-logo">
+        <img src="../assets/images/AgriGloria_logo.png" alt="AgriGloria Farms Logo">
+      </div>
+      <i class="fas fa-laptop"></i>
+      <h3>Desktop Experience Required</h3>
+      <p>AgriGloria Farms is optimized for desktop use. Please access this platform from a laptop or desktop computer for the best experience.</p>
+      <div class="warning-features">
+        <div class="feature">
+          <i class="fas fa-desktop"></i>
+          <span>Full Dashboard Features</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-chart-line"></i>
+          <span>Better Data Visualization</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-cogs"></i>
+          <span>Complete Management Tools</span>
+        </div>
+      </div>
+      <p class="warning-small">You can also try rotating your device to landscape mode if you're on a tablet.</p>
+      <div class="warning-actions">
+        <button class="warning-btn" id="refreshPage">
+          <i class="fas fa-redo"></i> Check Again
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Container (HIDDEN ON MOBILE) -->
+  <div class="login-container" id="loginContainer">
+    <!-- Logo positioned at top border -->
+    <div class="logo-wrapper">
+      <img src="../assets/images/AgriGloria_logo.png" alt="AgriGloria Farms Logo" class="logo-image">
+    </div>
+
+    <div class="form-content">
+      <h2>Login to your account</h2>
+
+      <form id="loginForm">
+        <div class="form-control">
+          <input 
+            type="email" 
+            id="email" 
+            placeholder=" " 
+            required 
+          />
+          <label for="email">
+            <span>Email address</span>
+          </label>
+        </div>
+
+        <div class="form-control">
+          <input 
+            type="password" 
+            id="password" 
+            placeholder=" " 
+            required 
+          />
+          <label for="password">
+            <span>Password</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <p id="loginMessage"></p>
+    </div>
+  </div>
+
+  <script src="../assets/js/login.js"></script>
+</body>
+</html>

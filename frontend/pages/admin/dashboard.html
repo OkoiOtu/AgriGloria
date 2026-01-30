@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | AgriGloria</title>
+
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <h2>Admin Dashboard</h2>
+
+  <div class="cards">
+    <div class="card">Total Users: <span id="totalUsers">0</span></div>
+    <div class="card">Customers: <span id="totalCustomers">0</span></div>
+    <div class="card">Livestock Available: <span id="totalLivestock">0</span></div>
+    <div class="card">Orders: <span id="totalOrders">0</span></div>
+    <div class="card">Revenue (₦): <span id="totalRevenue">0</span></div>
+  </div>
+
+  <canvas id="ordersChart"></canvas>
+
+  <script src="../assets/js/adminGuard.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
