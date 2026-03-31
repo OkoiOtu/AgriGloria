@@ -1617,7 +1617,7 @@ html {
   padding: 80px 60px;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('https://images.unsplash.com/photo-1620136717591-841a4da27e23?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+    url('/assets/gallery/Layers.avif') center/cover no-repeat;
   position: relative;
   overflow: hidden;
   width: 100%;
