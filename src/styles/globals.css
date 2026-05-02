@@ -1,0 +1,19 @@
+/* Brand CSS custom properties — used alongside Tailwind utilities */
+:root {
+  --primary-color: #D7BC97;
+  --secondary-color: #CBA05A;
+  --tertiary-color: #BE8625;
+  --light-green-color: #576332;
+  --dark-green-color: #353C1F;
+  --dark-color: #362308;
+  --white-color: #ffffff;
+  --black-color: #000000;
+
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.4s ease;
+  --transition-slow: 0.6s ease;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
